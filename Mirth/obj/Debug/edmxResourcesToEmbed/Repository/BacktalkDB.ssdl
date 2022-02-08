@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BacktalkDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Pharmacist">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PMSID" Type="int" />
+    <Property Name="InspectRxID" Type="int" />
+    <Property Name="EffectiveDate" Type="date" />
+    <Property Name="Action" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="PMSMessageLog">
+    <Key>
+      <PropertyRef Name="PMSMessageID" />
+    </Key>
+    <Property Name="PMSMessageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UpdateStatusID" Type="int" Nullable="false" />
+    <Property Name="NumberOfAttempt" Type="int" Nullable="false" />
+    <Property Name="Status" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="LastTriedTime" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StatusUpdate">
+    <Key>
+      <PropertyRef Name="UpdateStatusID" />
+    </Key>
+    <Property Name="UpdateStatusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrderID" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="CFOrderID" Type="nvarchar" MaxLength="50" />
+    <Property Name="CustomerPatientID" Type="varchar" MaxLength="20" />
+    <Property Name="CustomerNDC" Type="varchar" MaxLength="25" />
+    <Property Name="RXQuantity" Type="decimal" Precision="8" Scale="3" Nullable="false" />
+    <Property Name="CustomerRXID" Type="varchar" MaxLength="30" />
+    <Property Name="BagNumber" Type="int" />
+    <Property Name="StoreNumber" Type="int" />
+    <Property Name="Barcode" Type="varchar" MaxLength="30" />
+    <Property Name="Checked" Type="bit" Nullable="false" />
+    <Property Name="CheckedBy" Type="int" Nullable="false" />
+    <Property Name="CheckedDateTime" Type="datetime" Nullable="false" />
+    <Property Name="XMLGenerated" Type="bit" Nullable="false" />
+    <Property Name="CVSAcknowlogement" Type="bit" Nullable="false" />
+    <Property Name="FillNumber" Type="nvarchar" MaxLength="5" />
+    <Property Name="EditVersion" Type="nvarchar" MaxLength="5" />
+    <Property Name="PartialFill" Type="nvarchar" MaxLength="5" />
+  </EntityType>
+  <EntityContainer Name="BacktalkDBModelStoreContainer">
+    <EntitySet Name="Pharmacist" EntityType="Self.Pharmacist" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PMSMessageLog" EntityType="Self.PMSMessageLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StatusUpdate" EntityType="Self.StatusUpdate" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

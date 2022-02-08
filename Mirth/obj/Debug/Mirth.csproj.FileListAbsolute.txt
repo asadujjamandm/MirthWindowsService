@@ -1,0 +1,14 @@
+C:\Users\vdr_asohan\source\repos\Mirth\Mirth\bin\Debug\Mirth.exe.config
+C:\Users\vdr_asohan\source\repos\Mirth\Mirth\bin\Debug\Mirth.exe
+C:\Users\vdr_asohan\source\repos\Mirth\Mirth\bin\Debug\Mirth.pdb
+C:\Users\vdr_asohan\source\repos\Mirth\Mirth\bin\Debug\EntityFramework.dll
+C:\Users\vdr_asohan\source\repos\Mirth\Mirth\bin\Debug\EntityFramework.xml
+C:\Users\vdr_asohan\source\repos\Mirth\Mirth\obj\Debug\Mirth.csproj.CoreCompileInputs.cache
+C:\Users\vdr_asohan\source\repos\Mirth\Mirth\obj\Debug\Mirth.csproj.CopyComplete
+C:\Users\vdr_asohan\source\repos\Mirth\Mirth\obj\Debug\Mirth.exe
+C:\Users\vdr_asohan\source\repos\Mirth\Mirth\obj\Debug\Mirth.pdb
+C:\Users\vdr_asohan\source\repos\Mirth\Mirth\obj\Debug\Mirth.ProjectInstaller.resources
+C:\Users\vdr_asohan\source\repos\Mirth\Mirth\obj\Debug\Mirth.csproj.GenerateResource.cache
+C:\Users\vdr_asohan\source\repos\Mirth\Mirth\obj\Debug\Mirth.csproj.AssemblyReference.cache
+C:\Users\vdr_asohan\source\repos\Mirth\Mirth\bin\Debug\Newtonsoft.Json.dll
+C:\Users\vdr_asohan\source\repos\Mirth\Mirth\bin\Debug\Newtonsoft.Json.xml

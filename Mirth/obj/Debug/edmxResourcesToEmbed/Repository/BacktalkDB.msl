@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BacktalkDBModelStoreContainer" CdmEntityContainer="BacktalkDBEntities">
+    <EntitySetMapping Name="Pharmacists">
+      <EntityTypeMapping TypeName="BacktalkDBModel.Pharmacist">
+        <MappingFragment StoreEntitySet="Pharmacist">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="PMSID" ColumnName="PMSID" />
+          <ScalarProperty Name="InspectRxID" ColumnName="InspectRxID" />
+          <ScalarProperty Name="EffectiveDate" ColumnName="EffectiveDate" />
+          <ScalarProperty Name="Action" ColumnName="Action" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PMSMessageLogs">
+      <EntityTypeMapping TypeName="BacktalkDBModel.PMSMessageLog">
+        <MappingFragment StoreEntitySet="PMSMessageLog">
+          <ScalarProperty Name="PMSMessageID" ColumnName="PMSMessageID" />
+          <ScalarProperty Name="UpdateStatusID" ColumnName="UpdateStatusID" />
+          <ScalarProperty Name="NumberOfAttempt" ColumnName="NumberOfAttempt" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="LastTriedTime" ColumnName="LastTriedTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StatusUpdates">
+      <EntityTypeMapping TypeName="BacktalkDBModel.StatusUpdate">
+        <MappingFragment StoreEntitySet="StatusUpdate">
+          <ScalarProperty Name="UpdateStatusID" ColumnName="UpdateStatusID" />
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="CFOrderID" ColumnName="CFOrderID" />
+          <ScalarProperty Name="CustomerPatientID" ColumnName="CustomerPatientID" />
+          <ScalarProperty Name="CustomerNDC" ColumnName="CustomerNDC" />
+          <ScalarProperty Name="RXQuantity" ColumnName="RXQuantity" />
+          <ScalarProperty Name="CustomerRXID" ColumnName="CustomerRXID" />
+          <ScalarProperty Name="BagNumber" ColumnName="BagNumber" />
+          <ScalarProperty Name="StoreNumber" ColumnName="StoreNumber" />
+          <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+          <ScalarProperty Name="Checked" ColumnName="Checked" />
+          <ScalarProperty Name="CheckedBy" ColumnName="CheckedBy" />
+          <ScalarProperty Name="CheckedDateTime" ColumnName="CheckedDateTime" />
+          <ScalarProperty Name="XMLGenerated" ColumnName="XMLGenerated" />
+          <ScalarProperty Name="CVSAcknowlogement" ColumnName="CVSAcknowlogement" />
+          <ScalarProperty Name="FillNumber" ColumnName="FillNumber" />
+          <ScalarProperty Name="EditVersion" ColumnName="EditVersion" />
+          <ScalarProperty Name="PartialFill" ColumnName="PartialFill" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

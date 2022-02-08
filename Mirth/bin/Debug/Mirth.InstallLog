@@ -1,0 +1,158 @@
+﻿Installing assembly 'C:\Users\vdr_asohan\source\repos\Mirth\Mirth\bin\Debug\Mirth.exe'.
+Affected parameters are:
+   i = 
+   logfile = C:\Users\vdr_asohan\source\repos\Mirth\Mirth\bin\Debug\Mirth.InstallLog
+   assemblypath = C:\Users\vdr_asohan\source\repos\Mirth\Mirth\bin\Debug\Mirth.exe
+   logtoconsole = 
+Installing service CustomMirthService...
+Service CustomMirthService has been successfully installed.
+Creating EventLog source CustomMirthService in log Application...
+Committing assembly 'C:\Users\vdr_asohan\source\repos\Mirth\Mirth\bin\Debug\Mirth.exe'.
+Affected parameters are:
+   i = 
+   logfile = C:\Users\vdr_asohan\source\repos\Mirth\Mirth\bin\Debug\Mirth.InstallLog
+   assemblypath = C:\Users\vdr_asohan\source\repos\Mirth\Mirth\bin\Debug\Mirth.exe
+   logtoconsole = 
+Uninstalling assembly 'C:\Users\vdr_asohan\source\repos\Mirth\Mirth\bin\Debug\Mirth.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\vdr_asohan\source\repos\Mirth\Mirth\bin\Debug\Mirth.InstallLog
+   assemblypath = C:\Users\vdr_asohan\source\repos\Mirth\Mirth\bin\Debug\Mirth.exe
+Removing EventLog source CustomMirthService.
+Service CustomMirthService is being removed from the system...
+Service CustomMirthService was successfully removed from the system.
+Attempt to stop service CustomMirthService.
+Installing assembly 'C:\Users\vdr_asohan\source\repos\Mirth\Mirth\bin\Debug\Mirth.exe'.
+Affected parameters are:
+   i = 
+   logfile = C:\Users\vdr_asohan\source\repos\Mirth\Mirth\bin\Debug\Mirth.InstallLog
+   assemblypath = C:\Users\vdr_asohan\source\repos\Mirth\Mirth\bin\Debug\Mirth.exe
+   logtoconsole = 
+Installing service CustomMirthService...
+Service CustomMirthService has been successfully installed.
+Creating EventLog source CustomMirthService in log Application...
+Committing assembly 'C:\Users\vdr_asohan\source\repos\Mirth\Mirth\bin\Debug\Mirth.exe'.
+Affected parameters are:
+   i = 
+   logfile = C:\Users\vdr_asohan\source\repos\Mirth\Mirth\bin\Debug\Mirth.InstallLog
+   assemblypath = C:\Users\vdr_asohan\source\repos\Mirth\Mirth\bin\Debug\Mirth.exe
+   logtoconsole = 
+Uninstalling assembly 'C:\Users\vdr_asohan\source\repos\Mirth\Mirth\bin\Debug\Mirth.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\vdr_asohan\source\repos\Mirth\Mirth\bin\Debug\Mirth.InstallLog
+   assemblypath = C:\Users\vdr_asohan\source\repos\Mirth\Mirth\bin\Debug\Mirth.exe
+Removing EventLog source CustomMirthService.
+Service CustomMirthService is being removed from the system...
+Service CustomMirthService was successfully removed from the system.
+Attempt to stop service CustomMirthService.
+Installing assembly 'C:\Users\vdr_asohan\source\repos\Mirth\Mirth\bin\Debug\Mirth.exe'.
+Affected parameters are:
+   i = 
+   logfile = C:\Users\vdr_asohan\source\repos\Mirth\Mirth\bin\Debug\Mirth.InstallLog
+   assemblypath = C:\Users\vdr_asohan\source\repos\Mirth\Mirth\bin\Debug\Mirth.exe
+   logtoconsole = 
+Installing service CustomMirthService...
+Service CustomMirthService has been successfully installed.
+Creating EventLog source CustomMirthService in log Application...
+Committing assembly 'C:\Users\vdr_asohan\source\repos\Mirth\Mirth\bin\Debug\Mirth.exe'.
+Affected parameters are:
+   i = 
+   logfile = C:\Users\vdr_asohan\source\repos\Mirth\Mirth\bin\Debug\Mirth.InstallLog
+   assemblypath = C:\Users\vdr_asohan\source\repos\Mirth\Mirth\bin\Debug\Mirth.exe
+   logtoconsole = 
+Uninstalling assembly 'C:\Users\vdr_asohan\source\repos\Mirth\Mirth\bin\Debug\Mirth.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\vdr_asohan\source\repos\Mirth\Mirth\bin\Debug\Mirth.InstallLog
+   assemblypath = C:\Users\vdr_asohan\source\repos\Mirth\Mirth\bin\Debug\Mirth.exe
+Removing EventLog source CustomMirthService.
+Service CustomMirthService is being removed from the system...
+Service CustomMirthService was successfully removed from the system.
+Attempt to stop service CustomMirthService.
+Installing assembly 'C:\Users\vdr_asohan\source\repos\Mirth\Mirth\bin\Debug\Mirth.exe'.
+Affected parameters are:
+   i = 
+   logfile = C:\Users\vdr_asohan\source\repos\Mirth\Mirth\bin\Debug\Mirth.InstallLog
+   assemblypath = C:\Users\vdr_asohan\source\repos\Mirth\Mirth\bin\Debug\Mirth.exe
+   logtoconsole = 
+Installing service CustomMirthService...
+Service CustomMirthService has been successfully installed.
+Creating EventLog source CustomMirthService in log Application...
+Committing assembly 'C:\Users\vdr_asohan\source\repos\Mirth\Mirth\bin\Debug\Mirth.exe'.
+Affected parameters are:
+   i = 
+   logfile = C:\Users\vdr_asohan\source\repos\Mirth\Mirth\bin\Debug\Mirth.InstallLog
+   assemblypath = C:\Users\vdr_asohan\source\repos\Mirth\Mirth\bin\Debug\Mirth.exe
+   logtoconsole = 
+Uninstalling assembly 'C:\Users\vdr_asohan\source\repos\Mirth\Mirth\bin\Debug\Mirth.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\vdr_asohan\source\repos\Mirth\Mirth\bin\Debug\Mirth.InstallLog
+   assemblypath = C:\Users\vdr_asohan\source\repos\Mirth\Mirth\bin\Debug\Mirth.exe
+Removing EventLog source CustomMirthService.
+Service CustomMirthService is being removed from the system...
+Service CustomMirthService was successfully removed from the system.
+Attempt to stop service CustomMirthService.
+Installing assembly 'C:\Users\vdr_asohan\source\repos\Mirth\Mirth\bin\Debug\Mirth.exe'.
+Affected parameters are:
+   i = 
+   logfile = C:\Users\vdr_asohan\source\repos\Mirth\Mirth\bin\Debug\Mirth.InstallLog
+   assemblypath = C:\Users\vdr_asohan\source\repos\Mirth\Mirth\bin\Debug\Mirth.exe
+   logtoconsole = 
+Installing service CustomMirthService...
+Service CustomMirthService has been successfully installed.
+Creating EventLog source CustomMirthService in log Application...
+Committing assembly 'C:\Users\vdr_asohan\source\repos\Mirth\Mirth\bin\Debug\Mirth.exe'.
+Affected parameters are:
+   i = 
+   logfile = C:\Users\vdr_asohan\source\repos\Mirth\Mirth\bin\Debug\Mirth.InstallLog
+   assemblypath = C:\Users\vdr_asohan\source\repos\Mirth\Mirth\bin\Debug\Mirth.exe
+   logtoconsole = 
+Uninstalling assembly 'C:\Users\vdr_asohan\source\repos\Mirth\Mirth\bin\Debug\Mirth.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\vdr_asohan\source\repos\Mirth\Mirth\bin\Debug\Mirth.InstallLog
+   assemblypath = C:\Users\vdr_asohan\source\repos\Mirth\Mirth\bin\Debug\Mirth.exe
+Removing EventLog source CustomMirthService.
+Service CustomMirthService is being removed from the system...
+Service CustomMirthService was successfully removed from the system.
+Attempt to stop service CustomMirthService.
+Installing assembly 'C:\Users\vdr_asohan\source\repos\Mirth\Mirth\bin\Debug\Mirth.exe'.
+Affected parameters are:
+   i = 
+   logfile = C:\Users\vdr_asohan\source\repos\Mirth\Mirth\bin\Debug\Mirth.InstallLog
+   assemblypath = C:\Users\vdr_asohan\source\repos\Mirth\Mirth\bin\Debug\Mirth.exe
+   logtoconsole = 
+Installing service CustomMirthService...
+Service CustomMirthService has been successfully installed.
+Creating EventLog source CustomMirthService in log Application...
+Committing assembly 'C:\Users\vdr_asohan\source\repos\Mirth\Mirth\bin\Debug\Mirth.exe'.
+Affected parameters are:
+   i = 
+   logfile = C:\Users\vdr_asohan\source\repos\Mirth\Mirth\bin\Debug\Mirth.InstallLog
+   assemblypath = C:\Users\vdr_asohan\source\repos\Mirth\Mirth\bin\Debug\Mirth.exe
+   logtoconsole = 
+Uninstalling assembly 'C:\Users\vdr_asohan\source\repos\Mirth\Mirth\bin\Debug\Mirth.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\vdr_asohan\source\repos\Mirth\Mirth\bin\Debug\Mirth.InstallLog
+   assemblypath = C:\Users\vdr_asohan\source\repos\Mirth\Mirth\bin\Debug\Mirth.exe
+Removing EventLog source CustomMirthService.
+Service CustomMirthService is being removed from the system...
+Service CustomMirthService was successfully removed from the system.
+Installing assembly 'C:\Users\vdr_asohan\source\repos\Mirth\Mirth\bin\Debug\Mirth.exe'.
+Affected parameters are:
+   i = 
+   logfile = C:\Users\vdr_asohan\source\repos\Mirth\Mirth\bin\Debug\Mirth.InstallLog
+   assemblypath = C:\Users\vdr_asohan\source\repos\Mirth\Mirth\bin\Debug\Mirth.exe
+   logtoconsole = 
+Installing service CustomMirthService...
+Service CustomMirthService has been successfully installed.
+Creating EventLog source CustomMirthService in log Application...
+Committing assembly 'C:\Users\vdr_asohan\source\repos\Mirth\Mirth\bin\Debug\Mirth.exe'.
+Affected parameters are:
+   i = 
+   logfile = C:\Users\vdr_asohan\source\repos\Mirth\Mirth\bin\Debug\Mirth.InstallLog
+   assemblypath = C:\Users\vdr_asohan\source\repos\Mirth\Mirth\bin\Debug\Mirth.exe
+   logtoconsole = 

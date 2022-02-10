@@ -370,3 +370,111 @@ Affected parameters are:
    logfile = C:\Projects\Mirth\MirthWindowsService\Mirth\bin\Debug\Mirth.InstallLog
    assemblypath = C:\Projects\Mirth\MirthWindowsService\Mirth\bin\Debug\Mirth.exe
    logtoconsole = 
+Uninstalling assembly 'C:\Projects\Mirth\MirthWindowsService\Mirth\bin\Debug\Mirth.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Projects\Mirth\MirthWindowsService\Mirth\bin\Debug\Mirth.InstallLog
+   assemblypath = C:\Projects\Mirth\MirthWindowsService\Mirth\bin\Debug\Mirth.exe
+Removing EventLog source CustomMirthService.
+Service CustomMirthService is being removed from the system...
+Service CustomMirthService was successfully removed from the system.
+Installing assembly 'C:\Projects\Mirth\MirthWindowsService\Mirth\bin\Debug\Mirth.exe'.
+Affected parameters are:
+   i = 
+   logfile = C:\Projects\Mirth\MirthWindowsService\Mirth\bin\Debug\Mirth.InstallLog
+   assemblypath = C:\Projects\Mirth\MirthWindowsService\Mirth\bin\Debug\Mirth.exe
+   logtoconsole = 
+Installing service CustomMirthService...
+Creating EventLog source CustomMirthService in log Application...
+Rolling back assembly 'C:\Projects\Mirth\MirthWindowsService\Mirth\bin\Debug\Mirth.exe'.
+Affected parameters are:
+   i = 
+   logfile = C:\Projects\Mirth\MirthWindowsService\Mirth\bin\Debug\Mirth.InstallLog
+   assemblypath = C:\Projects\Mirth\MirthWindowsService\Mirth\bin\Debug\Mirth.exe
+   logtoconsole = 
+Restoring event log to previous state for source CustomMirthService.
+Installing assembly 'C:\Projects\Mirth\MirthWindowsService\Mirth\bin\Debug\Mirth.exe'.
+Affected parameters are:
+   i = 
+   logfile = C:\Projects\Mirth\MirthWindowsService\Mirth\bin\Debug\Mirth.InstallLog
+   assemblypath = C:\Projects\Mirth\MirthWindowsService\Mirth\bin\Debug\Mirth.exe
+   logtoconsole = 
+Installing service CustomMirthService...
+Service CustomMirthService has been successfully installed.
+Creating EventLog source CustomMirthService in log Application...
+Committing assembly 'C:\Projects\Mirth\MirthWindowsService\Mirth\bin\Debug\Mirth.exe'.
+Affected parameters are:
+   i = 
+   logfile = C:\Projects\Mirth\MirthWindowsService\Mirth\bin\Debug\Mirth.InstallLog
+   assemblypath = C:\Projects\Mirth\MirthWindowsService\Mirth\bin\Debug\Mirth.exe
+   logtoconsole = 
+Uninstalling assembly 'C:\Projects\Mirth\MirthWindowsService\Mirth\bin\Debug\Mirth.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Projects\Mirth\MirthWindowsService\Mirth\bin\Debug\Mirth.InstallLog
+   assemblypath = C:\Projects\Mirth\MirthWindowsService\Mirth\bin\Debug\Mirth.exe
+Removing EventLog source CustomMirthService.
+Service CustomMirthService is being removed from the system...
+Service CustomMirthService was successfully removed from the system.
+Installing assembly 'C:\Projects\Mirth\MirthWindowsService\Mirth\bin\Debug\Mirth.exe'.
+Affected parameters are:
+   i = 
+   logfile = C:\Projects\Mirth\MirthWindowsService\Mirth\bin\Debug\Mirth.InstallLog
+   assemblypath = C:\Projects\Mirth\MirthWindowsService\Mirth\bin\Debug\Mirth.exe
+   logtoconsole = 
+Installing service CustomMirthService...
+Creating EventLog source CustomMirthService in log Application...
+Rolling back assembly 'C:\Projects\Mirth\MirthWindowsService\Mirth\bin\Debug\Mirth.exe'.
+Affected parameters are:
+   i = 
+   logfile = C:\Projects\Mirth\MirthWindowsService\Mirth\bin\Debug\Mirth.InstallLog
+   assemblypath = C:\Projects\Mirth\MirthWindowsService\Mirth\bin\Debug\Mirth.exe
+   logtoconsole = 
+Restoring event log to previous state for source CustomMirthService.
+Uninstalling assembly 'C:\Projects\Mirth\MirthWindowsService\Mirth\bin\Debug\Mirth.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Projects\Mirth\MirthWindowsService\Mirth\bin\Debug\Mirth.InstallLog
+   assemblypath = C:\Projects\Mirth\MirthWindowsService\Mirth\bin\Debug\Mirth.exe
+Removing EventLog source CustomMirthService.
+Warning: The source CustomMirthService is not registered on the local machine.
+Service CustomMirthService is being removed from the system...
+Service CustomMirthService was successfully removed from the system.
+Installing assembly 'C:\Projects\Mirth\MirthWindowsService\Mirth\bin\Debug\Mirth.exe'.
+Affected parameters are:
+   i = 
+   logfile = C:\Projects\Mirth\MirthWindowsService\Mirth\bin\Debug\Mirth.InstallLog
+   assemblypath = C:\Projects\Mirth\MirthWindowsService\Mirth\bin\Debug\Mirth.exe
+   logtoconsole = 
+Installing service CustomMirthService...
+Service CustomMirthService has been successfully installed.
+Creating EventLog source CustomMirthService in log Application...
+Committing assembly 'C:\Projects\Mirth\MirthWindowsService\Mirth\bin\Debug\Mirth.exe'.
+Affected parameters are:
+   i = 
+   logfile = C:\Projects\Mirth\MirthWindowsService\Mirth\bin\Debug\Mirth.InstallLog
+   assemblypath = C:\Projects\Mirth\MirthWindowsService\Mirth\bin\Debug\Mirth.exe
+   logtoconsole = 
+Uninstalling assembly 'C:\Projects\Mirth\MirthWindowsService\Mirth\bin\Debug\Mirth.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Projects\Mirth\MirthWindowsService\Mirth\bin\Debug\Mirth.InstallLog
+   assemblypath = C:\Projects\Mirth\MirthWindowsService\Mirth\bin\Debug\Mirth.exe
+Removing EventLog source CustomMirthService.
+Service CustomMirthService is being removed from the system...
+Service CustomMirthService was successfully removed from the system.
+Installing assembly 'C:\Projects\Mirth\MirthWindowsService\Mirth\bin\Debug\Mirth.exe'.
+Affected parameters are:
+   i = 
+   logfile = C:\Projects\Mirth\MirthWindowsService\Mirth\bin\Debug\Mirth.InstallLog
+   assemblypath = C:\Projects\Mirth\MirthWindowsService\Mirth\bin\Debug\Mirth.exe
+   logtoconsole = 
+Installing service CustomMirthService...
+Service CustomMirthService has been successfully installed.
+Creating EventLog source CustomMirthService in log Application...
+Committing assembly 'C:\Projects\Mirth\MirthWindowsService\Mirth\bin\Debug\Mirth.exe'.
+Affected parameters are:
+   i = 
+   logfile = C:\Projects\Mirth\MirthWindowsService\Mirth\bin\Debug\Mirth.InstallLog
+   assemblypath = C:\Projects\Mirth\MirthWindowsService\Mirth\bin\Debug\Mirth.exe
+   logtoconsole = 

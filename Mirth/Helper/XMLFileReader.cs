@@ -36,16 +36,31 @@ namespace Mirth.Helper
                     AutomationRxEvent automationRxEvent = (AutomationRxEvent)serializer.Deserialize(stringReader);
 
                     AutomationRxEventList.Add(automationRxEvent);
-
-                    //MoveFile(file);
+                    RemoveFile(file);
                 }
 
                 return AutomationRxEventList;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }
+        }
+
+        private void RemoveFile(string file)
+        {
+            try
+            {
+                string fName = Path.GetFileName(file);
+                string destinationFile = String.Concat(this.BacktalkInvArchived,"\\", fName);
+                File.Move(file, destinationFile);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
         }
 
         public List<string> GetListOfFile()
@@ -59,7 +74,7 @@ namespace Mirth.Helper
             catch (Exception ex)
             {
                 throw ex;
-            }            
+            }
         }
     }
 }

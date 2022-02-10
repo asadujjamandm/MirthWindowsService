@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="BacktalkDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="BacktalkDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Pharmacist">
           <Key>
             <PropertyRef Name="Id" />
@@ -53,11 +53,15 @@
           <EntitySet Name="PMSMessageLog" EntityType="Self.PMSMessageLog" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StatusUpdate" EntityType="Self.StatusUpdate" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BacktalkDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="BacktalkDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Pharmacists" EntityType="BacktalkDBModel.Pharmacist" />
+          <EntitySet Name="PMSMessageLogs" EntityType="BacktalkDBModel.PMSMessageLog" />
+          <EntitySet Name="StatusUpdates" EntityType="BacktalkDBModel.StatusUpdate" />
+        </EntityContainer>
         <EntityType Name="Pharmacist">
           <Key>
             <PropertyRef Name="Id" />
@@ -75,7 +79,7 @@
           <Property Name="PMSMessageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UpdateStatusID" Type="Int32" Nullable="false" />
           <Property Name="NumberOfAttempt" Type="Int32" Nullable="false" />
-          <Property Name="Status" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="LastTriedTime" Type="DateTime" Nullable="false" Precision="0" />
         </EntityType>
         <EntityType Name="StatusUpdate">
@@ -83,11 +87,11 @@
             <PropertyRef Name="UpdateStatusID" />
           </Key>
           <Property Name="UpdateStatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="OrderID" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="OrderID" Type="Decimal" Nullable="false" Precision="10" Scale="0" />
           <Property Name="CFOrderID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="CustomerPatientID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="CustomerNDC" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-          <Property Name="RXQuantity" Type="Decimal" Precision="8" Scale="3" Nullable="false" />
+          <Property Name="RXQuantity" Type="Decimal" Nullable="false" Precision="8" Scale="3" />
           <Property Name="CustomerRXID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="BagNumber" Type="Int32" />
           <Property Name="StoreNumber" Type="Int32" />
@@ -101,11 +105,6 @@
           <Property Name="EditVersion" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
           <Property Name="PartialFill" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityContainer Name="BacktalkDBEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Pharmacists" EntityType="Self.Pharmacist" />
-          <EntitySet Name="PMSMessageLogs" EntityType="Self.PMSMessageLog" />
-          <EntitySet Name="StatusUpdates" EntityType="Self.StatusUpdate" />
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -115,46 +114,46 @@
           <EntitySetMapping Name="Pharmacists">
             <EntityTypeMapping TypeName="BacktalkDBModel.Pharmacist">
               <MappingFragment StoreEntitySet="Pharmacist">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="PMSID" ColumnName="PMSID" />
-                <ScalarProperty Name="InspectRxID" ColumnName="InspectRxID" />
-                <ScalarProperty Name="EffectiveDate" ColumnName="EffectiveDate" />
                 <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="EffectiveDate" ColumnName="EffectiveDate" />
+                <ScalarProperty Name="InspectRxID" ColumnName="InspectRxID" />
+                <ScalarProperty Name="PMSID" ColumnName="PMSID" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PMSMessageLogs">
             <EntityTypeMapping TypeName="BacktalkDBModel.PMSMessageLog">
               <MappingFragment StoreEntitySet="PMSMessageLog">
-                <ScalarProperty Name="PMSMessageID" ColumnName="PMSMessageID" />
-                <ScalarProperty Name="UpdateStatusID" ColumnName="UpdateStatusID" />
-                <ScalarProperty Name="NumberOfAttempt" ColumnName="NumberOfAttempt" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="LastTriedTime" ColumnName="LastTriedTime" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="NumberOfAttempt" ColumnName="NumberOfAttempt" />
+                <ScalarProperty Name="UpdateStatusID" ColumnName="UpdateStatusID" />
+                <ScalarProperty Name="PMSMessageID" ColumnName="PMSMessageID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="StatusUpdates">
             <EntityTypeMapping TypeName="BacktalkDBModel.StatusUpdate">
               <MappingFragment StoreEntitySet="StatusUpdate">
-                <ScalarProperty Name="UpdateStatusID" ColumnName="UpdateStatusID" />
-                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
-                <ScalarProperty Name="CFOrderID" ColumnName="CFOrderID" />
-                <ScalarProperty Name="CustomerPatientID" ColumnName="CustomerPatientID" />
-                <ScalarProperty Name="CustomerNDC" ColumnName="CustomerNDC" />
-                <ScalarProperty Name="RXQuantity" ColumnName="RXQuantity" />
-                <ScalarProperty Name="CustomerRXID" ColumnName="CustomerRXID" />
-                <ScalarProperty Name="BagNumber" ColumnName="BagNumber" />
-                <ScalarProperty Name="StoreNumber" ColumnName="StoreNumber" />
-                <ScalarProperty Name="Barcode" ColumnName="Barcode" />
-                <ScalarProperty Name="Checked" ColumnName="Checked" />
-                <ScalarProperty Name="CheckedBy" ColumnName="CheckedBy" />
-                <ScalarProperty Name="CheckedDateTime" ColumnName="CheckedDateTime" />
-                <ScalarProperty Name="XMLGenerated" ColumnName="XMLGenerated" />
-                <ScalarProperty Name="CVSAcknowlogement" ColumnName="CVSAcknowlogement" />
-                <ScalarProperty Name="FillNumber" ColumnName="FillNumber" />
-                <ScalarProperty Name="EditVersion" ColumnName="EditVersion" />
                 <ScalarProperty Name="PartialFill" ColumnName="PartialFill" />
+                <ScalarProperty Name="EditVersion" ColumnName="EditVersion" />
+                <ScalarProperty Name="FillNumber" ColumnName="FillNumber" />
+                <ScalarProperty Name="CVSAcknowlogement" ColumnName="CVSAcknowlogement" />
+                <ScalarProperty Name="XMLGenerated" ColumnName="XMLGenerated" />
+                <ScalarProperty Name="CheckedDateTime" ColumnName="CheckedDateTime" />
+                <ScalarProperty Name="CheckedBy" ColumnName="CheckedBy" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+                <ScalarProperty Name="StoreNumber" ColumnName="StoreNumber" />
+                <ScalarProperty Name="BagNumber" ColumnName="BagNumber" />
+                <ScalarProperty Name="CustomerRXID" ColumnName="CustomerRXID" />
+                <ScalarProperty Name="RXQuantity" ColumnName="RXQuantity" />
+                <ScalarProperty Name="CustomerNDC" ColumnName="CustomerNDC" />
+                <ScalarProperty Name="CustomerPatientID" ColumnName="CustomerPatientID" />
+                <ScalarProperty Name="CFOrderID" ColumnName="CFOrderID" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="UpdateStatusID" ColumnName="UpdateStatusID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

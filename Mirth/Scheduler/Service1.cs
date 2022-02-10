@@ -43,11 +43,12 @@ namespace Mirth
                     mirthService.ProcessXMLMessage().Wait();
 
                     Thread.Sleep(ScheduleTime * 60 * 1000);
-                }
+                    
+                }    
             }
             catch(Exception ex)
             {
-                Logger.PrintLog(ex.Message, "Error");
+                Logger.log.Error(ex.Message);
                 throw ex;
             }
         }
@@ -63,7 +64,7 @@ namespace Mirth
             }
             catch(Exception ex)
             {
-                Logger.PrintLog(ex.Message, "Error");
+                Logger.log.Error(ex.Message);
                 throw ex;
             }            
         }

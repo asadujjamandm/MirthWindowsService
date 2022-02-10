@@ -36,6 +36,8 @@ namespace Mirth.Helper
                     AutomationRxEvent automationRxEvent = (AutomationRxEvent)serializer.Deserialize(stringReader);
 
                     AutomationRxEventList.Add(automationRxEvent);
+
+                    //MoveFile(file);
                 }
 
                 return AutomationRxEventList;

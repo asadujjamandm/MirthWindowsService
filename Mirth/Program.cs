@@ -21,6 +21,10 @@ namespace Mirth
                 new Service1()
             };
             ServiceBase.Run(ServicesToRun);
+            //for (long i = 0; i < 100000; i++)
+            //{
+            //    Logger.log.Error("hello " + i);
+            //}
 
             //MirthService mirthService = new MirthService();
 

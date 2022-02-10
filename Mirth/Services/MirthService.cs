@@ -45,7 +45,7 @@ namespace Mirth
             }
             catch (Exception ex)
             {
-                Logger.PrintLog("ProcessXMLMessage " + ex.Message, "Error");
+                Logger.log.Error("ProcessXMLMessage " + ex.Message);
                 throw ex;
             }
         }
@@ -59,7 +59,7 @@ namespace Mirth
             }
             catch (Exception ex)
             {
-                Logger.PrintLog("HandleDatabaseOperation " + ex.Message, "Error");
+                Logger.log.Error("HandleDatabaseOperation " + ex.Message);
                 throw ex;
             }
         }
@@ -84,7 +84,7 @@ namespace Mirth
             }
             catch (Exception ex)
             {
-                Logger.PrintLog("GetPMSLogInfo " + ex.Message, "Error");
+                Logger.log.Error("GetPMSLogInfo " + ex.Message);
                 throw ex;
             }
         }
@@ -104,7 +104,7 @@ namespace Mirth
             }
             catch (Exception ex)
             {
-                Logger.PrintLog("GetStatus " + ex.Message, "Error");
+                Logger.log.Error("GetStatus " + ex.Message);
                 throw ex;
             }                 
         }
@@ -119,7 +119,7 @@ namespace Mirth
             }
             catch (Exception ex)
             {
-                Logger.PrintLog("GetUpdateStatusIDByRxNumber " + ex.Message, "Error");
+                Logger.log.Error("GetUpdateStatusIDByRxNumber " + ex.Message);
                 throw ex;
             }
         }
@@ -136,7 +136,7 @@ namespace Mirth
             }
             catch (Exception ex)
             {
-                Logger.PrintLog("ModifyStatusUpdate " + ex.Message, "Error");
+                Logger.log.Error("ModifyStatusUpdate " + ex.Message);
                 throw ex;
             }
         }
@@ -148,7 +148,7 @@ namespace Mirth
                 pmsMessageLog.UpdateStatusID = GetUpdateStatusIDByRxNumber(rxTransaction);
                 pmsMessageLog.Status = pmsMessageLog.Status == "false" ? GetStatus().ToString() : pmsMessageLog.Status;                
 
-                if (pmsMessageLog.UpdateStatusID != null)
+                if (pmsMessageLog.UpdateStatusID != null)  
                 {
                     if (pmsMessageLog.Status != "true")
                     {
@@ -165,18 +165,18 @@ namespace Mirth
                     }
                     else
                     {
-                        Logger.PrintLog("Already Sent to PMS.");
+                        Logger.log.Info("Already Sent to PMS.");
                     }
                 }
                 else
                 {
-                    Logger.PrintLog("UpdateStatusID not found for the RxNumber: " + rxTransaction.CustomerRXID);
+                    Logger.log.Info("UpdateStatusID not found for the RxNumber: " + rxTransaction.CustomerRXID);
                 }
 
             }
             catch (Exception ex)
             {
-                Logger.PrintLog("UpsertDataInPMSMessageLog " + ex.Message, "Error");
+                Logger.log.Error("UpsertDataInPMSMessageLog " + ex.Message);
                 throw ex;
             }
         }

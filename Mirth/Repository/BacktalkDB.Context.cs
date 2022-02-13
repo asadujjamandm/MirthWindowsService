@@ -28,5 +28,6 @@ namespace Mirth.Repository
         public DbSet<Pharmacist> Pharmacists { get; set; }
         public DbSet<PMSMessageLog> PMSMessageLogs { get; set; }
         public DbSet<StatusUpdate> StatusUpdates { get; set; }
+        public DbSet<IFMessageLog> IFMessageLogs { get; set; }
     }
 }

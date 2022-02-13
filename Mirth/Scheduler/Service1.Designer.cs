@@ -1,7 +1,7 @@
 ﻿
 namespace Mirth
 {
-    partial class Service1
+    partial class WindowsAPIService
     {
         /// <summary> 
         /// Required designer variable.
@@ -29,8 +29,11 @@ namespace Mirth
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
-            this.ServiceName = "Service1";
+            // 
+            // WindowsAPIService
+            // 
+            this.ServiceName = "Windows API Service";
+
         }
 
         #endregion

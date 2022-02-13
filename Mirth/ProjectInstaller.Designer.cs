@@ -29,14 +29,14 @@ namespace Mirth
         /// </summary>
         private void InitializeComponent()
         {
-            this.serviceProcessInstaller1 = new System.ServiceProcess.ServiceProcessInstaller();
+            this.WindowsAPIServiceProcessInstaller = new System.ServiceProcess.ServiceProcessInstaller();
             this.APIServiceInstaller = new System.ServiceProcess.ServiceInstaller();
             // 
-            // serviceProcessInstaller1
+            // WindowsAPIServiceProcessInstaller
             // 
-            this.serviceProcessInstaller1.Account = System.ServiceProcess.ServiceAccount.LocalService;
-            this.serviceProcessInstaller1.Password = null;
-            this.serviceProcessInstaller1.Username = null;
+            this.WindowsAPIServiceProcessInstaller.Account = System.ServiceProcess.ServiceAccount.LocalService;
+            this.WindowsAPIServiceProcessInstaller.Password = null;
+            this.WindowsAPIServiceProcessInstaller.Username = null;
             // 
             // APIServiceInstaller
             // 
@@ -49,14 +49,14 @@ namespace Mirth
             // ProjectInstaller
             // 
             this.Installers.AddRange(new System.Configuration.Install.Installer[] {
-            this.serviceProcessInstaller1,
+            this.WindowsAPIServiceProcessInstaller,
             this.APIServiceInstaller});
 
         }
 
         #endregion
 
-        private System.ServiceProcess.ServiceProcessInstaller serviceProcessInstaller1;
+        private System.ServiceProcess.ServiceProcessInstaller WindowsAPIServiceProcessInstaller;
         private System.ServiceProcess.ServiceInstaller APIServiceInstaller;
     }
 }

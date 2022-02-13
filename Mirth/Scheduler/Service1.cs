@@ -16,11 +16,11 @@ using System.Threading.Tasks;
 namespace Mirth
 {
     [RunInstaller(true)]
-    public partial class Service1 : ServiceBase
+    public partial class WindowsAPIService : ServiceBase
     {
         public Thread worker = null;
         private int ScheduleTime = Convert.ToInt32(ConfigurationSettings.AppSettings["ThreadTime"]);
-        public Service1()
+        public WindowsAPIService()
         {
             InitializeComponent();
         }

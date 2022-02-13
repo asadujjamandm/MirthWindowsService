@@ -18,7 +18,7 @@ namespace Mirth
             ServiceBase[] ServicesToRun;
             ServicesToRun = new ServiceBase[]
             {
-                new Service1()
+                new WindowsAPIService()
             };
             ServiceBase.Run(ServicesToRun);
             //for (long i = 0; i < 100000; i++)

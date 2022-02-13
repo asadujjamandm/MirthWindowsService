@@ -34,13 +34,17 @@ namespace Mirth
             // 
             // serviceProcessInstaller1
             // 
-            this.serviceProcessInstaller1.Account = System.ServiceProcess.ServiceAccount.LocalSystem;
+            this.serviceProcessInstaller1.Account = System.ServiceProcess.ServiceAccount.LocalService;
             this.serviceProcessInstaller1.Password = null;
             this.serviceProcessInstaller1.Username = null;
             // 
             // serviceInstaller1
             // 
+            this.serviceInstaller1.Description = "Mirth Win Service Covert XML to JSON, pass jSON to CVS API, Sotre Ack in Backtalk" +
+    "DB";
+            this.serviceInstaller1.DisplayName = "Mirth Win Service";
             this.serviceInstaller1.ServiceName = "CustomMirthService";
+            this.serviceInstaller1.StartType = System.ServiceProcess.ServiceStartMode.Automatic;
             // 
             // ProjectInstaller
             // 

@@ -30,7 +30,7 @@ namespace Mirth
         private void InitializeComponent()
         {
             this.serviceProcessInstaller1 = new System.ServiceProcess.ServiceProcessInstaller();
-            this.serviceInstaller1 = new System.ServiceProcess.ServiceInstaller();
+            this.APIServiceInstaller = new System.ServiceProcess.ServiceInstaller();
             // 
             // serviceProcessInstaller1
             // 
@@ -38,25 +38,25 @@ namespace Mirth
             this.serviceProcessInstaller1.Password = null;
             this.serviceProcessInstaller1.Username = null;
             // 
-            // serviceInstaller1
+            // APIServiceInstaller
             // 
-            this.serviceInstaller1.Description = "Mirth Win Service Covert XML to JSON, pass jSON to CVS API, Sotre Ack in Backtalk" +
-    "DB";
-            this.serviceInstaller1.DisplayName = "Mirth Win Service";
-            this.serviceInstaller1.ServiceName = "CustomMirthService";
-            this.serviceInstaller1.StartType = System.ServiceProcess.ServiceStartMode.Automatic;
+            this.APIServiceInstaller.Description = "Win API Service Covert XML to JSON, pass jSON to CVS API, Sotre Ack in BacktalkDB" +
+    "";
+            this.APIServiceInstaller.DisplayName = "Windows API Service";
+            this.APIServiceInstaller.ServiceName = "Windows API Service";
+            this.APIServiceInstaller.StartType = System.ServiceProcess.ServiceStartMode.Automatic;
             // 
             // ProjectInstaller
             // 
             this.Installers.AddRange(new System.Configuration.Install.Installer[] {
             this.serviceProcessInstaller1,
-            this.serviceInstaller1});
+            this.APIServiceInstaller});
 
         }
 
         #endregion
 
         private System.ServiceProcess.ServiceProcessInstaller serviceProcessInstaller1;
-        private System.ServiceProcess.ServiceInstaller serviceInstaller1;
+        private System.ServiceProcess.ServiceInstaller APIServiceInstaller;
     }
 }

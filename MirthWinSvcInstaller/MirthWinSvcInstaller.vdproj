@@ -46,19 +46,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_A8E2A88D5490FE5BDBDDFEFE537DBB39"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_E678E7BC00AB4C1A98160472B5677425"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_0B0A8F1D9CD829E096D8643C35C81729"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -73,6 +61,18 @@
         "OwnerKey" = "8:_AF8BCE41877224AFD471C00FD8FD585A"
         "MsmSig" = "8:_UNDEFINED"
         }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_A8E2A88D5490FE5BDBDDFEFE537DBB39"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_0B0A8F1D9CD829E096D8643C35C81729"
+        "MsmSig" = "8:_UNDEFINED"
+        }
     }
     "Configurations"
     {
@@ -81,7 +81,7 @@
         "DisplayName" = "8:Debug"
         "IsDebugOnly" = "11:TRUE"
         "IsReleaseOnly" = "11:FALSE"
-        "OutputFilename" = "8:Debug\\MirthWinSvcInstaller.msi"
+        "OutputFilename" = "8:Debug\\Win API Service Installer.msi"
         "PackageFilesAs" = "3:2"
         "PackageFileSize" = "3:-2147483648"
         "CabType" = "3:1"
@@ -91,6 +91,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
+            }
         }
         "Release"
         {
@@ -107,6 +123,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
     }
     "Deployable"
@@ -354,9 +378,9 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:MirthWinSvcInstaller"
+        "ProductName" = "8:Windows API Service"
         "ProductCode" = "8:{C7AF3E52-7C01-460F-AE09-49DE447136C3}"
-        "PackageCode" = "8:{3BC0CFFF-75A8-4DC1-A9D2-5F1ECC6005CE}"
+        "PackageCode" = "8:{0BCBDD25-6FC4-4B2C-8D4F-E9365A6C74FE}"
         "UpgradeCode" = "8:{32A40CAC-42B6-4E97-980D-6ACF58A13629}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -364,12 +388,12 @@
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
         "ProductVersion" = "8:1.0.0"
-        "Manufacturer" = "8:Default Company Name"
+        "Manufacturer" = "8:Parata"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
-        "Title" = "8:MirthWinSvcInstaller"
+        "Title" = "8:Windows API Service"
         "Subject" = "8:"
-        "ARPCONTACT" = "8:Default Company Name"
+        "ARPCONTACT" = "8:Parata"
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:"
@@ -478,7 +502,7 @@
         {
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_2AB614EB672741AEAF4F30CC0AEAC644"
             {
-            "Name" = "8:Mirth Win Service"
+            "Name" = "8:Windows API Service"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
@@ -492,7 +516,7 @@
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_34FDC5E219844C06A81C36E6A4795642"
             {
-            "Name" = "8:Mirth Win Service"
+            "Name" = "8:Windows API Service"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"

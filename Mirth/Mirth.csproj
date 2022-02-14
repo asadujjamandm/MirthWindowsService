@@ -107,11 +107,11 @@
     <Compile Include="ProjectInstaller.Designer.cs">
       <DependentUpon>ProjectInstaller.cs</DependentUpon>
     </Compile>
-    <Compile Include="Scheduler\Service1.cs">
+    <Compile Include="Scheduler\WindowsAPIService.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Scheduler\Service1.Designer.cs">
-      <DependentUpon>Service1.cs</DependentUpon>
+    <Compile Include="Scheduler\WindowsAPIService.Designer.cs">
+      <DependentUpon>WindowsAPIService.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -149,8 +149,8 @@
     <EmbeddedResource Include="ProjectInstaller.resx">
       <DependentUpon>ProjectInstaller.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Scheduler\Service1.resx">
-      <DependentUpon>Service1.cs</DependentUpon>
+    <EmbeddedResource Include="Scheduler\WindowsAPIService.resx">
+      <DependentUpon>WindowsAPIService.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

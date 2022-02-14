@@ -21,19 +21,19 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_372061E17D2C89E814E04D10E33AB4AB"
+        "MsmKey" = "8:_282C3D31124009F8C190484DE9F2CE1F"
         "OwnerKey" = "8:_E678E7BC00AB4C1A98160472B5677425"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_A8E2A88D5490FE5BDBDDFEFE537DBB39"
+        "MsmKey" = "8:_87717D759DC07D4CE9F1A72E1BC79216"
         "OwnerKey" = "8:_E678E7BC00AB4C1A98160472B5677425"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_AF8BCE41877224AFD471C00FD8FD585A"
+        "MsmKey" = "8:_E0091AC5CEECE86F60D4112279D6516F"
         "OwnerKey" = "8:_E678E7BC00AB4C1A98160472B5677425"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -52,19 +52,19 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_372061E17D2C89E814E04D10E33AB4AB"
+        "OwnerKey" = "8:_87717D759DC07D4CE9F1A72E1BC79216"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_AF8BCE41877224AFD471C00FD8FD585A"
+        "OwnerKey" = "8:_282C3D31124009F8C190484DE9F2CE1F"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_A8E2A88D5490FE5BDBDDFEFE537DBB39"
+        "OwnerKey" = "8:_E0091AC5CEECE86F60D4112279D6516F"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -130,6 +130,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
             }
         }
     }
@@ -219,14 +227,45 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_372061E17D2C89E814E04D10E33AB4AB"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_282C3D31124009F8C190484DE9F2CE1F"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:log4net, Version=2.0.14.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_282C3D31124009F8C190484DE9F2CE1F"
+                    {
+                    "Name" = "8:log4net.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:log4net.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_C9D152E0574F4F1580EE37804A92134D"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_87717D759DC07D4CE9F1A72E1BC79216"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_372061E17D2C89E814E04D10E33AB4AB"
+                    "_87717D759DC07D4CE9F1A72E1BC79216"
                     {
                     "Name" = "8:Newtonsoft.Json.dll"
                     "Attributes" = "3:512"
@@ -250,51 +289,20 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_A8E2A88D5490FE5BDBDDFEFE537DBB39"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_E0091AC5CEECE86F60D4112279D6516F"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_A8E2A88D5490FE5BDBDDFEFE537DBB39"
+                    "_E0091AC5CEECE86F60D4112279D6516F"
                     {
                     "Name" = "8:EntityFramework.dll"
                     "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:EntityFramework.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_C9D152E0574F4F1580EE37804A92134D"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_AF8BCE41877224AFD471C00FD8FD585A"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:log4net, Version=2.0.14.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_AF8BCE41877224AFD471C00FD8FD585A"
-                    {
-                    "Name" = "8:log4net.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:log4net.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_C9D152E0574F4F1580EE37804A92134D"
@@ -380,7 +388,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Windows API Service"
         "ProductCode" = "8:{C7AF3E52-7C01-460F-AE09-49DE447136C3}"
-        "PackageCode" = "8:{0BCBDD25-6FC4-4B2C-8D4F-E9365A6C74FE}"
+        "PackageCode" = "8:{06B90BB4-DE52-4139-A126-65423C39C6D4}"
         "UpgradeCode" = "8:{32A40CAC-42B6-4E97-980D-6ACF58A13629}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"

@@ -27,9 +27,18 @@ namespace Mirth
 
         protected override void OnStart(string[] args)
         {
-            ThreadStart start = new ThreadStart(Working);
-            worker = new Thread(start);
-            worker.Start();
+            try
+            {
+                ThreadStart start = new ThreadStart(Working);
+                worker = new Thread(start);
+                worker.Start();
+            }
+            catch (Exception ex)
+            {
+                Logger.log.Error("OnStart() "+ex.Message);
+                throw ex;
+            }
+            
         }
 
         private void Working()
@@ -48,7 +57,7 @@ namespace Mirth
             }
             catch(Exception ex)
             {
-                Logger.log.Error(ex.Message);
+                Logger.log.Error("Working() " + ex.Message);
                 throw ex;
             }
         }
@@ -64,7 +73,7 @@ namespace Mirth
             }
             catch(Exception ex)
             {
-                Logger.log.Error(ex.Message);
+                Logger.log.Error("OnStop() " + ex.Message);
                 throw ex;
             }            
         }

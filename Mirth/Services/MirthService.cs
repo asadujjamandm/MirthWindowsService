@@ -4,6 +4,7 @@ using Mirth.Repository;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,9 +31,14 @@ namespace Mirth
         {
             try
             {
+                Logger.log.Info("####################### Start ###########################");
+                Logger.log.Info("Folder scanning has started");
+
                 var automationRxEvents = await _xmlFileReader.GetXMLFileContent();
 
-                foreach(var item in automationRxEvents)
+                Logger.log.Info(automationRxEvents.Count + " File(s) Found in this " + ConfigurationSettings.AppSettings["Source"] +" directory");
+
+                foreach (var item in automationRxEvents)
                 {
                     CVSModel cvsModel = RxMapperHelper.MapCVSModel(item.RxTransaction);
 
@@ -41,7 +47,11 @@ namespace Mirth
                     _responseModel =JsonConvert.DeserializeObject<ResponseModel>(res);
 
                     HandleDatabaseOperation(item.RxTransaction);
-                }                
+                }
+
+                Logger.log.Info("ProcessXMLMessage()  XML file processing Completed");
+
+                Logger.log.Info("####################### End ###########################");
             }
             catch (Exception ex)
             {
@@ -68,6 +78,7 @@ namespace Mirth
         {
             try
             {
+                Logger.log.Info("GetPMSLogInfo() Get existing PMS Log Info from PMSMessageLog Table CustomerRxID: "+ rxTransaction.CustomerRXID.ToString());
                 var pmsMessageLog = _pmsMessageLogsRepository.GetPMSMessageLogByCustomerRxId(rxTransaction.CustomerRXID.ToString());
 
                 if(pmsMessageLog != null)
@@ -133,6 +144,8 @@ namespace Mirth
                 statusUpdate.UpdateStatusID = pMSMessageLog.UpdateStatusID;
 
                 _statusUpdatesRepository.ModifyStatusUpdates(statusUpdate);                
+
+                Logger.log.Info("ModifyStatusUpdate() Updated Status Table. UpdateStatusID: " + pMSMessageLog.UpdateStatusID + ";" + "CVSAcknowledgementL: " + statusUpdate.CVSAcknowlogement);
             }
             catch (Exception ex)
             {
@@ -146,7 +159,7 @@ namespace Mirth
             try
             {
                 pmsMessageLog.UpdateStatusID = GetUpdateStatusIDByRxNumber(rxTransaction);
-                pmsMessageLog.Status = pmsMessageLog.Status == "false" ? GetStatus().ToString() : pmsMessageLog.Status;                
+                pmsMessageLog.Status = pmsMessageLog.Status == "false" || pmsMessageLog.Status == null ? GetStatus().ToString() : pmsMessageLog.Status;                
 
                 if (pmsMessageLog.UpdateStatusID != null)  
                 {
@@ -154,14 +167,17 @@ namespace Mirth
                     {
                         if (pmsMessageLog.NumberOfAttempt == 1)
                         {
-                            _pmsMessageLogsRepository.Insert(pmsMessageLog);                            
+                            _pmsMessageLogsRepository.Insert(pmsMessageLog);
+                            Logger.log.Info("Inserted new record in PMSMessageLog Table. UpdateStatusID: " + pmsMessageLog.UpdateStatusID);
                         }
                         else
                         {
-                            _pmsMessageLogsRepository.UpdatePMSMessageLog(pmsMessageLog);                            
+                            _pmsMessageLogsRepository.UpdatePMSMessageLog(pmsMessageLog);
+                            Logger.log.Info("Updated PMSMessageLog Table. UpdateStatusID: " + pmsMessageLog.UpdateStatusID);
                         }
 
                         ModifyStatusUpdate(pmsMessageLog);
+                        
                     }
                     else
                     {

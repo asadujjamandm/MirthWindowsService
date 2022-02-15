@@ -29,6 +29,7 @@ namespace Mirth.Helper
 
                 foreach (var file in fileNames)
                 {
+                    Logger.log.Info(file + "  Processing");
                     string xmlString = File.ReadAllText(file);
 
                     XmlSerializer serializer = new XmlSerializer(typeof(AutomationRxEvent), new XmlRootAttribute("AutomationRxEvent"));
@@ -36,6 +37,8 @@ namespace Mirth.Helper
                     AutomationRxEvent automationRxEvent = (AutomationRxEvent)serializer.Deserialize(stringReader);
 
                     AutomationRxEventList.Add(automationRxEvent);
+
+                    Logger.log.Info(file + "  Processing Completed.");
                     RemoveFile(file);
                 }
 
@@ -53,7 +56,15 @@ namespace Mirth.Helper
             {
                 string fName = Path.GetFileName(file);
                 string destinationFile = String.Concat(this.BacktalkInvArchived,"\\", fName);
+                
+                if (File.Exists(destinationFile))
+                {
+                    File.Delete(destinationFile);
+                }
+
                 File.Move(file, destinationFile);
+
+                Logger.log.Info(file + " Moved to Archived.");
             }
             catch (Exception ex)
             {

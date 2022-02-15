@@ -31,14 +31,15 @@ namespace Mirth.Helper
                 {
                     streamWriter.Write(json);
                 }
-
+                Logger.log.Info("PostCVSAPI() calling cvs API");
                 var httpResponse = (HttpWebResponse)(await httpRequest.GetResponseAsync());
                 var result = "";
                 using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
                 {
                     result = streamReader.ReadToEnd();
+                    Logger.log.Info("PostCVSAPI() Got response from CVS API "+ result);
                     return result;
-                }
+                }                
             }
             catch (Exception ex)
             {

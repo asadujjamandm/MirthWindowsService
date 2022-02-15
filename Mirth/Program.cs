@@ -15,20 +15,16 @@ namespace Mirth
         /// </summary>
         static void Main()
         {
-            //ServiceBase[] ServicesToRun;
-            //ServicesToRun = new ServiceBase[]
-            //{
-            //    new Service1()
-            //};
-            //ServiceBase.Run(ServicesToRun);
-            //for (long i = 0; i < 100000; i++)
-            //{
-            //    Logger.log.Error("hello " + i);
-            //}
+            ServiceBase[] ServicesToRun;
+            ServicesToRun = new ServiceBase[]
+            {
+                new WindowsAPIService()
+            };
+            ServiceBase.Run(ServicesToRun);
 
-            MirthService mirthService = new MirthService();
+            //MirthService mirthService = new MirthService();
 
-            mirthService.ProcessXMLMessage().Wait();
+            //mirthService.ProcessXMLMessage().Wait();
         }
     }
 }

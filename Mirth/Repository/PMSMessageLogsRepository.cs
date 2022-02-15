@@ -43,7 +43,8 @@ namespace Mirth.Repository
                     .Join(_baseStatusUpdateRepository.GetAll()
                     .Where(status => status.CustomerRXID == customerRxID), pms => pms.UpdateStatusID, status => status.UpdateStatusID, (a,b) => new { PMSMessageLog = a, StatusUpdate = b}).FirstOrDefault();
 
-                return pmsMessageLog.PMSMessageLog;
+                
+                return pmsMessageLog != null ? pmsMessageLog.PMSMessageLog: null;
             }
             catch (Exception ex)
             {

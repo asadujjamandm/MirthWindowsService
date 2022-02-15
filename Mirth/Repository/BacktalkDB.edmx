@@ -72,11 +72,24 @@
     <edmx:ConceptualModels>
       <Schema Namespace="BacktalkDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="BacktalkDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="IFMessageLogs" EntityType="BacktalkDBModel.IFMessageLog" />
           <EntitySet Name="Pharmacists" EntityType="BacktalkDBModel.Pharmacist" />
           <EntitySet Name="PMSMessageLogs" EntityType="BacktalkDBModel.PMSMessageLog" />
           <EntitySet Name="StatusUpdates" EntityType="BacktalkDBModel.StatusUpdate" />
-          <EntitySet Name="IFMessageLogs" EntityType="BacktalkDBModel.IFMessageLog" />
         </EntityContainer>
+        <EntityType Name="IFMessageLog">
+          <Key>
+            <PropertyRef Name="IFMessageID" />
+          </Key>
+          <Property Name="IFMessageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TimeStamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Message" Type="String" Nullable="false" MaxLength="2048" FixedLength="false" Unicode="false" />
+          <Property Name="MsgRxNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="MsgPtID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="MsgNdc" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ResponseMsg" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+        </EntityType>
         <EntityType Name="Pharmacist">
           <Key>
             <PropertyRef Name="Id" />
@@ -120,25 +133,26 @@
           <Property Name="EditVersion" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
           <Property Name="PartialFill" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="IFMessageLog">
-          <Key>
-            <PropertyRef Name="IFMessageID" />
-          </Key>
-          <Property Name="IFMessageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TimeStamp" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Message" Type="String" Nullable="false" MaxLength="2048" FixedLength="false" Unicode="false" />
-          <Property Name="MsgRxNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="MsgPtID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="MsgNdc" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="ResponseMsg" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="Status" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="BacktalkDBModelStoreContainer" CdmEntityContainer="BacktalkDBEntities">
+          <EntitySetMapping Name="IFMessageLogs">
+            <EntityTypeMapping TypeName="BacktalkDBModel.IFMessageLog">
+              <MappingFragment StoreEntitySet="IFMessageLog">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ResponseMsg" ColumnName="ResponseMsg" />
+                <ScalarProperty Name="MsgNdc" ColumnName="MsgNdc" />
+                <ScalarProperty Name="MsgPtID" ColumnName="MsgPtID" />
+                <ScalarProperty Name="MsgRxNumber" ColumnName="MsgRxNumber" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+                <ScalarProperty Name="IFMessageID" ColumnName="IFMessageID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Pharmacists">
             <EntityTypeMapping TypeName="BacktalkDBModel.Pharmacist">
               <MappingFragment StoreEntitySet="Pharmacist">
@@ -182,20 +196,6 @@
                 <ScalarProperty Name="CFOrderID" ColumnName="CFOrderID" />
                 <ScalarProperty Name="OrderID" ColumnName="OrderID" />
                 <ScalarProperty Name="UpdateStatusID" ColumnName="UpdateStatusID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="IFMessageLogs">
-            <EntityTypeMapping TypeName="BacktalkDBModel.IFMessageLog">
-              <MappingFragment StoreEntitySet="IFMessageLog">
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="ResponseMsg" ColumnName="ResponseMsg" />
-                <ScalarProperty Name="MsgNdc" ColumnName="MsgNdc" />
-                <ScalarProperty Name="MsgPtID" ColumnName="MsgPtID" />
-                <ScalarProperty Name="MsgRxNumber" ColumnName="MsgRxNumber" />
-                <ScalarProperty Name="Message" ColumnName="Message" />
-                <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
-                <ScalarProperty Name="IFMessageID" ColumnName="IFMessageID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

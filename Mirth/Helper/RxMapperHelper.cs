@@ -27,9 +27,12 @@ namespace Mirth.Helper
                 cvsModel.partialFill = rxTransaction.PartialFill;
 
                 return cvsModel;
+
+                Logger.log.Info("MapCVSModel() Mapping CVS Model has been Completed");
             }
             catch (Exception ex)
             {
+                Logger.log.Error("ProcessXMLMessage() " + ex.Message);
                 throw ex;
             }            
         }

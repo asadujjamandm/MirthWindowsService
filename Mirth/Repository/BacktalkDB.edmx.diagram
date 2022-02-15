@@ -5,10 +5,10 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="05ea5bf50fa34185a92b94b1f6714adf" Name="Diagram1">
-        <EntityTypeShape EntityType="BacktalkDBModel.Pharmacist" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="BacktalkDBModel.PMSMessageLog" Width="1.5" PointX="2.75" PointY="0.75" />
-        <EntityTypeShape EntityType="BacktalkDBModel.StatusUpdate" Width="1.5" PointX="0.75" PointY="3.75" />
-        <EntityTypeShape EntityType="BacktalkDBModel.IFMessageLog" Width="1.5" PointX="3.375" PointY="3.75" />
+        <EntityTypeShape EntityType="BacktalkDBModel.IFMessageLog" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="BacktalkDBModel.Pharmacist" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="BacktalkDBModel.PMSMessageLog" Width="1.5" PointX="2.75" PointY="3.75" />
+        <EntityTypeShape EntityType="BacktalkDBModel.StatusUpdate" Width="1.5" PointX="4.75" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

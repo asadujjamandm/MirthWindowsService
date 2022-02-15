@@ -51,7 +51,7 @@ namespace Mirth
 
                     mirthService.ProcessXMLMessage().Wait();
 
-                    Thread.Sleep(ScheduleTime * 60 * 1000);
+                    Thread.Sleep(ScheduleTime * 1000);
                     
                 }    
             }

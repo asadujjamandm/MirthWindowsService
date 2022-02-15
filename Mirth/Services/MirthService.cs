@@ -52,9 +52,12 @@ namespace Mirth
                 Logger.log.Info("ProcessXMLMessage()  XML file processing Completed");
 
                 Logger.log.Info("####################### End ###########################");
+
+                this.Dispose();
             }
             catch (Exception ex)
             {
+                this.Dispose();
                 Logger.log.Error("ProcessXMLMessage " + ex.Message);
                 throw ex;
             }
@@ -66,6 +69,7 @@ namespace Mirth
             {
                 var pmsMessageLog = GetPMSLogInfo(rxTransaction);
                 UpsertDataInPMSMessageLog(pmsMessageLog, rxTransaction);
+                
             }
             catch (Exception ex)
             {
@@ -195,6 +199,12 @@ namespace Mirth
                 Logger.log.Error("UpsertDataInPMSMessageLog " + ex.Message);
                 throw ex;
             }
+        }
+
+        private void Dispose()
+        {
+            _pmsMessageLogsRepository.Dispose();
+            _statusUpdatesRepository.Dispose();
         }
     }
 }

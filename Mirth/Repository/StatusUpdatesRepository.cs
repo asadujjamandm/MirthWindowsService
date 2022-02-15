@@ -14,12 +14,7 @@ namespace Mirth.Repository
         public StatusUpdatesRepository()
         {
             _baseStatusUpdateRepository = new BaseRepository<StatusUpdate>();
-        }
-
-        public void Dispose()
-        {
-            throw new NotImplementedException();
-        }
+        }        
 
         public IEnumerable<StatusUpdate> GetStatusUpdates()
         {
@@ -76,6 +71,11 @@ namespace Mirth.Repository
             {
                 throw ex;
             }
-        }       
+        }
+
+        public void Dispose()
+        {
+            _baseStatusUpdateRepository.Dispose();
+        }
     }
 }

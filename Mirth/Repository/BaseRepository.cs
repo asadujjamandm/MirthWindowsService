@@ -57,5 +57,10 @@ namespace Mirth.Repository
             table.Attach(item);
             _backtalkDBEntities.Entry(item).State = EntityState.Modified;
         }
+
+        public void Dispose()
+        {
+            _backtalkDBEntities.Dispose();
+        }
     }
 }

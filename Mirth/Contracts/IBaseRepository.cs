@@ -16,5 +16,6 @@ namespace Mirth.Contracts
         void Delete(object id);
         void Save();
         IQueryable<T> FindByCondition(Expression<Func<T, bool>> expression);
+        void Dispose();
     }
 }

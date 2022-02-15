@@ -16,11 +16,6 @@ namespace Mirth.Repository
         {
             _basePMSRepository = new BaseRepository<PMSMessageLog>();
             _baseStatusUpdateRepository = new BaseRepository<StatusUpdate>();
-        }
-
-        public void Dispose()
-        {
-            throw new NotImplementedException();
         }        
 
         public IEnumerable<PMSMessageLog> GetPMSMessageLog()
@@ -83,6 +78,11 @@ namespace Mirth.Repository
 
                 throw ex;
             }
+        }
+        public void Dispose()
+        {
+            _basePMSRepository.Dispose();
+            _baseStatusUpdateRepository.Dispose();
         }
     }
 }

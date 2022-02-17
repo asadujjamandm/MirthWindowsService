@@ -35,11 +35,10 @@ namespace Mirth.Helper
                     XmlSerializer serializer = new XmlSerializer(typeof(AutomationRxEvent), new XmlRootAttribute("AutomationRxEvent"));
                     StringReader stringReader = new StringReader(xmlString);
                     AutomationRxEvent automationRxEvent = (AutomationRxEvent)serializer.Deserialize(stringReader);
-
+                    automationRxEvent.FilePath = file;
                     AutomationRxEventList.Add(automationRxEvent);
 
-                    Logger.log.Info(file + "  Processing Completed.");
-                    RemoveFile(file);
+                    Logger.log.Info(file + "  Processing Completed.");                    
                 }
 
                 return AutomationRxEventList;
@@ -50,7 +49,7 @@ namespace Mirth.Helper
             }
         }
 
-        private void RemoveFile(string file)
+        public void RemoveFile(string file)
         {
             try
             {

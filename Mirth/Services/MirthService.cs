@@ -47,6 +47,9 @@ namespace Mirth
                     _responseModel =JsonConvert.DeserializeObject<ResponseModel>(res);
 
                     HandleDatabaseOperation(item.RxTransaction);
+
+                    if(this.GetStatus() == true)
+                        _xmlFileReader.RemoveFile(item.FilePath);
                 }
 
                 Logger.log.Info("ProcessXMLMessage()  XML file processing Completed");
@@ -130,7 +133,7 @@ namespace Mirth
             {               
                 var statusUpdate = _statusUpdatesRepository.GetStatusUpdatesByRxNumber(rxTransaction.CustomerRXID);
 
-                return statusUpdate.UpdateStatusID;
+                return statusUpdate != null ? statusUpdate.UpdateStatusID : -1;
             }
             catch (Exception ex)
             {
@@ -163,11 +166,12 @@ namespace Mirth
             try
             {
                 pmsMessageLog.UpdateStatusID = GetUpdateStatusIDByRxNumber(rxTransaction);
-                pmsMessageLog.Status = pmsMessageLog.Status == "false" || pmsMessageLog.Status == null ? GetStatus().ToString() : pmsMessageLog.Status;                
+                pmsMessageLog.Status = pmsMessageLog.Status == "false" || pmsMessageLog.Status == null ? GetStatus().ToString() : pmsMessageLog.Status;
+                pmsMessageLog.LastTriedTime = DateTime.Now;
 
-                if (pmsMessageLog.UpdateStatusID != null)  
+                if (pmsMessageLog.UpdateStatusID != -1)  
                 {
-                    if (pmsMessageLog.Status != "true")
+                    if (pmsMessageLog.Status.ToLower() != "true")
                     {
                         if (pmsMessageLog.NumberOfAttempt == 1)
                         {

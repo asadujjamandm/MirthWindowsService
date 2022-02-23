@@ -18,6 +18,7 @@ namespace Mirth
     public partial class ProjectInstaller : System.Configuration.Install.Installer
     {
         private WinAPIConfigProperties _winAPIConfigProp;
+        private string _targetDirectory;
 
         public ProjectInstaller()
         {
@@ -29,13 +30,14 @@ namespace Mirth
         {
             try
             {
-                log(DateTime.Now.ToString());
-                string path1 = Context.Parameters["targetDir"];
-                log(path1);
+                base.Install(stateSaver);                            
+                log(DateTime.Now.ToString());                
+                
+                this._targetDirectory = Context.Parameters["targetDirectory"];
 
-                base.Install(stateSaver);                
+                log(_targetDirectory);
 
-
+                
                 WinAPIConfigProperties winAPIConfigProp = new WinAPIConfigProperties();
 
                 DatabaseForm dbForm = new DatabaseForm(ref winAPIConfigProp);
@@ -49,29 +51,12 @@ namespace Mirth
                 log(winAPIConfigProp.DestinationPath);
                 log(winAPIConfigProp.CVSAPIUrl);
                 _winAPIConfigProp = winAPIConfigProp;
-                //UpdateConfigFile(winAPIConfigProp);
 
-                //XmlDocument doc = new XmlDocument();
-                //doc.Load(path);
-                //XmlNode threadTime = doc.SelectSingleNode("/configuration/appSettings/add[@key='ThreadTime']");
-                //threadTime.Attributes[1].Value = winAPIConfigProp.Frequency.ToString();
+                if (!string.IsNullOrEmpty(_targetDirectory))
+                {
+                    UpdateConfigFile();
+                }
 
-                //XmlNode Source = doc.SelectSingleNode("/configuration/appSettings/add[@key='Source']");
-                //Source.Attributes[1].Value = winAPIConfigProp.SourcePath;
-
-                //XmlNode Destination = doc.SelectSingleNode("/configuration/appSettings/add[@key='Destination']");
-                //Destination.Attributes[1].Value = winAPIConfigProp.DestinationPath;
-
-                //XmlNode Type = doc.SelectSingleNode("/configuration/appSettings/add[@key='Type']");
-                //Type.Attributes[1].Value = winAPIConfigProp.Type;
-
-                //XmlNode CVS_API_URL = doc.SelectSingleNode("/configuration/appSettings/add[@key='CVS_API_URL']");
-                //CVS_API_URL.Attributes[1].Value = winAPIConfigProp.CVSAPIUrl;
-
-                //XmlNode connectionString = doc.SelectSingleNode("/configuration/connectionStrings/add[@name='BacktalkDBEntities']");
-                //connectionString.Attributes[1].Value = "metadata=res://*/Repository.BacktalkDB.csdl|res://*/Repository.BacktalkDB.ssdl|res://*/Repository.BacktalkDB.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=" + winAPIConfigProp.ServerName + ";initial catalog=" + winAPIConfigProp.DataSource + ";user id=" + winAPIConfigProp.LoginName + ";password=" + winAPIConfigProp.Password + ";MultipleActiveResultSets=True;App=EntityFramework&quot;";
-
-                //doc.Save(path);
             }
             catch (Exception ex)
             {
@@ -84,9 +69,8 @@ namespace Mirth
         public override void Commit(IDictionary stateSaver)
         {
             log("Commit");
-            base.Commit(stateSaver);
-
-            UpdateConfigFile();
+            //UpdateConfigFile();
+            base.Commit(stateSaver);            
         }
 
         private void log(string text)
@@ -101,29 +85,38 @@ namespace Mirth
         private void UpdateConfigFile()
         {
             //string path = Context.Parameters["targetDir"];
+            try
+            {
+                string path = Path.Combine(_targetDirectory, "Mirth.exe.config");
+                log(path);
+                //string path = @"C:\Program Files(x86)\Parata\Windows API Service\Mirth.exe.config";
+                XmlDocument doc = new XmlDocument();
+                doc.Load(path);
+                XmlNode threadTime = doc.SelectSingleNode("/configuration/appSettings/add[@key='ThreadTime']");
+                threadTime.Attributes[1].Value = _winAPIConfigProp.Frequency.ToString();
 
-            string path = @"C:\Program Files(x86)\Parata\Windows API Service\Mirth.exe.config";
-            XmlDocument doc = new XmlDocument();
-            doc.Load(path);
-            XmlNode threadTime = doc.SelectSingleNode("/configuration/appSettings/add[@key='ThreadTime']");
-            threadTime.Attributes[1].Value = _winAPIConfigProp.Frequency.ToString();
+                XmlNode Source = doc.SelectSingleNode("/configuration/appSettings/add[@key='Source']");
+                Source.Attributes[1].Value = _winAPIConfigProp.SourcePath;
 
-            XmlNode Source = doc.SelectSingleNode("/configuration/appSettings/add[@key='Source']");
-            Source.Attributes[1].Value = _winAPIConfigProp.SourcePath;
+                XmlNode Destination = doc.SelectSingleNode("/configuration/appSettings/add[@key='Destination']");
+                Destination.Attributes[1].Value = _winAPIConfigProp.DestinationPath;
 
-            XmlNode Destination = doc.SelectSingleNode("/configuration/appSettings/add[@key='Destination']");
-            Destination.Attributes[1].Value = _winAPIConfigProp.DestinationPath;
+                XmlNode Type = doc.SelectSingleNode("/configuration/appSettings/add[@key='Type']");
+                Type.Attributes[1].Value = _winAPIConfigProp.Type;
 
-            XmlNode Type = doc.SelectSingleNode("/configuration/appSettings/add[@key='Type']");
-            Type.Attributes[1].Value = _winAPIConfigProp.Type;
+                XmlNode CVS_API_URL = doc.SelectSingleNode("/configuration/appSettings/add[@key='CVS_API_URL']");
+                CVS_API_URL.Attributes[1].Value = _winAPIConfigProp.CVSAPIUrl;
 
-            XmlNode CVS_API_URL = doc.SelectSingleNode("/configuration/appSettings/add[@key='CVS_API_URL']");
-            CVS_API_URL.Attributes[1].Value = _winAPIConfigProp.CVSAPIUrl;
+                XmlNode connectionString = doc.SelectSingleNode("/configuration/connectionStrings/add[@name='BacktalkDBEntities']");
+                connectionString.Attributes[1].Value = "metadata=res://*/Repository.BacktalkDB.csdl|res://*/Repository.BacktalkDB.ssdl|res://*/Repository.BacktalkDB.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=" + _winAPIConfigProp.ServerName + ";initial catalog=" + _winAPIConfigProp.DataSource + ";user id=" + _winAPIConfigProp.LoginName + ";password=" + _winAPIConfigProp.Password + ";MultipleActiveResultSets=True;App=EntityFramework&quot;";
 
-            XmlNode connectionString = doc.SelectSingleNode("/configuration/connectionStrings/add[@name='BacktalkDBEntities']");
-            connectionString.Attributes[1].Value = "metadata=res://*/Repository.BacktalkDB.csdl|res://*/Repository.BacktalkDB.ssdl|res://*/Repository.BacktalkDB.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=" + _winAPIConfigProp.ServerName + ";initial catalog=" + _winAPIConfigProp.DataSource + ";user id=" + _winAPIConfigProp.LoginName + ";password=" + _winAPIConfigProp.Password + ";MultipleActiveResultSets=True;App=EntityFramework&quot;";
-
-            doc.Save(path);
+                doc.Save(path);
+            }
+            catch (Exception ex)
+            {
+                log(ex.Message);
+                throw ex;
+            }            
         }
     }
 }

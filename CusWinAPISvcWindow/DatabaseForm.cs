@@ -111,12 +111,13 @@ namespace CusWinAPISvcWindow
                 e.Cancel = true;
                 serverTxt.Focus();
                 errorProvider.SetError(serverTxt, "Please enter Server Info!");
+                ConnectButton.Enabled = false;
             }
             else
             {
                 e.Cancel = false;
                 errorProvider.SetError(serverTxt, null);
-
+                ConnectButton.Enabled = true;
             }
 
         }
@@ -128,11 +129,13 @@ namespace CusWinAPISvcWindow
                 e.Cancel = true;
                 dataSource.Focus();
                 errorProvider.SetError(dataSource, "Please enter Data Source!s");
+                ConnectButton.Enabled = false;
             }
             else
             {
                 e.Cancel = false;
                 errorProvider.SetError(dataSource, null);
+                ConnectButton.Enabled = true;
             }
         }
 
@@ -143,11 +146,13 @@ namespace CusWinAPISvcWindow
                 e.Cancel = true;
                 loginNameTxt.Focus();
                 errorProvider.SetError(loginNameTxt, "Please enter Login Name!");
+                ConnectButton.Enabled = false;
             }
             else
             {
                 e.Cancel = false;
                 errorProvider.SetError(loginNameTxt, null);
+                ConnectButton.Enabled = true;
             }
         }
 
@@ -158,11 +163,13 @@ namespace CusWinAPISvcWindow
                 e.Cancel = true;
                 passwordTxt.Focus();
                 errorProvider.SetError(passwordTxt, "Please enter Password!");
+                ConnectButton.Enabled = false;
             }
             else
             {
                 e.Cancel = false;
                 errorProvider.SetError(passwordTxt, null);
+                ConnectButton.Enabled = true;
             }
         }
 

@@ -50,7 +50,7 @@ namespace CusWinAPISvcWindow
             // 
             // serverTxt
             // 
-            this.serverTxt.Location = new System.Drawing.Point(138, 80);
+            this.serverTxt.Location = new System.Drawing.Point(138, 84);
             this.serverTxt.Name = "serverTxt";
             this.serverTxt.Size = new System.Drawing.Size(180, 20);
             this.serverTxt.TabIndex = 0;
@@ -58,15 +58,15 @@ namespace CusWinAPISvcWindow
             // 
             // loginNameTxt
             // 
-            this.loginNameTxt.Location = new System.Drawing.Point(138, 132);
-            this.loginNameTxt.Name = "loginName";
+            this.loginNameTxt.Location = new System.Drawing.Point(138, 136);
+            this.loginNameTxt.Name = "loginNameTxt";
             this.loginNameTxt.Size = new System.Drawing.Size(180, 20);
             this.loginNameTxt.TabIndex = 1;
             this.loginNameTxt.Validating += new System.ComponentModel.CancelEventHandler(this.loginName_Validating);
             // 
             // passwordTxt
             // 
-            this.passwordTxt.Location = new System.Drawing.Point(138, 158);
+            this.passwordTxt.Location = new System.Drawing.Point(138, 162);
             this.passwordTxt.Name = "passwordTxt";
             this.passwordTxt.PasswordChar = '*';
             this.passwordTxt.Size = new System.Drawing.Size(180, 20);
@@ -76,7 +76,7 @@ namespace CusWinAPISvcWindow
             // Server
             // 
             this.Server.AutoSize = true;
-            this.Server.Location = new System.Drawing.Point(26, 83);
+            this.Server.Location = new System.Drawing.Point(26, 87);
             this.Server.Name = "Server";
             this.Server.Size = new System.Drawing.Size(38, 13);
             this.Server.TabIndex = 3;
@@ -85,7 +85,7 @@ namespace CusWinAPISvcWindow
             // DataSourceLbl
             // 
             this.DataSourceLbl.AutoSize = true;
-            this.DataSourceLbl.Location = new System.Drawing.Point(26, 109);
+            this.DataSourceLbl.Location = new System.Drawing.Point(26, 113);
             this.DataSourceLbl.Name = "DataSourceLbl";
             this.DataSourceLbl.Size = new System.Drawing.Size(67, 13);
             this.DataSourceLbl.TabIndex = 4;
@@ -94,7 +94,7 @@ namespace CusWinAPISvcWindow
             // loginlbl
             // 
             this.loginlbl.AutoSize = true;
-            this.loginlbl.Location = new System.Drawing.Point(26, 135);
+            this.loginlbl.Location = new System.Drawing.Point(26, 139);
             this.loginlbl.Name = "loginlbl";
             this.loginlbl.Size = new System.Drawing.Size(64, 13);
             this.loginlbl.TabIndex = 5;
@@ -102,7 +102,7 @@ namespace CusWinAPISvcWindow
             // 
             // dataSource
             // 
-            this.dataSource.Location = new System.Drawing.Point(138, 106);
+            this.dataSource.Location = new System.Drawing.Point(138, 110);
             this.dataSource.Name = "dataSource";
             this.dataSource.Size = new System.Drawing.Size(180, 20);
             this.dataSource.TabIndex = 7;
@@ -111,7 +111,7 @@ namespace CusWinAPISvcWindow
             // passlbl
             // 
             this.passlbl.AutoSize = true;
-            this.passlbl.Location = new System.Drawing.Point(26, 161);
+            this.passlbl.Location = new System.Drawing.Point(26, 165);
             this.passlbl.Name = "passlbl";
             this.passlbl.Size = new System.Drawing.Size(53, 13);
             this.passlbl.TabIndex = 8;
@@ -186,7 +186,7 @@ namespace CusWinAPISvcWindow
             // 
             this.ServerAutRadio.AutoSize = true;
             this.ServerAutRadio.Checked = true;
-            this.ServerAutRadio.Location = new System.Drawing.Point(23, 32);
+            this.ServerAutRadio.Location = new System.Drawing.Point(28, 56);
             this.ServerAutRadio.Name = "ServerAutRadio";
             this.ServerAutRadio.Size = new System.Drawing.Size(127, 17);
             this.ServerAutRadio.TabIndex = 13;
@@ -197,7 +197,7 @@ namespace CusWinAPISvcWindow
             // WinAuthRadio
             // 
             this.WinAuthRadio.AutoSize = true;
-            this.WinAuthRadio.Location = new System.Drawing.Point(157, 32);
+            this.WinAuthRadio.Location = new System.Drawing.Point(165, 56);
             this.WinAuthRadio.Name = "WinAuthRadio";
             this.WinAuthRadio.Size = new System.Drawing.Size(140, 17);
             this.WinAuthRadio.TabIndex = 13;
@@ -212,7 +212,7 @@ namespace CusWinAPISvcWindow
             this.ClientSize = new System.Drawing.Size(434, 311);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.labelWelcome);            
+            this.Controls.Add(this.labelWelcome);
             this.Controls.Add(this.WinAuthRadio);
             this.Controls.Add(this.ServerAutRadio);
             this.Controls.Add(this.MessageLabel);

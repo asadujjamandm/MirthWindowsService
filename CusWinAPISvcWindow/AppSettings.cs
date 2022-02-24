@@ -59,12 +59,13 @@ namespace CusWinAPISvcWindow
                 e.Cancel = true;
                 txtFrequency.Focus();
                 errorProvider.SetError(txtFrequency, "Please enter numeric Frequency value!");
+                nextButton.Enabled = false;
             }
             else
             {
                 e.Cancel = false ;
                 errorProvider.SetError(txtFrequency, null);
-
+                nextButton.Enabled = true;
             }
         }
 
@@ -86,12 +87,13 @@ namespace CusWinAPISvcWindow
                 e.Cancel = true;
                 txtSourcePath.Focus();                
                 errorProvider.SetError(txtSourcePath, "Please enter Source Path!");
+                nextButton.Enabled = false;
             }
             else
             {
                 e.Cancel = false;
                 errorProvider.SetError(txtSourcePath,null);
-
+                nextButton.Enabled = true;
             }
 
         }
@@ -104,12 +106,13 @@ namespace CusWinAPISvcWindow
                 e.Cancel = true;
                 txtDestination.Focus();
                 errorProvider.SetError(txtDestination, "Please enter Destination!");
-
+                nextButton.Enabled = false;
             }
             else
             {
                 e.Cancel = false;
                 errorProvider.SetError(txtDestination, null);
+                nextButton.Enabled = true;
             }
 
         }
@@ -121,12 +124,13 @@ namespace CusWinAPISvcWindow
                 e.Cancel = true;
                 txtCvsApiUrl.Focus();
                 errorProvider.SetError(txtCvsApiUrl, "Please enter Cvs API Url");
-
+                nextButton.Enabled = false;
             }
             else
             {
                 e.Cancel = false;
                 errorProvider.SetError(txtCvsApiUrl, null);
+                nextButton.Enabled = true;
             }
         }
 

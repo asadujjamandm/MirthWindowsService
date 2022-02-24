@@ -39,33 +39,36 @@ namespace CusWinAPISvcWindow
             this.passlbl = new System.Windows.Forms.Label();
             this.nextButton = new System.Windows.Forms.Button();
             this.closeButton = new System.Windows.Forms.Button();
+            this.ConnectButton = new System.Windows.Forms.Button();
+            this.MessageLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // serverTxt
             // 
-            this.serverTxt.Location = new System.Drawing.Point(173, 65);
+            this.serverTxt.Location = new System.Drawing.Point(141, 65);
             this.serverTxt.Name = "serverTxt";
             this.serverTxt.Size = new System.Drawing.Size(150, 20);
             this.serverTxt.TabIndex = 0;
             // 
             // loginName
             // 
-            this.loginName.Location = new System.Drawing.Point(173, 117);
+            this.loginName.Location = new System.Drawing.Point(141, 117);
             this.loginName.Name = "loginName";
             this.loginName.Size = new System.Drawing.Size(150, 20);
             this.loginName.TabIndex = 1;
             // 
             // passwordTxt
             // 
-            this.passwordTxt.Location = new System.Drawing.Point(173, 143);
+            this.passwordTxt.Location = new System.Drawing.Point(141, 143);
             this.passwordTxt.Name = "passwordTxt";
+            this.passwordTxt.PasswordChar = '*';
             this.passwordTxt.Size = new System.Drawing.Size(150, 20);
             this.passwordTxt.TabIndex = 2;
             // 
             // Server
             // 
             this.Server.AutoSize = true;
-            this.Server.Location = new System.Drawing.Point(58, 68);
+            this.Server.Location = new System.Drawing.Point(26, 68);
             this.Server.Name = "Server";
             this.Server.Size = new System.Drawing.Size(38, 13);
             this.Server.TabIndex = 3;
@@ -74,7 +77,7 @@ namespace CusWinAPISvcWindow
             // DataSourceLbl
             // 
             this.DataSourceLbl.AutoSize = true;
-            this.DataSourceLbl.Location = new System.Drawing.Point(58, 94);
+            this.DataSourceLbl.Location = new System.Drawing.Point(26, 94);
             this.DataSourceLbl.Name = "DataSourceLbl";
             this.DataSourceLbl.Size = new System.Drawing.Size(67, 13);
             this.DataSourceLbl.TabIndex = 4;
@@ -83,7 +86,7 @@ namespace CusWinAPISvcWindow
             // loginlbl
             // 
             this.loginlbl.AutoSize = true;
-            this.loginlbl.Location = new System.Drawing.Point(58, 120);
+            this.loginlbl.Location = new System.Drawing.Point(26, 120);
             this.loginlbl.Name = "loginlbl";
             this.loginlbl.Size = new System.Drawing.Size(64, 13);
             this.loginlbl.TabIndex = 5;
@@ -91,7 +94,7 @@ namespace CusWinAPISvcWindow
             // 
             // dataSource
             // 
-            this.dataSource.Location = new System.Drawing.Point(173, 91);
+            this.dataSource.Location = new System.Drawing.Point(141, 91);
             this.dataSource.Name = "dataSource";
             this.dataSource.Size = new System.Drawing.Size(150, 20);
             this.dataSource.TabIndex = 7;
@@ -99,7 +102,7 @@ namespace CusWinAPISvcWindow
             // passlbl
             // 
             this.passlbl.AutoSize = true;
-            this.passlbl.Location = new System.Drawing.Point(58, 146);
+            this.passlbl.Location = new System.Drawing.Point(26, 146);
             this.passlbl.Name = "passlbl";
             this.passlbl.Size = new System.Drawing.Size(53, 13);
             this.passlbl.TabIndex = 8;
@@ -107,7 +110,7 @@ namespace CusWinAPISvcWindow
             // 
             // nextButton
             // 
-            this.nextButton.Location = new System.Drawing.Point(479, 289);
+            this.nextButton.Location = new System.Drawing.Point(222, 289);
             this.nextButton.Name = "nextButton";
             this.nextButton.Size = new System.Drawing.Size(75, 23);
             this.nextButton.TabIndex = 9;
@@ -117,18 +120,40 @@ namespace CusWinAPISvcWindow
             // 
             // closeButton
             // 
-            this.closeButton.Location = new System.Drawing.Point(398, 289);
+            this.closeButton.Location = new System.Drawing.Point(141, 289);
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(75, 23);
             this.closeButton.TabIndex = 10;
             this.closeButton.Text = "Close";
             this.closeButton.UseVisualStyleBackColor = true;
+            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
+            // 
+            // ConnectButton
+            // 
+            this.ConnectButton.Location = new System.Drawing.Point(141, 180);
+            this.ConnectButton.Name = "ConnectButton";
+            this.ConnectButton.Size = new System.Drawing.Size(75, 23);
+            this.ConnectButton.TabIndex = 11;
+            this.ConnectButton.Text = "Connect";
+            this.ConnectButton.UseVisualStyleBackColor = true;
+            this.ConnectButton.Click += new System.EventHandler(this.ConnectButton_Click);
+            // 
+            // MessageLabel
+            // 
+            this.MessageLabel.AutoSize = true;
+            this.MessageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MessageLabel.Location = new System.Drawing.Point(106, 233);
+            this.MessageLabel.Name = "MessageLabel";
+            this.MessageLabel.Size = new System.Drawing.Size(0, 17);
+            this.MessageLabel.TabIndex = 12;
             // 
             // DatabaseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(324, 329);
+            this.Controls.Add(this.MessageLabel);
+            this.Controls.Add(this.ConnectButton);
             this.Controls.Add(this.closeButton);
             this.Controls.Add(this.nextButton);
             this.Controls.Add(this.passlbl);
@@ -140,7 +165,9 @@ namespace CusWinAPISvcWindow
             this.Controls.Add(this.loginName);
             this.Controls.Add(this.serverTxt);
             this.Name = "DatabaseForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Database Info";
+            this.Load += new System.EventHandler(this.DatabaseForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -158,6 +185,8 @@ namespace CusWinAPISvcWindow
         private System.Windows.Forms.Label passlbl;
         private System.Windows.Forms.Button nextButton;
         private System.Windows.Forms.Button closeButton;
+        private System.Windows.Forms.Button ConnectButton;
+        private System.Windows.Forms.Label MessageLabel;
     }
 }
 

@@ -30,7 +30,7 @@ namespace CusWinAPISvcWindow
         private void InitializeComponent()
         {
             this.serverTxt = new System.Windows.Forms.TextBox();
-            this.loginName = new System.Windows.Forms.TextBox();
+            this.loginNameTxt = new System.Windows.Forms.TextBox();
             this.passwordTxt = new System.Windows.Forms.TextBox();
             this.Server = new System.Windows.Forms.Label();
             this.DataSourceLbl = new System.Windows.Forms.Label();
@@ -41,6 +41,8 @@ namespace CusWinAPISvcWindow
             this.closeButton = new System.Windows.Forms.Button();
             this.ConnectButton = new System.Windows.Forms.Button();
             this.MessageLabel = new System.Windows.Forms.Label();
+            this.ServerAutRadio = new System.Windows.Forms.RadioButton();
+            this.WinAuthRadio = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
             // serverTxt
@@ -50,12 +52,12 @@ namespace CusWinAPISvcWindow
             this.serverTxt.Size = new System.Drawing.Size(150, 20);
             this.serverTxt.TabIndex = 0;
             // 
-            // loginName
+            // loginNameTxt
             // 
-            this.loginName.Location = new System.Drawing.Point(141, 117);
-            this.loginName.Name = "loginName";
-            this.loginName.Size = new System.Drawing.Size(150, 20);
-            this.loginName.TabIndex = 1;
+            this.loginNameTxt.Location = new System.Drawing.Point(141, 117);
+            this.loginNameTxt.Name = "loginNameTxt";
+            this.loginNameTxt.Size = new System.Drawing.Size(150, 20);
+            this.loginNameTxt.TabIndex = 1;
             // 
             // passwordTxt
             // 
@@ -68,7 +70,7 @@ namespace CusWinAPISvcWindow
             // Server
             // 
             this.Server.AutoSize = true;
-            this.Server.Location = new System.Drawing.Point(26, 68);
+            this.Server.Location = new System.Drawing.Point(20, 68);
             this.Server.Name = "Server";
             this.Server.Size = new System.Drawing.Size(38, 13);
             this.Server.TabIndex = 3;
@@ -77,7 +79,7 @@ namespace CusWinAPISvcWindow
             // DataSourceLbl
             // 
             this.DataSourceLbl.AutoSize = true;
-            this.DataSourceLbl.Location = new System.Drawing.Point(26, 94);
+            this.DataSourceLbl.Location = new System.Drawing.Point(20, 94);
             this.DataSourceLbl.Name = "DataSourceLbl";
             this.DataSourceLbl.Size = new System.Drawing.Size(67, 13);
             this.DataSourceLbl.TabIndex = 4;
@@ -86,7 +88,7 @@ namespace CusWinAPISvcWindow
             // loginlbl
             // 
             this.loginlbl.AutoSize = true;
-            this.loginlbl.Location = new System.Drawing.Point(26, 120);
+            this.loginlbl.Location = new System.Drawing.Point(20, 120);
             this.loginlbl.Name = "loginlbl";
             this.loginlbl.Size = new System.Drawing.Size(64, 13);
             this.loginlbl.TabIndex = 5;
@@ -102,7 +104,7 @@ namespace CusWinAPISvcWindow
             // passlbl
             // 
             this.passlbl.AutoSize = true;
-            this.passlbl.Location = new System.Drawing.Point(26, 146);
+            this.passlbl.Location = new System.Drawing.Point(20, 146);
             this.passlbl.Name = "passlbl";
             this.passlbl.Size = new System.Drawing.Size(53, 13);
             this.passlbl.TabIndex = 8;
@@ -147,11 +149,36 @@ namespace CusWinAPISvcWindow
             this.MessageLabel.Size = new System.Drawing.Size(0, 17);
             this.MessageLabel.TabIndex = 12;
             // 
+            // ServerAutRadio
+            // 
+            this.ServerAutRadio.AutoSize = true;
+            this.ServerAutRadio.Checked = true;
+            this.ServerAutRadio.Location = new System.Drawing.Point(23, 32);
+            this.ServerAutRadio.Name = "ServerAutRadio";
+            this.ServerAutRadio.Size = new System.Drawing.Size(127, 17);
+            this.ServerAutRadio.TabIndex = 13;
+            this.ServerAutRadio.TabStop = true;
+            this.ServerAutRadio.Text = "Server Authentication";
+            this.ServerAutRadio.UseVisualStyleBackColor = true;
+            // 
+            // WinAuthRadio
+            // 
+            this.WinAuthRadio.AutoSize = true;
+            this.WinAuthRadio.Location = new System.Drawing.Point(157, 32);
+            this.WinAuthRadio.Name = "WinAuthRadio";
+            this.WinAuthRadio.Size = new System.Drawing.Size(140, 17);
+            this.WinAuthRadio.TabIndex = 13;
+            this.WinAuthRadio.Text = "Windows Authentication";
+            this.WinAuthRadio.UseVisualStyleBackColor = true;
+            this.WinAuthRadio.CheckedChanged += new System.EventHandler(this.WinAuthRadio_CheckedChanged);
+            // 
             // DatabaseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(324, 329);
+            this.ClientSize = new System.Drawing.Size(338, 329);
+            this.Controls.Add(this.WinAuthRadio);
+            this.Controls.Add(this.ServerAutRadio);
             this.Controls.Add(this.MessageLabel);
             this.Controls.Add(this.ConnectButton);
             this.Controls.Add(this.closeButton);
@@ -162,7 +189,7 @@ namespace CusWinAPISvcWindow
             this.Controls.Add(this.DataSourceLbl);
             this.Controls.Add(this.Server);
             this.Controls.Add(this.passwordTxt);
-            this.Controls.Add(this.loginName);
+            this.Controls.Add(this.loginNameTxt);
             this.Controls.Add(this.serverTxt);
             this.Name = "DatabaseForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -176,7 +203,7 @@ namespace CusWinAPISvcWindow
         #endregion
 
         private System.Windows.Forms.TextBox serverTxt;
-        private System.Windows.Forms.TextBox loginName;
+        private System.Windows.Forms.TextBox loginNameTxt;
         private System.Windows.Forms.TextBox passwordTxt;
         private System.Windows.Forms.Label Server;
         private System.Windows.Forms.Label DataSourceLbl;
@@ -187,6 +214,8 @@ namespace CusWinAPISvcWindow
         private System.Windows.Forms.Button closeButton;
         private System.Windows.Forms.Button ConnectButton;
         private System.Windows.Forms.Label MessageLabel;
+        private System.Windows.Forms.RadioButton ServerAutRadio;
+        private System.Windows.Forms.RadioButton WinAuthRadio;
     }
 }
 

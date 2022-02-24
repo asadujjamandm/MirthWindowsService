@@ -166,13 +166,17 @@ namespace Mirth
             try
             {
                 pmsMessageLog.UpdateStatusID = GetUpdateStatusIDByRxNumber(rxTransaction);
-                pmsMessageLog.Status = pmsMessageLog.Status == "false" || pmsMessageLog.Status == null ? GetStatus().ToString() : pmsMessageLog.Status;
+                var status = GetStatus().ToString();
                 pmsMessageLog.LastTriedTime = DateTime.Now;
+
+                if (pmsMessageLog.Status == null)
+                    pmsMessageLog.Status = "false";
 
                 if (pmsMessageLog.UpdateStatusID != -1)  
                 {
                     if (pmsMessageLog.Status.ToLower() != "true")
                     {
+                        pmsMessageLog.Status = status;
                         if (pmsMessageLog.NumberOfAttempt == 1)
                         {
                             _pmsMessageLogsRepository.Insert(pmsMessageLog);

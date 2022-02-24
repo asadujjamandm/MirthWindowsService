@@ -19,7 +19,12 @@ namespace Mirth.Repository
             : base("name=BacktalkDBEntities")
         {
         }
-    
+
+        public BacktalkDBEntities(string connString): base(connString)          
+        {
+            //this.Database.Connection.ConnectionString = connString;
+        }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();

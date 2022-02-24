@@ -83,8 +83,7 @@ namespace Mirth
             }
         }
         private void UpdateConfigFile()
-        {
-            //string path = Context.Parameters["targetDir"];
+        {            
             try
             {
                 string path = Path.Combine(_targetDirectory, "Mirth.exe.config");
@@ -101,14 +100,20 @@ namespace Mirth
                 XmlNode Destination = doc.SelectSingleNode("/configuration/appSettings/add[@key='Destination']");
                 Destination.Attributes[1].Value = _winAPIConfigProp.DestinationPath;
 
-                XmlNode Type = doc.SelectSingleNode("/configuration/appSettings/add[@key='Type']");
-                Type.Attributes[1].Value = _winAPIConfigProp.Type;
+                //XmlNode Type = doc.SelectSingleNode("/configuration/appSettings/add[@key='Type']");
+                //Type.Attributes[1].Value = _winAPIConfigProp.Type;
 
                 XmlNode CVS_API_URL = doc.SelectSingleNode("/configuration/appSettings/add[@key='CVS_API_URL']");
                 CVS_API_URL.Attributes[1].Value = _winAPIConfigProp.CVSAPIUrl;
 
                 XmlNode connectionString = doc.SelectSingleNode("/configuration/connectionStrings/add[@name='BacktalkDBEntities']");
-                connectionString.Attributes[1].Value = "metadata=res://*/Repository.BacktalkDB.csdl|res://*/Repository.BacktalkDB.ssdl|res://*/Repository.BacktalkDB.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=" + _winAPIConfigProp.ServerName + ";initial catalog=" + _winAPIConfigProp.DataSource + ";user id=" + _winAPIConfigProp.LoginName + ";password=" + _winAPIConfigProp.Password + ";MultipleActiveResultSets=True;App=EntityFramework&quot;";
+                string dataConnfig = String.Format("data source = {0}; initial catalog = {1}; user id = {2}; password = {3};", _winAPIConfigProp.ServerName, _winAPIConfigProp.DataSource, _winAPIConfigProp.LoginName, _winAPIConfigProp.Password);
+                string connString = @"metadata=res://*/Repository.BacktalkDB.csdl|res://*/Repository.BacktalkDB.ssdl|res://*/Repository.BacktalkDB.msl;provider=System.Data.SqlClient;provider connection string=&quot;" 
+                                    + dataConnfig 
+                                    + @"MultipleActiveResultSets=True;App=EntityFramework&quot;";
+                connectionString.Attributes[1].Value = connString.Replace("&amp;", "&");
+
+                log(connString);
 
                 doc.Save(path);
             }

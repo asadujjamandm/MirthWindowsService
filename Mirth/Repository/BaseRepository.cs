@@ -1,6 +1,7 @@
 ﻿using Mirth.Contracts;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
@@ -14,10 +15,11 @@ namespace Mirth.Repository
     {
         private BacktalkDBEntities _backtalkDBEntities = null;
         private DbSet<T> table = null;
+        private string ConnString = ConfigurationManager.ConnectionStrings["BacktalkDBEntities"].ConnectionString.Replace("&amp;", "&");
 
         public BaseRepository()
         {
-            this._backtalkDBEntities = new BacktalkDBEntities();
+            this._backtalkDBEntities = new BacktalkDBEntities(this.ConnString);
             this.table = _backtalkDBEntities.Set<T>();
         }
 

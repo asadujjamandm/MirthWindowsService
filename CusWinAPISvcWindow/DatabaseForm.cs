@@ -109,5 +109,68 @@ namespace CusWinAPISvcWindow
         {
             this.Close();
         }
+
+        ErrorProvider errorProvider = new ErrorProvider();
+        private void serverTxt_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(serverTxt.Text))
+            {
+                e.Cancel = true;
+                serverTxt.Focus();
+                errorProvider.SetError(serverTxt, "Please enter Server Info!");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider.SetError(serverTxt, null);
+
+            }
+
+        }
+
+        private void dataSource_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(dataSource.Text))
+            {
+                e.Cancel = true;
+                dataSource.Focus();
+                errorProvider.SetError(dataSource, "Please enter Data Source!s");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider.SetError(dataSource, null);
+            }
+        }
+
+        private void loginName_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(loginName.Text))
+            {
+                e.Cancel = true;
+                loginName.Focus();
+                errorProvider.SetError(loginName, "Please enter Login Name!");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider.SetError(loginName, null);
+            }
+        }
+
+        private void passwordTxt_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(passwordTxt.Text))
+            {
+                e.Cancel = true;
+                passwordTxt.Focus();
+                errorProvider.SetError(passwordTxt, "Please enter Password!");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider.SetError(passwordTxt, null);
+            }
+        }
     }
 }

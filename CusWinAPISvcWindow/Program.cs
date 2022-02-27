@@ -17,6 +17,7 @@ namespace CusWinAPISvcWindow
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new DatabaseForm());
-        }
+            //Application.Run( new AppSettings());
+        }    
     }
 }

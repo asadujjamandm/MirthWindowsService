@@ -13,7 +13,7 @@ namespace CusWinAPISvcWindow
 {
     public partial class AppSettings : Form
     {
-        ErrorProvider errorProvider = new ErrorProvider();
+        
         public WinAPIConfigProperties _winAPIConfigProp;
         public AppSettings()
         {
@@ -51,7 +51,7 @@ namespace CusWinAPISvcWindow
             this.Close();
 
         }
-
+        ErrorProvider errorProvider = new ErrorProvider();
         private void txtFrequency_Validating(object sender, CancelEventArgs e)
         {
             if (string.IsNullOrEmpty(txtFrequency.Text))
@@ -130,6 +130,8 @@ namespace CusWinAPISvcWindow
             }
         }
 
-        
+       
+
+       
     }
 }

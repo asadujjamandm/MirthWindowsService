@@ -36,7 +36,7 @@ namespace CusWinAPISvcWindow
             _winAPIConfigProp.DataSource = dataSource.Text.Trim();
             _winAPIConfigProp.LoginName = loginNameTxt.Text.Trim();
             _winAPIConfigProp.Password = passwordTxt.Text.Trim();
-
+            _winAPIConfigProp.WindowsAuthentication = WinAuthRadio.Checked;
 
             this.Close();
             AppSettings appSettings = new AppSettings(ref _winAPIConfigProp);
@@ -70,7 +70,7 @@ namespace CusWinAPISvcWindow
                 string sqlConnection;
                 if (WinAuthRadio.Checked)
                 {
-                    sqlConnection = "Data Source=" + serverTxt.Text.Trim() + ";Initial Catalog=" + dataSource.Text.Trim() + ";Integrated Security=True";
+                    sqlConnection = "Data Source=" + serverTxt.Text.Trim() + ";Initial Catalog=" + dataSource.Text.Trim() + ";Trusted_Connection=yes";
                 }
                 else
                 {

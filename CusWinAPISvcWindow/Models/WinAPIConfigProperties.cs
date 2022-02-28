@@ -8,6 +8,7 @@ namespace CusWinAPISvcWindow.Models
 {
     public class WinAPIConfigProperties
     {
+        public bool WindowsAuthentication { get; set; }
         public string ServerName { get; set; }
         public string DataSource { get; set; }
         public string LoginName { get; set; }

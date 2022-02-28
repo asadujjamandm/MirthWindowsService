@@ -123,7 +123,7 @@ namespace CusWinAPISvcWindow
             // 
             // nextButton
             // 
-            this.nextButton.Location = new System.Drawing.Point(388, 328);
+            this.nextButton.Location = new System.Drawing.Point(412, 341);
             this.nextButton.Name = "nextButton";
             this.nextButton.Size = new System.Drawing.Size(75, 23);
             this.nextButton.TabIndex = 9;
@@ -133,7 +133,7 @@ namespace CusWinAPISvcWindow
             // 
             // closeButton
             // 
-            this.closeButton.Location = new System.Drawing.Point(295, 328);
+            this.closeButton.Location = new System.Drawing.Point(319, 341);
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(75, 23);
             this.closeButton.TabIndex = 10;
@@ -182,7 +182,7 @@ namespace CusWinAPISvcWindow
             // label1
             // 
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label1.Location = new System.Drawing.Point(-2, 309);
+            this.label1.Location = new System.Drawing.Point(-2, 328);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(510, 3);
             this.label1.TabIndex = 20;
@@ -224,7 +224,7 @@ namespace CusWinAPISvcWindow
             this.groupBox1.Controls.Add(this.ConnectButton);
             this.groupBox1.Controls.Add(this.dataSource);
             this.groupBox1.Controls.Add(this.passlbl);
-            this.groupBox1.Location = new System.Drawing.Point(17, 68);
+            this.groupBox1.Location = new System.Drawing.Point(17, 51);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(446, 217);
             this.groupBox1.TabIndex = 21;
@@ -234,7 +234,7 @@ namespace CusWinAPISvcWindow
             // messagelbl
             // 
             this.messagelbl.AutoSize = true;
-            this.messagelbl.Location = new System.Drawing.Point(17, 337);
+            this.messagelbl.Location = new System.Drawing.Point(14, 273);
             this.messagelbl.Name = "messagelbl";
             this.messagelbl.Size = new System.Drawing.Size(0, 13);
             this.messagelbl.TabIndex = 22;

@@ -107,10 +107,25 @@ namespace Mirth
                 CVS_API_URL.Attributes[1].Value = _winAPIConfigProp.CVSAPIUrl;
 
                 XmlNode connectionString = doc.SelectSingleNode("/configuration/connectionStrings/add[@name='BacktalkDBEntities']");
-                string dataConnfig = String.Format("data source={0};initial catalog={1};user id={2};password={3};", _winAPIConfigProp.ServerName, _winAPIConfigProp.DataSource, _winAPIConfigProp.LoginName, _winAPIConfigProp.Password);
-                string connString = "metadata=res://*/Repository.BacktalkDB.csdl|res://*/Repository.BacktalkDB.ssdl|res://*/Repository.BacktalkDB.msl;provider=System.Data.SqlClient;provider connection string=\"" 
-                                    + dataConnfig 
-                                    + "MultipleActiveResultSets=True;App=EntityFramework\"";
+
+                string dataConnfig = "";
+                string connString = "";
+
+                if (_winAPIConfigProp.WindowsAuthentication)
+                {
+                    dataConnfig = String.Format("data source={0};initial catalog={1};", _winAPIConfigProp.ServerName, _winAPIConfigProp.DataSource);
+                    connString = "metadata=res://*/Repository.BacktalkDB.csdl|res://*/Repository.BacktalkDB.ssdl|res://*/Repository.BacktalkDB.msl;provider=System.Data.SqlClient;provider connection string=\""
+                                        + dataConnfig 
+                                        + "integrated security=True;MultipleActiveResultSets=True;App=EntityFramework\"";
+                }
+                else
+                {
+                    dataConnfig = String.Format("data source={0};initial catalog={1};user id={2};password={3};", _winAPIConfigProp.ServerName, _winAPIConfigProp.DataSource, _winAPIConfigProp.LoginName, _winAPIConfigProp.Password);
+                    connString = "metadata=res://*/Repository.BacktalkDB.csdl|res://*/Repository.BacktalkDB.ssdl|res://*/Repository.BacktalkDB.msl;provider=System.Data.SqlClient;provider connection string=\""
+                                        + dataConnfig
+                                        + "MultipleActiveResultSets=True;App=EntityFramework\"";                    
+                }
+
                 connectionString.Attributes[1].Value = connString;
 
                 log(connString);

@@ -90,5 +90,10 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Icons\icons8-project-setup-80.ico" />
+    <Content Include="Icons\settings.ico" />
+    <Content Include="Icons\setup icon.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

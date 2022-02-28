@@ -29,6 +29,7 @@ namespace CusWinAPISvcWindow
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AppSettings));
             this.lbtFrequency = new System.Windows.Forms.Label();
             this.txtFrequency = new System.Windows.Forms.TextBox();
             this.txtSourcePath = new System.Windows.Forms.TextBox();
@@ -47,7 +48,7 @@ namespace CusWinAPISvcWindow
             // lbtFrequency
             // 
             this.lbtFrequency.AutoSize = true;
-            this.lbtFrequency.Location = new System.Drawing.Point(58, 92);
+            this.lbtFrequency.Location = new System.Drawing.Point(72, 102);
             this.lbtFrequency.Name = "lbtFrequency";
             this.lbtFrequency.Size = new System.Drawing.Size(57, 13);
             this.lbtFrequency.TabIndex = 0;
@@ -55,7 +56,7 @@ namespace CusWinAPISvcWindow
             // 
             // txtFrequency
             // 
-            this.txtFrequency.Location = new System.Drawing.Point(160, 92);
+            this.txtFrequency.Location = new System.Drawing.Point(174, 102);
             this.txtFrequency.Name = "txtFrequency";
             this.txtFrequency.Size = new System.Drawing.Size(180, 20);
             this.txtFrequency.TabIndex = 1;
@@ -64,7 +65,7 @@ namespace CusWinAPISvcWindow
             // 
             // txtSourcePath
             // 
-            this.txtSourcePath.Location = new System.Drawing.Point(160, 122);
+            this.txtSourcePath.Location = new System.Drawing.Point(174, 132);
             this.txtSourcePath.Name = "txtSourcePath";
             this.txtSourcePath.Size = new System.Drawing.Size(180, 20);
             this.txtSourcePath.TabIndex = 3;
@@ -73,7 +74,7 @@ namespace CusWinAPISvcWindow
             // lblSourcePath
             // 
             this.lblSourcePath.AutoSize = true;
-            this.lblSourcePath.Location = new System.Drawing.Point(58, 122);
+            this.lblSourcePath.Location = new System.Drawing.Point(72, 132);
             this.lblSourcePath.Name = "lblSourcePath";
             this.lblSourcePath.Size = new System.Drawing.Size(66, 13);
             this.lblSourcePath.TabIndex = 2;
@@ -81,7 +82,7 @@ namespace CusWinAPISvcWindow
             // 
             // txtCvsApiUrl
             // 
-            this.txtCvsApiUrl.Location = new System.Drawing.Point(160, 182);
+            this.txtCvsApiUrl.Location = new System.Drawing.Point(174, 192);
             this.txtCvsApiUrl.Name = "txtCvsApiUrl";
             this.txtCvsApiUrl.Size = new System.Drawing.Size(180, 20);
             this.txtCvsApiUrl.TabIndex = 7;
@@ -90,7 +91,7 @@ namespace CusWinAPISvcWindow
             // lblCvsApiUrl
             // 
             this.lblCvsApiUrl.AutoSize = true;
-            this.lblCvsApiUrl.Location = new System.Drawing.Point(58, 182);
+            this.lblCvsApiUrl.Location = new System.Drawing.Point(72, 192);
             this.lblCvsApiUrl.Name = "lblCvsApiUrl";
             this.lblCvsApiUrl.Size = new System.Drawing.Size(73, 13);
             this.lblCvsApiUrl.TabIndex = 6;
@@ -98,7 +99,7 @@ namespace CusWinAPISvcWindow
             // 
             // txtDestination
             // 
-            this.txtDestination.Location = new System.Drawing.Point(160, 152);
+            this.txtDestination.Location = new System.Drawing.Point(174, 162);
             this.txtDestination.Name = "txtDestination";
             this.txtDestination.Size = new System.Drawing.Size(180, 20);
             this.txtDestination.TabIndex = 5;
@@ -107,7 +108,7 @@ namespace CusWinAPISvcWindow
             // lblDestinationPath
             // 
             this.lblDestinationPath.AutoSize = true;
-            this.lblDestinationPath.Location = new System.Drawing.Point(58, 152);
+            this.lblDestinationPath.Location = new System.Drawing.Point(72, 162);
             this.lblDestinationPath.Name = "lblDestinationPath";
             this.lblDestinationPath.Size = new System.Drawing.Size(85, 13);
             this.lblDestinationPath.TabIndex = 4;
@@ -115,7 +116,7 @@ namespace CusWinAPISvcWindow
             // 
             // previousButton
             // 
-            this.previousButton.Location = new System.Drawing.Point(240, 271);
+            this.previousButton.Location = new System.Drawing.Point(321, 341);
             this.previousButton.Name = "previousButton";
             this.previousButton.Size = new System.Drawing.Size(75, 23);
             this.previousButton.TabIndex = 9;
@@ -125,7 +126,7 @@ namespace CusWinAPISvcWindow
             // 
             // nextButton
             // 
-            this.nextButton.Location = new System.Drawing.Point(331, 271);
+            this.nextButton.Location = new System.Drawing.Point(412, 341);
             this.nextButton.Name = "nextButton";
             this.nextButton.Size = new System.Drawing.Size(75, 23);
             this.nextButton.TabIndex = 9;
@@ -136,34 +137,34 @@ namespace CusWinAPISvcWindow
             // label1
             // 
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label1.Location = new System.Drawing.Point(-3, 252);
+            this.label1.Location = new System.Drawing.Point(4, 314);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(440, 3);
+            this.label1.Size = new System.Drawing.Size(485, 3);
             this.label1.TabIndex = 15;
             // 
             // label2
             // 
             this.label2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label2.Location = new System.Drawing.Point(-1, 45);
+            this.label2.Location = new System.Drawing.Point(-1, 63);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(440, 3);
+            this.label2.Size = new System.Drawing.Size(490, 3);
             this.label2.TabIndex = 16;
             // 
             // labelWelcome
             // 
             this.labelWelcome.AutoSize = true;
             this.labelWelcome.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelWelcome.Location = new System.Drawing.Point(20, 9);
+            this.labelWelcome.Location = new System.Drawing.Point(55, 20);
             this.labelWelcome.Name = "labelWelcome";
-            this.labelWelcome.Size = new System.Drawing.Size(386, 20);
+            this.labelWelcome.Size = new System.Drawing.Size(390, 20);
             this.labelWelcome.TabIndex = 17;
-            this.labelWelcome.Text = "Welcone to the Mirth Windows Service Installer Setup";
+            this.labelWelcome.Text = "Welcome to the Mirth Windows Service Installer Setup";
             // 
             // AppSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(434, 311);
+            this.ClientSize = new System.Drawing.Size(499, 376);
             this.Controls.Add(this.labelWelcome);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -178,7 +179,10 @@ namespace CusWinAPISvcWindow
             this.Controls.Add(this.txtFrequency);
             this.Controls.Add(this.lbtFrequency);
             this.DoubleBuffered = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(515, 415);
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(515, 415);
             this.Name = "AppSettings";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "App Settings";

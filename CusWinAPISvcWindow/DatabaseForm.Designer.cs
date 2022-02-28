@@ -29,6 +29,7 @@ namespace CusWinAPISvcWindow
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DatabaseForm));
             this.serverTxt = new System.Windows.Forms.TextBox();
             this.loginNameTxt = new System.Windows.Forms.TextBox();
             this.passwordTxt = new System.Windows.Forms.TextBox();
@@ -47,6 +48,7 @@ namespace CusWinAPISvcWindow
             this.ServerAutRadio = new System.Windows.Forms.RadioButton();
             this.WinAuthRadio = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.messagelbl = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -153,20 +155,21 @@ namespace CusWinAPISvcWindow
             // 
             this.MessageLabel.AutoSize = true;
             this.MessageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MessageLabel.Location = new System.Drawing.Point(70, 214);
+            this.MessageLabel.Location = new System.Drawing.Point(70, 250);
             this.MessageLabel.Name = "MessageLabel";
-            this.MessageLabel.Size = new System.Drawing.Size(0, 17);
+            this.MessageLabel.Size = new System.Drawing.Size(102, 17);
             this.MessageLabel.TabIndex = 12;
+            this.MessageLabel.Text = "DSAASDDASD";
             // 
             // labelWelcome
             // 
             this.labelWelcome.AutoSize = true;
             this.labelWelcome.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelWelcome.Location = new System.Drawing.Point(7, 9);
+            this.labelWelcome.Location = new System.Drawing.Point(13, 9);
             this.labelWelcome.Name = "labelWelcome";
-            this.labelWelcome.Size = new System.Drawing.Size(456, 24);
+            this.labelWelcome.Size = new System.Drawing.Size(461, 24);
             this.labelWelcome.TabIndex = 18;
-            this.labelWelcome.Text = "Welcone to the Mirth Windows Service Installer Setup";
+            this.labelWelcome.Text = "Welcome to the Mirth Windows Service Installer Setup";
             // 
             // label2
             // 
@@ -228,17 +231,29 @@ namespace CusWinAPISvcWindow
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Database Info";
             // 
+            // messagelbl
+            // 
+            this.messagelbl.AutoSize = true;
+            this.messagelbl.Location = new System.Drawing.Point(17, 337);
+            this.messagelbl.Name = "messagelbl";
+            this.messagelbl.Size = new System.Drawing.Size(0, 13);
+            this.messagelbl.TabIndex = 22;
+            // 
             // DatabaseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(494, 371);
+            this.ClientSize = new System.Drawing.Size(499, 376);
+            this.Controls.Add(this.messagelbl);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.labelWelcome);
             this.Controls.Add(this.closeButton);
             this.Controls.Add(this.nextButton);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(515, 415);
+            this.MinimumSize = new System.Drawing.Size(515, 415);
             this.Name = "DatabaseForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Database Info";
@@ -270,6 +285,7 @@ namespace CusWinAPISvcWindow
         private System.Windows.Forms.RadioButton ServerAutRadio;
         private System.Windows.Forms.RadioButton WinAuthRadio;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label messagelbl;
     }
 }
 

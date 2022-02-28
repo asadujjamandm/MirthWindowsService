@@ -50,47 +50,47 @@ namespace CusWinAPISvcWindow
                 if (IsDbConnect())
                 {
                     nextButton.Enabled = true;
-                    MessageLabel.ForeColor = Color.Green;
-                    MessageLabel.Text = "Connected to server !!";
+                    messagelbl.ForeColor = Color.Green;
+                    messagelbl.Text = "Connected to server !!";
                 }
             }
             catch (Exception ex)
             {
                 nextButton.Enabled = false;
-                MessageLabel.ForeColor = Color.Red;
-                MessageLabel.Text = "Unable to connect !!";
+                messagelbl.ForeColor = Color.Red;
+                messagelbl.Text = ex.Message;
             }
 
         }
 
         private bool IsDbConnect()
         {
-            string sqlConnection;
-            if (WinAuthRadio.Checked)
+            try
             {
-                sqlConnection = "Data Source=" + serverTxt.Text.Trim() + ";Initial Catalog=" + dataSource.Text.Trim() + ";Integrated Security=True";
-            }
-            else
-            {
-                sqlConnection = "Data Source=" + serverTxt.Text.Trim() + ";Database=" + dataSource.Text.Trim() + ";User Id=" + loginNameTxt.Text.Trim() + "; Password=" + passwordTxt.Text.Trim() + ";MultipleActiveResultSets=true;";
-            }
-            SqlConnection connect = new SqlConnection(sqlConnection);
-            {
-                if (connect.State == System.Data.ConnectionState.Closed)
+                string sqlConnection;
+                if (WinAuthRadio.Checked)
                 {
-                    try
-                    {
-                        connect.Open();
-
-                    }
-                    catch (Exception ex)
-                    {
-                        throw ex;
-                    }
-
+                    sqlConnection = "Data Source=" + serverTxt.Text.Trim() + ";Initial Catalog=" + dataSource.Text.Trim() + ";Integrated Security=True";
                 }
+                else
+                {
+                    sqlConnection = "Data Source=" + serverTxt.Text.Trim() + ";Database=" + dataSource.Text.Trim() + ";User Id=" + loginNameTxt.Text.Trim() + "; Password=" + passwordTxt.Text.Trim() + ";MultipleActiveResultSets=true;";
+                }
+                using (SqlConnection connect = new SqlConnection(sqlConnection))
+                {
+                    if (connect.State == System.Data.ConnectionState.Closed)
+                    {                        
+                        connect.Open();
+                        connect.Close();                        
+                    }
+                }
+                return true;
             }
-            return true;
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }            
         }
 
         private void DatabaseForm_Load(object sender, EventArgs e)

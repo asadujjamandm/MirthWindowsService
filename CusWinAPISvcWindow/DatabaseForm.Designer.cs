@@ -46,37 +46,39 @@ namespace CusWinAPISvcWindow
             this.label1 = new System.Windows.Forms.Label();
             this.ServerAutRadio = new System.Windows.Forms.RadioButton();
             this.WinAuthRadio = new System.Windows.Forms.RadioButton();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // serverTxt
             // 
-            this.serverTxt.Location = new System.Drawing.Point(138, 84);
+            this.serverTxt.Location = new System.Drawing.Point(181, 66);
             this.serverTxt.Name = "serverTxt";
-            this.serverTxt.Size = new System.Drawing.Size(180, 20);
+            this.serverTxt.Size = new System.Drawing.Size(200, 20);
             this.serverTxt.TabIndex = 0;
             this.serverTxt.Validating += new System.ComponentModel.CancelEventHandler(this.serverTxt_Validating);
             // 
             // loginNameTxt
             // 
-            this.loginNameTxt.Location = new System.Drawing.Point(138, 136);
+            this.loginNameTxt.Location = new System.Drawing.Point(181, 118);
             this.loginNameTxt.Name = "loginNameTxt";
-            this.loginNameTxt.Size = new System.Drawing.Size(180, 20);
+            this.loginNameTxt.Size = new System.Drawing.Size(200, 20);
             this.loginNameTxt.TabIndex = 1;
             this.loginNameTxt.Validating += new System.ComponentModel.CancelEventHandler(this.loginName_Validating);
             // 
             // passwordTxt
             // 
-            this.passwordTxt.Location = new System.Drawing.Point(138, 162);
+            this.passwordTxt.Location = new System.Drawing.Point(181, 144);
             this.passwordTxt.Name = "passwordTxt";
             this.passwordTxt.PasswordChar = '*';
-            this.passwordTxt.Size = new System.Drawing.Size(180, 20);
+            this.passwordTxt.Size = new System.Drawing.Size(200, 20);
             this.passwordTxt.TabIndex = 2;
             this.passwordTxt.Validating += new System.ComponentModel.CancelEventHandler(this.passwordTxt_Validating);
             // 
             // Server
             // 
             this.Server.AutoSize = true;
-            this.Server.Location = new System.Drawing.Point(26, 87);
+            this.Server.Location = new System.Drawing.Point(69, 69);
             this.Server.Name = "Server";
             this.Server.Size = new System.Drawing.Size(38, 13);
             this.Server.TabIndex = 3;
@@ -85,7 +87,7 @@ namespace CusWinAPISvcWindow
             // DataSourceLbl
             // 
             this.DataSourceLbl.AutoSize = true;
-            this.DataSourceLbl.Location = new System.Drawing.Point(26, 113);
+            this.DataSourceLbl.Location = new System.Drawing.Point(69, 95);
             this.DataSourceLbl.Name = "DataSourceLbl";
             this.DataSourceLbl.Size = new System.Drawing.Size(67, 13);
             this.DataSourceLbl.TabIndex = 4;
@@ -94,7 +96,7 @@ namespace CusWinAPISvcWindow
             // loginlbl
             // 
             this.loginlbl.AutoSize = true;
-            this.loginlbl.Location = new System.Drawing.Point(26, 139);
+            this.loginlbl.Location = new System.Drawing.Point(69, 121);
             this.loginlbl.Name = "loginlbl";
             this.loginlbl.Size = new System.Drawing.Size(64, 13);
             this.loginlbl.TabIndex = 5;
@@ -102,16 +104,16 @@ namespace CusWinAPISvcWindow
             // 
             // dataSource
             // 
-            this.dataSource.Location = new System.Drawing.Point(138, 110);
+            this.dataSource.Location = new System.Drawing.Point(181, 92);
             this.dataSource.Name = "dataSource";
-            this.dataSource.Size = new System.Drawing.Size(180, 20);
+            this.dataSource.Size = new System.Drawing.Size(200, 20);
             this.dataSource.TabIndex = 7;
             this.dataSource.Validating += new System.ComponentModel.CancelEventHandler(this.dataSource_Validating);
             // 
             // passlbl
             // 
             this.passlbl.AutoSize = true;
-            this.passlbl.Location = new System.Drawing.Point(26, 165);
+            this.passlbl.Location = new System.Drawing.Point(69, 147);
             this.passlbl.Name = "passlbl";
             this.passlbl.Size = new System.Drawing.Size(53, 13);
             this.passlbl.TabIndex = 8;
@@ -119,7 +121,7 @@ namespace CusWinAPISvcWindow
             // 
             // nextButton
             // 
-            this.nextButton.Location = new System.Drawing.Point(336, 274);
+            this.nextButton.Location = new System.Drawing.Point(388, 328);
             this.nextButton.Name = "nextButton";
             this.nextButton.Size = new System.Drawing.Size(75, 23);
             this.nextButton.TabIndex = 9;
@@ -129,7 +131,7 @@ namespace CusWinAPISvcWindow
             // 
             // closeButton
             // 
-            this.closeButton.Location = new System.Drawing.Point(243, 274);
+            this.closeButton.Location = new System.Drawing.Point(295, 328);
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(75, 23);
             this.closeButton.TabIndex = 10;
@@ -139,7 +141,7 @@ namespace CusWinAPISvcWindow
             // 
             // ConnectButton
             // 
-            this.ConnectButton.Location = new System.Drawing.Point(243, 196);
+            this.ConnectButton.Location = new System.Drawing.Point(306, 182);
             this.ConnectButton.Name = "ConnectButton";
             this.ConnectButton.Size = new System.Drawing.Size(75, 23);
             this.ConnectButton.TabIndex = 11;
@@ -151,7 +153,7 @@ namespace CusWinAPISvcWindow
             // 
             this.MessageLabel.AutoSize = true;
             this.MessageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MessageLabel.Location = new System.Drawing.Point(82, 233);
+            this.MessageLabel.Location = new System.Drawing.Point(70, 214);
             this.MessageLabel.Name = "MessageLabel";
             this.MessageLabel.Size = new System.Drawing.Size(0, 17);
             this.MessageLabel.TabIndex = 12;
@@ -159,10 +161,10 @@ namespace CusWinAPISvcWindow
             // labelWelcome
             // 
             this.labelWelcome.AutoSize = true;
-            this.labelWelcome.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelWelcome.Location = new System.Drawing.Point(25, 9);
+            this.labelWelcome.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelWelcome.Location = new System.Drawing.Point(7, 9);
             this.labelWelcome.Name = "labelWelcome";
-            this.labelWelcome.Size = new System.Drawing.Size(386, 20);
+            this.labelWelcome.Size = new System.Drawing.Size(456, 24);
             this.labelWelcome.TabIndex = 18;
             this.labelWelcome.Text = "Welcone to the Mirth Windows Service Installer Setup";
             // 
@@ -171,22 +173,22 @@ namespace CusWinAPISvcWindow
             this.label2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label2.Location = new System.Drawing.Point(-2, 47);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(440, 3);
+            this.label2.Size = new System.Drawing.Size(510, 3);
             this.label2.TabIndex = 20;
             // 
             // label1
             // 
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label1.Location = new System.Drawing.Point(-2, 261);
+            this.label1.Location = new System.Drawing.Point(-2, 309);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(440, 3);
+            this.label1.Size = new System.Drawing.Size(510, 3);
             this.label1.TabIndex = 20;
             // 
             // ServerAutRadio
             // 
             this.ServerAutRadio.AutoSize = true;
             this.ServerAutRadio.Checked = true;
-            this.ServerAutRadio.Location = new System.Drawing.Point(28, 56);
+            this.ServerAutRadio.Location = new System.Drawing.Point(71, 38);
             this.ServerAutRadio.Name = "ServerAutRadio";
             this.ServerAutRadio.Size = new System.Drawing.Size(127, 17);
             this.ServerAutRadio.TabIndex = 13;
@@ -197,7 +199,7 @@ namespace CusWinAPISvcWindow
             // WinAuthRadio
             // 
             this.WinAuthRadio.AutoSize = true;
-            this.WinAuthRadio.Location = new System.Drawing.Point(165, 56);
+            this.WinAuthRadio.Location = new System.Drawing.Point(208, 38);
             this.WinAuthRadio.Name = "WinAuthRadio";
             this.WinAuthRadio.Size = new System.Drawing.Size(140, 17);
             this.WinAuthRadio.TabIndex = 13;
@@ -205,32 +207,44 @@ namespace CusWinAPISvcWindow
             this.WinAuthRadio.UseVisualStyleBackColor = true;
             this.WinAuthRadio.CheckedChanged += new System.EventHandler(this.WinAuthRadio_CheckedChanged);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.ServerAutRadio);
+            this.groupBox1.Controls.Add(this.serverTxt);
+            this.groupBox1.Controls.Add(this.loginNameTxt);
+            this.groupBox1.Controls.Add(this.passwordTxt);
+            this.groupBox1.Controls.Add(this.WinAuthRadio);
+            this.groupBox1.Controls.Add(this.Server);
+            this.groupBox1.Controls.Add(this.DataSourceLbl);
+            this.groupBox1.Controls.Add(this.MessageLabel);
+            this.groupBox1.Controls.Add(this.loginlbl);
+            this.groupBox1.Controls.Add(this.ConnectButton);
+            this.groupBox1.Controls.Add(this.dataSource);
+            this.groupBox1.Controls.Add(this.passlbl);
+            this.groupBox1.Location = new System.Drawing.Point(17, 68);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(446, 217);
+            this.groupBox1.TabIndex = 21;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Database Info";
+            // 
             // DatabaseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(434, 311);
+            this.ClientSize = new System.Drawing.Size(494, 371);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.labelWelcome);
-            this.Controls.Add(this.WinAuthRadio);
-            this.Controls.Add(this.ServerAutRadio);
-            this.Controls.Add(this.MessageLabel);
-            this.Controls.Add(this.ConnectButton);
             this.Controls.Add(this.closeButton);
             this.Controls.Add(this.nextButton);
-            this.Controls.Add(this.passlbl);
-            this.Controls.Add(this.dataSource);
-            this.Controls.Add(this.loginlbl);
-            this.Controls.Add(this.DataSourceLbl);
-            this.Controls.Add(this.Server);
-            this.Controls.Add(this.passwordTxt);
-            this.Controls.Add(this.loginNameTxt);
-            this.Controls.Add(this.serverTxt);
             this.Name = "DatabaseForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Database Info";
             this.Load += new System.EventHandler(this.DatabaseForm_Load);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -255,6 +269,7 @@ namespace CusWinAPISvcWindow
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.RadioButton ServerAutRadio;
         private System.Windows.Forms.RadioButton WinAuthRadio;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
 

@@ -190,5 +190,7 @@ namespace CusWinAPISvcWindow
                 passwordTxt.Enabled = true;
             }
         }
+
+        
     }
 }

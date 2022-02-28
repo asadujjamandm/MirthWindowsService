@@ -46,7 +46,7 @@ namespace CusWinAPISvcWindow
             _winAPIConfigProp.Frequency = Convert.ToInt32(txtFrequency.Text.Trim());
             _winAPIConfigProp.SourcePath = txtSourcePath.Text.Trim();
             _winAPIConfigProp.DestinationPath = txtDestination.Text.Trim();
-            _winAPIConfigProp.CVSAPIUrl = lblCvsApiUrl.Text.Trim();
+            _winAPIConfigProp.CVSAPIUrl = txtCvsApiUrl.Text.Trim();
 
             this.Close();
 

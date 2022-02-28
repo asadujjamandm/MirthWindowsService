@@ -1,4 +1,5 @@
 ﻿using Mirth.Contracts;
+using Mirth.Helper;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -14,11 +15,12 @@ namespace Mirth.Repository
     public class BaseRepository<T> : IBaseRepository<T> where T : class
     {
         private BacktalkDBEntities _backtalkDBEntities = null;
-        private DbSet<T> table = null;
-        private string ConnString = ConfigurationManager.ConnectionStrings["BacktalkDBEntities"].ConnectionString.Replace("&amp;", "&");
+        private DbSet<T> table = null;        
+        private string ConnString = ConfigurationManager.ConnectionStrings["BacktalkDBEntities"].ConnectionString.ToString();
 
         public BaseRepository()
-        {
+        {            
+            Logger.log.Info(this.ConnString);
             this._backtalkDBEntities = new BacktalkDBEntities(this.ConnString);
             this.table = _backtalkDBEntities.Set<T>();
         }

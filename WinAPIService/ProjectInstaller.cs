@@ -86,7 +86,7 @@ namespace Mirth
         {            
             try
             {
-                string path = Path.Combine(_targetDirectory, "Mirth.exe.config");
+                string path = Path.Combine(_targetDirectory, "WinAPIService.exe.config");
                 log(path);
                 //string path = @"C:\Program Files(x86)\Parata\Windows API Service\Mirth.exe.config";
                 XmlDocument doc = new XmlDocument();

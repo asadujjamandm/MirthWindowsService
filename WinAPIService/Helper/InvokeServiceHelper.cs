@@ -15,6 +15,7 @@ namespace Mirth.Helper
     public static class InvokeServiceHelper
     {
         private static string CVS_API_URL = ConfigurationSettings.AppSettings["CVS_API_URL"];
+        private static int responseTimeout = int.Parse(ConfigurationSettings.AppSettings["CVS_API_Response_Timeout"]);
         public static async Task<string> PostCVSAPI(CVSModel cvsModel)
         {
             try
@@ -24,6 +25,7 @@ namespace Mirth.Helper
 
                 httpRequest.Accept = "application/json";
                 httpRequest.ContentType = "application/json";
+                httpRequest.Timeout = responseTimeout;
 
                 var json = JsonConvert.SerializeObject(cvsModel);
 
@@ -32,7 +34,7 @@ namespace Mirth.Helper
                     streamWriter.Write(json);
                 }
                 Logger.log.Info("PostCVSAPI() calling cvs API");
-                var httpResponse = (HttpWebResponse)(await httpRequest.GetResponseAsync());
+                var httpResponse = (HttpWebResponse)(httpRequest.GetResponse());
                 var result = "";
                 using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
                 {
@@ -43,7 +45,8 @@ namespace Mirth.Helper
             }
             catch (Exception ex)
             {
-                throw ex;
+                Logger.log.Error("PostCVSAPI() " + ex.Message);
+                return "false";
             }
         }
     }

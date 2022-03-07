@@ -36,20 +36,23 @@ namespace Mirth
 
                 var automationRxEvents = await _xmlFileReader.GetXMLFileContent();
 
-                Logger.log.Info(automationRxEvents.Count + " File(s) Found in this " + ConfigurationSettings.AppSettings["Source"] +" directory");
+                Logger.log.Info(automationRxEvents.Count + " File(s) Found in this " + ConfigurationSettings.AppSettings["Source"] + " directory");
 
                 foreach (var item in automationRxEvents)
                 {
                     CVSModel cvsModel = RxMapperHelper.MapCVSModel(item.RxTransaction);
 
                     string res = await InvokeServiceHelper.PostCVSAPI(cvsModel);
+                    if (res.ToLower() != "false")
+                    {
+                        _responseModel = JsonConvert.DeserializeObject<ResponseModel>(res);
 
-                    _responseModel =JsonConvert.DeserializeObject<ResponseModel>(res);
+                        HandleDatabaseOperation(item.RxTransaction);
 
-                    HandleDatabaseOperation(item.RxTransaction);
+                        if (this.GetStatus() == true)
+                            _xmlFileReader.RemoveFile(item.FilePath);
+                    }
 
-                    if(this.GetStatus() == true)
-                        _xmlFileReader.RemoveFile(item.FilePath);
                 }
 
                 Logger.log.Info("ProcessXMLMessage()  XML file processing Completed");
@@ -72,7 +75,7 @@ namespace Mirth
             {
                 var pmsMessageLog = GetPMSLogInfo(rxTransaction);
                 UpsertDataInPMSMessageLog(pmsMessageLog, rxTransaction);
-                
+
             }
             catch (Exception ex)
             {
@@ -85,10 +88,10 @@ namespace Mirth
         {
             try
             {
-                Logger.log.Info("GetPMSLogInfo() Get existing PMS Log Info from PMSMessageLog Table CustomerRxID: "+ rxTransaction.CustomerRXID.ToString());
+                Logger.log.Info("GetPMSLogInfo() Get existing PMS Log Info from PMSMessageLog Table CustomerRxID: " + rxTransaction.CustomerRXID.ToString());
                 var pmsMessageLog = _pmsMessageLogsRepository.GetPMSMessageLogByCustomerRxId(rxTransaction.CustomerRXID.ToString());
 
-                if(pmsMessageLog != null)
+                if (pmsMessageLog != null)
                 {
                     pmsMessageLog.NumberOfAttempt = pmsMessageLog.Status == "true" ? pmsMessageLog.NumberOfAttempt : pmsMessageLog.NumberOfAttempt + 1;
                 }
@@ -124,13 +127,13 @@ namespace Mirth
             {
                 Logger.log.Error("GetStatus " + ex.Message);
                 throw ex;
-            }                 
+            }
         }
 
         private int GetUpdateStatusIDByRxNumber(RxTransaction rxTransaction)
         {
             try
-            {               
+            {
                 var statusUpdate = _statusUpdatesRepository.GetStatusUpdatesByRxNumber(rxTransaction.CustomerRXID);
 
                 return statusUpdate != null ? statusUpdate.UpdateStatusID : -1;
@@ -150,7 +153,7 @@ namespace Mirth
                 statusUpdate.CVSAcknowlogement = Convert.ToBoolean(pMSMessageLog.Status);
                 statusUpdate.UpdateStatusID = pMSMessageLog.UpdateStatusID;
 
-                _statusUpdatesRepository.ModifyStatusUpdates(statusUpdate);                
+                _statusUpdatesRepository.ModifyStatusUpdates(statusUpdate);
 
                 Logger.log.Info("ModifyStatusUpdate() Updated Status Table. UpdateStatusID: " + pMSMessageLog.UpdateStatusID + ";" + "CVSAcknowledgementL: " + statusUpdate.CVSAcknowlogement);
             }
@@ -172,7 +175,7 @@ namespace Mirth
                 if (pmsMessageLog.Status == null)
                     pmsMessageLog.Status = "false";
 
-                if (pmsMessageLog.UpdateStatusID != -1)  
+                if (pmsMessageLog.UpdateStatusID != -1)
                 {
                     if (pmsMessageLog.Status.ToLower() != "true")
                     {
@@ -189,7 +192,7 @@ namespace Mirth
                         }
 
                         ModifyStatusUpdate(pmsMessageLog);
-                        
+
                     }
                     else
                     {

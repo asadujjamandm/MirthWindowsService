@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Mirth.Repository
+namespace WinAPIService.Repository
 {
     using System;
     using System.Collections.Generic;

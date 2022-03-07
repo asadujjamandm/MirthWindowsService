@@ -7,17 +7,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Mirth.Repository
+namespace WinAPIService.Repository
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class PMSMessageLog
+    public partial class Pharmacist
     {
-        public int PMSMessageID { get; set; }
-        public int UpdateStatusID { get; set; }
-        public int NumberOfAttempt { get; set; }
-        public string Status { get; set; }
-        public System.DateTime LastTriedTime { get; set; }
+        public int Id { get; set; }
+        public Nullable<int> PMSID { get; set; }
+        public Nullable<int> InspectRxID { get; set; }
+        public Nullable<System.DateTime> EffectiveDate { get; set; }
+        public string Action { get; set; }
     }
 }

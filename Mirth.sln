@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31702.278
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mirth", "Mirth\Mirth.csproj", "{02B8CFDD-5B19-44B0-9C5B-269B1F4E8AC2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinAPIService", "WinAPIService\WinAPIService.csproj", "{02B8CFDD-5B19-44B0-9C5B-269B1F4E8AC2}"
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "MirthWinSvcInstaller", "MirthWinSvcInstaller\MirthWinSvcInstaller.vdproj", "{FF80D9D7-4FD4-4822-86EA-F66E015B0DC1}"
 EndProject

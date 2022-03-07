@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Mirth.Repository
+namespace WinAPIService.Repository
 {
     using System;
     using System.Data.Entity;
@@ -20,7 +20,7 @@ namespace Mirth.Repository
         {
         }
 
-        public BacktalkDBEntities(string connString): base(connString)          
+        public BacktalkDBEntities(string connString) : base(connString)
         {
             //this.Database.Connection.ConnectionString = connString;
         }

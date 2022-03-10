@@ -37,7 +37,7 @@ namespace Mirth.Repository
             {
                 var pmsMessageLog = _basePMSRepository.GetAll()
                     .Join(_baseStatusUpdateRepository.GetAll()
-                    .Where(status => status.CustomerRXID == customerRxID), pms => pms.UpdateStatusID, status => status.UpdateStatusID, (a,b) => new { PMSMessageLog = a, StatusUpdate = b}).FirstOrDefault();
+                    .Where(status => status.RxNumber == customerRxID), pms => pms.UpdateStatusID, status => status.UpdateStatusID, (a,b) => new { PMSMessageLog = a, StatusUpdate = b}).FirstOrDefault();
 
                 
                 return pmsMessageLog != null ? pmsMessageLog.PMSMessageLog: null;

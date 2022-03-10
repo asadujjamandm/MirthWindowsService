@@ -12,11 +12,13 @@ namespace WinAPIService.Repository
     using System;
     using System.Collections.Generic;
     
-    public partial class Pharmacist
+    public partial class AspNetUserClaim
     {
-        public int InspectRxID { get; set; }
-        public int PMSID { get; set; }
-        public Nullable<System.DateTime> EffectiveDate { get; set; }
-        public string Action { get; set; }
+        public int Id { get; set; }
+        public string UserId { get; set; }
+        public string ClaimType { get; set; }
+        public string ClaimValue { get; set; }
+    
+        public virtual AspNetUser AspNetUser { get; set; }
     }
 }

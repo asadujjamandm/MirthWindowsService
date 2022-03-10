@@ -15,22 +15,20 @@ namespace WinAPIService.Repository
     public partial class StatusUpdate
     {
         public int UpdateStatusID { get; set; }
-        public decimal OrderID { get; set; }
-        public string CFOrderID { get; set; }
-        public string CustomerPatientID { get; set; }
-        public string CustomerNDC { get; set; }
-        public decimal RXQuantity { get; set; }
-        public string CustomerRXID { get; set; }
-        public Nullable<int> BagNumber { get; set; }
-        public Nullable<int> StoreNumber { get; set; }
+        public decimal BatchID { get; set; }
+        public Nullable<int> PouchNumber { get; set; }
+        public string RxNumber { get; set; }
+        public string NDC { get; set; }
         public string Barcode { get; set; }
+        public decimal RXQuantity { get; set; }
+        public Nullable<int> StoreNumber { get; set; }
+        public string FillNumber { get; set; }
+        public string EditVersion { get; set; }
+        public string PartialFill { get; set; }
         public bool Checked { get; set; }
         public int CheckedBy { get; set; }
         public System.DateTime CheckedDateTime { get; set; }
         public bool XMLGenerated { get; set; }
         public bool CVSAcknowlogement { get; set; }
-        public string FillNumber { get; set; }
-        public string EditVersion { get; set; }
-        public string PartialFill { get; set; }
     }
 }

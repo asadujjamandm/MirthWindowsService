@@ -12,15 +12,13 @@ namespace WinAPIService.Repository
     using System;
     using System.Collections.Generic;
     
-    public partial class IFMessageLog
+    public partial class FileLog
     {
-        public int IFMessageID { get; set; }
-        public System.DateTime TimeStamp { get; set; }
-        public string Message { get; set; }
-        public string MsgRxNumber { get; set; }
-        public string MsgPtID { get; set; }
-        public string MsgNdc { get; set; }
-        public string ResponseMsg { get; set; }
-        public string Status { get; set; }
+        public long FileId { get; set; }
+        public string FileType { get; set; }
+        public string FileName { get; set; }
+        public string CreatedBy { get; set; }
+        public Nullable<System.DateTime> CreatedDate { get; set; }
+        public string MachineIP { get; set; }
     }
 }

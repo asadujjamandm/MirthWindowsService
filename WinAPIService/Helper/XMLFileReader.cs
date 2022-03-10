@@ -29,16 +29,24 @@ namespace Mirth.Helper
 
                 foreach (var file in fileNames)
                 {
-                    Logger.log.Info(file + "  Processing");
-                    string xmlString = File.ReadAllText(file);
+                    try
+                    {
+                        Logger.log.Info(file + "  Processing");
+                        string xmlString = File.ReadAllText(file);
 
-                    XmlSerializer serializer = new XmlSerializer(typeof(AutomationRxEvent), new XmlRootAttribute("AutomationRxEvent"));
-                    StringReader stringReader = new StringReader(xmlString);
-                    AutomationRxEvent automationRxEvent = (AutomationRxEvent)serializer.Deserialize(stringReader);
-                    automationRxEvent.FilePath = file;
-                    AutomationRxEventList.Add(automationRxEvent);
+                        XmlSerializer serializer = new XmlSerializer(typeof(AutomationRxEvent), new XmlRootAttribute("AutomationRxEvent"));
+                        StringReader stringReader = new StringReader(xmlString);
+                        AutomationRxEvent automationRxEvent = (AutomationRxEvent)serializer.Deserialize(stringReader);
+                        automationRxEvent.FilePath = file;
+                        AutomationRxEventList.Add(automationRxEvent);
 
-                    Logger.log.Info(file + "  Processing Completed.");                    
+                        Logger.log.Info(file + "  Processing Completed.");
+                    }
+                    catch (Exception ex)
+                    {
+                        Logger.log.Error(file + " " + ex.Message);
+                        continue;
+                    }                                        
                 }
 
                 return AutomationRxEventList;

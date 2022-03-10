@@ -12,11 +12,10 @@ namespace WinAPIService.Repository
     using System;
     using System.Collections.Generic;
     
-    public partial class Pharmacist
+    public partial class Audit
     {
-        public int InspectRxID { get; set; }
-        public int PMSID { get; set; }
-        public Nullable<System.DateTime> EffectiveDate { get; set; }
-        public string Action { get; set; }
+        public long Id { get; set; }
+        public string ExceptionMsg { get; set; }
+        public System.DateTime DateTime { get; set; }
     }
 }

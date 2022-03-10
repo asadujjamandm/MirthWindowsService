@@ -12,11 +12,15 @@ namespace WinAPIService.Repository
     using System;
     using System.Collections.Generic;
     
-    public partial class Pharmacist
+    public partial class DatabaseConnection
     {
-        public int InspectRxID { get; set; }
-        public int PMSID { get; set; }
-        public Nullable<System.DateTime> EffectiveDate { get; set; }
-        public string Action { get; set; }
+        public int DBID { get; set; }
+        public string ServerName { get; set; }
+        public string DatabaseName { get; set; }
+        public string DataBaseType { get; set; }
+        public bool Authentication { get; set; }
+        public string UserName { get; set; }
+        public string Password { get; set; }
+        public Nullable<bool> IsActive { get; set; }
     }
 }

@@ -47,7 +47,7 @@ namespace Mirth.Repository
         {
             try
             {
-                var statusUpdate = _baseStatusUpdateRepository.FindByCondition(x => x.CustomerRXID == RxNumber).FirstOrDefault();
+                var statusUpdate = _baseStatusUpdateRepository.FindByCondition(x => x.RxNumber == RxNumber).FirstOrDefault();
 
                 return statusUpdate;
             }

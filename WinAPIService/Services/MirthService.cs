@@ -20,6 +20,8 @@ namespace Mirth
         private StatusUpdatesRepository _statusUpdatesRepository;
         private ResponseModel _responseModel;
 
+        private int _maxCount = Convert.ToInt32(ConfigurationSettings.AppSettings["MAX_CVS_API_CALL"]);
+
         public MirthService()
         {
             _xmlFileReader = new XMLFileReader();
@@ -27,7 +29,7 @@ namespace Mirth
             _statusUpdatesRepository = new StatusUpdatesRepository();
         }
 
-        public async Task ProcessXMLMessage()
+        public async Task<bool> ProcessXMLMessage()
         {
             try
             {
@@ -40,19 +42,26 @@ namespace Mirth
 
                 foreach (var item in automationRxEvents)
                 {
-                    CVSModel cvsModel = RxMapperHelper.MapCVSModel(item.RxTransaction);
-
-                    string res = await InvokeServiceHelper.PostCVSAPI(cvsModel);
-                    if (res.ToLower() != "false")
+                    try
                     {
-                        _responseModel = JsonConvert.DeserializeObject<ResponseModel>(res);
+                        CVSModel cvsModel = RxMapperHelper.MapCVSModel(item.RxTransaction);
 
-                        HandleDatabaseOperation(item.RxTransaction);
+                        string res = await InvokeServiceHelper.PostCVSAPI(cvsModel);
+                        if (res.ToLower() != "false")
+                        {                        
+                            _responseModel = JsonConvert.DeserializeObject<ResponseModel>(res);
 
-                        if (this.GetStatus() == true)
-                            _xmlFileReader.RemoveFile(item.FilePath);
+                            HandleDatabaseOperation(item.RxTransaction);
+
+                            if (this.GetStatus() == true)
+                                _xmlFileReader.RemoveFile(item.FilePath);                                                                      
+                        }
                     }
-
+                    catch (Exception ex)
+                    {
+                        Logger.log.Error("ProcessXMLMessage " + ex.Message);
+                        continue;
+                    }
                 }
 
                 Logger.log.Info("ProcessXMLMessage()  XML file processing Completed");
@@ -60,27 +69,37 @@ namespace Mirth
                 Logger.log.Info("####################### End ###########################");
 
                 this.Dispose();
+
+                return true;
             }
             catch (Exception ex)
             {
                 this.Dispose();
                 Logger.log.Error("ProcessXMLMessage " + ex.Message);
-                throw ex;
+                return false;
             }
         }
 
-        private void HandleDatabaseOperation(RxTransaction rxTransaction)
+        private bool HandleDatabaseOperation(RxTransaction rxTransaction)
         {
             try
-            {
+            {              
                 var pmsMessageLog = GetPMSLogInfo(rxTransaction);
-                UpsertDataInPMSMessageLog(pmsMessageLog, rxTransaction);
+                if(pmsMessageLog != null && pmsMessageLog.NumberOfAttempt <= this._maxCount)
+                {
+                    UpsertDataInPMSMessageLog(pmsMessageLog, rxTransaction);
+                }
+                else
+                {
+                    Logger.log.Info("UpdateStatusID " + pmsMessageLog.UpdateStatusID + " exceded the max limit of calling CVS API, max limit is " + this._maxCount);
+                }
 
+                return true;
             }
             catch (Exception ex)
             {
                 Logger.log.Error("HandleDatabaseOperation " + ex.Message);
-                throw ex;
+                return false;
             }
         }
 
@@ -106,7 +125,7 @@ namespace Mirth
             catch (Exception ex)
             {
                 Logger.log.Error("GetPMSLogInfo " + ex.Message);
-                throw ex;
+                return null;
             }
         }
 
@@ -126,7 +145,7 @@ namespace Mirth
             catch (Exception ex)
             {
                 Logger.log.Error("GetStatus " + ex.Message);
-                throw ex;
+                return false;
             }
         }
 
@@ -141,11 +160,11 @@ namespace Mirth
             catch (Exception ex)
             {
                 Logger.log.Error("GetUpdateStatusIDByRxNumber " + ex.Message);
-                throw ex;
+                return -1;
             }
         }
 
-        private void ModifyStatusUpdate(PMSMessageLog pMSMessageLog)
+        private bool ModifyStatusUpdate(PMSMessageLog pMSMessageLog)
         {
             try
             {
@@ -156,15 +175,17 @@ namespace Mirth
                 _statusUpdatesRepository.ModifyStatusUpdates(statusUpdate);
 
                 Logger.log.Info("ModifyStatusUpdate() Updated Status Table. UpdateStatusID: " + pMSMessageLog.UpdateStatusID + ";" + "CVSAcknowledgementL: " + statusUpdate.CVSAcknowlogement);
+
+                return true;
             }
             catch (Exception ex)
             {
                 Logger.log.Error("ModifyStatusUpdate " + ex.Message);
-                throw ex;
+                return false;
             }
         }
 
-        private void UpsertDataInPMSMessageLog(PMSMessageLog pmsMessageLog, RxTransaction rxTransaction)
+        private bool UpsertDataInPMSMessageLog(PMSMessageLog pmsMessageLog, RxTransaction rxTransaction)
         {
             try
             {
@@ -204,11 +225,12 @@ namespace Mirth
                     Logger.log.Info("UpdateStatusID not found for the RxNumber: " + rxTransaction.CustomerRXID);
                 }
 
+                return true;
             }
             catch (Exception ex)
             {
                 Logger.log.Error("UpsertDataInPMSMessageLog " + ex.Message);
-                throw ex;
+                return false;
             }
         }
 

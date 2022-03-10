@@ -74,6 +74,27 @@
     <Compile Include="Models\MessageHeader.cs" />
     <Compile Include="Models\ResponseModel.cs" />
     <Compile Include="Models\RxTransaction.cs" />
+    <Compile Include="Repository\AspNetRole.cs">
+      <DependentUpon>BacktalkDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\AspNetRoleClaim.cs">
+      <DependentUpon>BacktalkDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\AspNetUser.cs">
+      <DependentUpon>BacktalkDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\AspNetUserClaim.cs">
+      <DependentUpon>BacktalkDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\AspNetUserLogin.cs">
+      <DependentUpon>BacktalkDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\AspNetUserToken.cs">
+      <DependentUpon>BacktalkDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\Audit.cs">
+      <DependentUpon>BacktalkDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Repository\BacktalkDB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -90,7 +111,16 @@
       <DependentUpon>BacktalkDB.edmx</DependentUpon>
     </Compile>
     <Compile Include="Repository\BaseRepository.cs" />
-    <Compile Include="Repository\IFMessageLog.cs">
+    <Compile Include="Repository\C__EFMigrationsHistory.cs">
+      <DependentUpon>BacktalkDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\DatabaseConnection.cs">
+      <DependentUpon>BacktalkDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\FileLog.cs">
+      <DependentUpon>BacktalkDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\MessageLog.cs">
       <DependentUpon>BacktalkDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Repository\PMSMessageLogsRepository.cs" />

@@ -30,7 +30,17 @@ namespace WinAPIService.Repository
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<IFMessageLog> IFMessageLogs { get; set; }
+        public DbSet<C__EFMigrationsHistory> C__EFMigrationsHistory { get; set; }
+        public DbSet<AspNetRoleClaim> AspNetRoleClaims { get; set; }
+        public DbSet<AspNetRole> AspNetRoles { get; set; }
+        public DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
+        public DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
+        public DbSet<AspNetUser> AspNetUsers { get; set; }
+        public DbSet<AspNetUserToken> AspNetUserTokens { get; set; }
+        public DbSet<Audit> Audits { get; set; }
+        public DbSet<DatabaseConnection> DatabaseConnections { get; set; }
+        public DbSet<FileLog> FileLogs { get; set; }
+        public DbSet<MessageLog> MessageLogs { get; set; }
         public DbSet<Pharmacist> Pharmacists { get; set; }
         public DbSet<PMSMessageLog> PMSMessageLogs { get; set; }
         public DbSet<StatusUpdate> StatusUpdates { get; set; }

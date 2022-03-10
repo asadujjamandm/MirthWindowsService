@@ -5,10 +5,25 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="05ea5bf50fa34185a92b94b1f6714adf" Name="Diagram1">
-        <EntityTypeShape EntityType="BacktalkDBModel.IFMessageLog" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="BacktalkDBModel.Pharmacist" Width="1.5" PointX="2.75" PointY="0.75" />
-        <EntityTypeShape EntityType="BacktalkDBModel.PMSMessageLog" Width="1.5" PointX="2.75" PointY="3.75" />
-        <EntityTypeShape EntityType="BacktalkDBModel.StatusUpdate" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="BacktalkDBModel.C__EFMigrationsHistory" Width="1.5" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="BacktalkDBModel.AspNetRoleClaim" Width="1.5" PointX="3" PointY="1.375" />
+        <EntityTypeShape EntityType="BacktalkDBModel.AspNetRole" Width="1.5" PointX="0.75" PointY="5.375" />
+        <EntityTypeShape EntityType="BacktalkDBModel.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="4.125" />
+        <EntityTypeShape EntityType="BacktalkDBModel.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="6.75" />
+        <EntityTypeShape EntityType="BacktalkDBModel.AspNetUser" Width="1.5" PointX="3" PointY="5.5" />
+        <EntityTypeShape EntityType="BacktalkDBModel.AspNetUserToken" Width="1.5" PointX="5.25" PointY="9.5" />
+        <EntityTypeShape EntityType="BacktalkDBModel.Audit" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="BacktalkDBModel.DatabaseConnection" Width="1.5" PointX="7.75" PointY="3.75" />
+        <EntityTypeShape EntityType="BacktalkDBModel.FileLog" Width="1.5" PointX="7.75" PointY="7.75" />
+        <EntityTypeShape EntityType="BacktalkDBModel.MessageLog" Width="1.5" PointX="9.75" PointY="0.75" />
+        <EntityTypeShape EntityType="BacktalkDBModel.Pharmacist" Width="1.5" PointX="9.75" PointY="4.75" />
+        <EntityTypeShape EntityType="BacktalkDBModel.PMSMessageLog" Width="1.5" PointX="9.75" PointY="7.75" />
+        <EntityTypeShape EntityType="BacktalkDBModel.StatusUpdate" Width="1.5" PointX="7.75" PointY="10.75" />
+        <AssociationConnector Association="BacktalkDBModel.FK_AspNetRoleClaims_AspNetRoles_RoleId" />
+        <AssociationConnector Association="BacktalkDBModel.FK_AspNetUserClaims_AspNetUsers_UserId" />
+        <AssociationConnector Association="BacktalkDBModel.FK_AspNetUserLogins_AspNetUsers_UserId" />
+        <AssociationConnector Association="BacktalkDBModel.FK_AspNetUserTokens_AspNetUsers_UserId" />
+        <AssociationConnector Association="BacktalkDBModel.AspNetUserRoles" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

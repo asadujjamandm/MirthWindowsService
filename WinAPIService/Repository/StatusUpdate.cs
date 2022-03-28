@@ -28,7 +28,5 @@ namespace WinAPIService.Repository
         public bool Checked { get; set; }
         public int CheckedBy { get; set; }
         public System.DateTime CheckedDateTime { get; set; }
-        public bool XMLGenerated { get; set; }
-        public bool CVSAcknowlogement { get; set; }
     }
 }

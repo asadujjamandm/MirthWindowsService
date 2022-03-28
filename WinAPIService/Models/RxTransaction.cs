@@ -18,5 +18,6 @@ namespace Mirth.Models
 		public string FillNumber { get; set; }
 		public string EditVersion { get; set; }
 		public string PartialFill { get; set; }
-	}
+        public int UpdateStatusID { get; set; }
+    }
 }

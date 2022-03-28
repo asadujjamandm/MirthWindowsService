@@ -165,11 +165,11 @@ namespace CusWinAPISvcWindow
             // 
             this.labelWelcome.AutoSize = true;
             this.labelWelcome.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelWelcome.Location = new System.Drawing.Point(13, 9);
+            this.labelWelcome.Location = new System.Drawing.Point(46, 9);
             this.labelWelcome.Name = "labelWelcome";
-            this.labelWelcome.Size = new System.Drawing.Size(461, 24);
+            this.labelWelcome.Size = new System.Drawing.Size(395, 24);
             this.labelWelcome.TabIndex = 18;
-            this.labelWelcome.Text = "Welcome to the Mirth Windows Service Installer Setup";
+            this.labelWelcome.Text = "Welcome to the Windows API Service Installer";
             // 
             // label2
             // 

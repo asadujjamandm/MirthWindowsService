@@ -17,13 +17,14 @@
         <EntityTypeShape EntityType="BacktalkDBModel.FileLog" Width="1.5" PointX="7.75" PointY="7.75" />
         <EntityTypeShape EntityType="BacktalkDBModel.MessageLog" Width="1.5" PointX="9.75" PointY="0.75" />
         <EntityTypeShape EntityType="BacktalkDBModel.Pharmacist" Width="1.5" PointX="9.75" PointY="4.75" />
-        <EntityTypeShape EntityType="BacktalkDBModel.PMSMessageLog" Width="1.5" PointX="9.75" PointY="7.75" />
-        <EntityTypeShape EntityType="BacktalkDBModel.StatusUpdate" Width="1.5" PointX="7.75" PointY="10.75" />
         <AssociationConnector Association="BacktalkDBModel.FK_AspNetRoleClaims_AspNetRoles_RoleId" />
         <AssociationConnector Association="BacktalkDBModel.FK_AspNetUserClaims_AspNetUsers_UserId" />
         <AssociationConnector Association="BacktalkDBModel.FK_AspNetUserLogins_AspNetUsers_UserId" />
         <AssociationConnector Association="BacktalkDBModel.FK_AspNetUserTokens_AspNetUsers_UserId" />
         <AssociationConnector Association="BacktalkDBModel.AspNetUserRoles" />
+        <EntityTypeShape EntityType="BacktalkDBModel.PMSMessageLog" Width="1.5" PointX="10.375" PointY="7.75" />
+        <EntityTypeShape EntityType="BacktalkDBModel.StatusUpdate" Width="1.5" PointX="7.375" PointY="10.75" />
+        <EntityTypeShape EntityType="BacktalkDBModel.XMLGenerationLog" Width="1.5" PointX="9.375" PointY="10.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

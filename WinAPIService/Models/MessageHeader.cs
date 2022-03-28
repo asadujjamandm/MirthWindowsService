@@ -8,7 +8,7 @@ namespace Mirth.Models
 {
 	public class MessageHeader
 	{
-		public int ID { get; set; }
+		public string ID { get; set; }
 		public string MessageType { get; set; }
 	}
 }

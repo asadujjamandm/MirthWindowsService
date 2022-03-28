@@ -52,15 +52,16 @@ namespace Mirth.Repository
             return table.Find(id);
         }
 
-        public void Save()
+        public async Task Save()
         {
-            _backtalkDBEntities.SaveChanges();
+            await _backtalkDBEntities.SaveChangesAsync();
         }
 
-        public void Update(T item)
+        public async Task Update(T item)
         {
             table.Attach(item);
-            _backtalkDBEntities.Entry(item).State = EntityState.Modified;
+            _backtalkDBEntities.Entry(item).State = System.Data.Entity.EntityState.Modified;
+            await _backtalkDBEntities.SaveChangesAsync();
         }
 
         public void Dispose()

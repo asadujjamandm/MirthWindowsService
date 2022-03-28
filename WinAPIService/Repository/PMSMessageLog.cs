@@ -15,7 +15,8 @@ namespace WinAPIService.Repository
     public partial class PMSMessageLog
     {
         public int PMSMessageID { get; set; }
-        public int UpdateStatusID { get; set; }
+        public string BatchID { get; set; }
+        public string RxNumber { get; set; }
         public int NumberOfAttempt { get; set; }
         public string Status { get; set; }
         public System.DateTime LastTriedTime { get; set; }

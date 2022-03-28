@@ -48,13 +48,13 @@ namespace Mirth
 
                         string res = await InvokeServiceHelper.PostCVSAPI(cvsModel);
                         if (res.ToLower() != "false")
-                        {                        
+                        {
                             _responseModel = JsonConvert.DeserializeObject<ResponseModel>(res);
 
-                            HandleDatabaseOperation(item.RxTransaction);
+                            await HandleDatabaseOperation(item);
 
                             if (this.GetStatus() == true)
-                                _xmlFileReader.RemoveFile(item.FilePath);                                                                      
+                                _xmlFileReader.RemoveFile(item.FilePath);
                         }
                     }
                     catch (Exception ex)
@@ -80,18 +80,18 @@ namespace Mirth
             }
         }
 
-        private bool HandleDatabaseOperation(RxTransaction rxTransaction)
+        private async Task<bool> HandleDatabaseOperation(AutomationRxEvent automationRxEvent)
         {
             try
-            {              
-                var pmsMessageLog = GetPMSLogInfo(rxTransaction);
-                if(pmsMessageLog != null && pmsMessageLog.NumberOfAttempt <= this._maxCount)
+            {
+                var pmsMessageLog = GetPMSLogInfo(automationRxEvent);
+                if (pmsMessageLog != null && pmsMessageLog.NumberOfAttempt <= this._maxCount)
                 {
-                    UpsertDataInPMSMessageLog(pmsMessageLog, rxTransaction);
+                    await UpsertDataInPMSMessageLog(pmsMessageLog);
                 }
                 else
                 {
-                    Logger.log.Info("UpdateStatusID " + pmsMessageLog.UpdateStatusID + " exceded the max limit of calling CVS API, max limit is " + this._maxCount);
+                    Logger.log.Info("RxNumber " + pmsMessageLog.RxNumber + " BatchID " + pmsMessageLog.BatchID + " exceded the max limit of calling CVS API, max limit is " + this._maxCount);
                 }
 
                 return true;
@@ -103,12 +103,12 @@ namespace Mirth
             }
         }
 
-        private PMSMessageLog GetPMSLogInfo(RxTransaction rxTransaction)
+        private PMSMessageLog GetPMSLogInfo(AutomationRxEvent automationRxEvent)
         {
             try
             {
-                Logger.log.Info("GetPMSLogInfo() Get existing PMS Log Info from PMSMessageLog Table CustomerRxID: " + rxTransaction.CustomerRXID.ToString());
-                var pmsMessageLog = _pmsMessageLogsRepository.GetPMSMessageLogByCustomerRxId(rxTransaction.CustomerRXID.ToString());
+                Logger.log.Info("GetPMSLogInfo() Get existing PMS Log Info from PMSMessageLog Table CustomerRxID: " + automationRxEvent.RxTransaction.CustomerRXID.ToString());
+                var pmsMessageLog = _pmsMessageLogsRepository.GetPMSMessageLogByCustomerRxId(automationRxEvent);
 
                 if (pmsMessageLog != null)
                 {
@@ -118,6 +118,8 @@ namespace Mirth
                 {
                     pmsMessageLog = new PMSMessageLog();
                     pmsMessageLog.NumberOfAttempt = 1;
+                    pmsMessageLog.RxNumber = automationRxEvent.RxTransaction.CustomerRXID;
+                    pmsMessageLog.BatchID = automationRxEvent.MessageHeader.ID;
                 }
 
                 return pmsMessageLog;
@@ -125,6 +127,7 @@ namespace Mirth
             catch (Exception ex)
             {
                 Logger.log.Error("GetPMSLogInfo " + ex.Message);
+                Logger.log.Error("GetPMSLogInfo " + ex.InnerException);
                 return null;
             }
         }
@@ -149,81 +152,36 @@ namespace Mirth
             }
         }
 
-        private int GetUpdateStatusIDByRxNumber(RxTransaction rxTransaction)
+        private async Task<bool> UpsertDataInPMSMessageLog(PMSMessageLog pmsMessageLog)
         {
             try
             {
-                var statusUpdate = _statusUpdatesRepository.GetStatusUpdatesByRxNumber(rxTransaction.CustomerRXID);
-
-                return statusUpdate != null ? statusUpdate.UpdateStatusID : -1;
-            }
-            catch (Exception ex)
-            {
-                Logger.log.Error("GetUpdateStatusIDByRxNumber " + ex.Message);
-                return -1;
-            }
-        }
-
-        private bool ModifyStatusUpdate(PMSMessageLog pMSMessageLog)
-        {
-            try
-            {
-                StatusUpdate statusUpdate = new StatusUpdate();
-                statusUpdate.CVSAcknowlogement = Convert.ToBoolean(pMSMessageLog.Status);
-                statusUpdate.UpdateStatusID = pMSMessageLog.UpdateStatusID;
-
-                _statusUpdatesRepository.ModifyStatusUpdates(statusUpdate);
-
-                Logger.log.Info("ModifyStatusUpdate() Updated Status Table. UpdateStatusID: " + pMSMessageLog.UpdateStatusID + ";" + "CVSAcknowledgementL: " + statusUpdate.CVSAcknowlogement);
-
-                return true;
-            }
-            catch (Exception ex)
-            {
-                Logger.log.Error("ModifyStatusUpdate " + ex.Message);
-                return false;
-            }
-        }
-
-        private bool UpsertDataInPMSMessageLog(PMSMessageLog pmsMessageLog, RxTransaction rxTransaction)
-        {
-            try
-            {
-                pmsMessageLog.UpdateStatusID = GetUpdateStatusIDByRxNumber(rxTransaction);
                 var status = GetStatus().ToString();
                 pmsMessageLog.LastTriedTime = DateTime.Now;
 
                 if (pmsMessageLog.Status == null)
                     pmsMessageLog.Status = "false";
 
-                if (pmsMessageLog.UpdateStatusID != -1)
+
+                if (pmsMessageLog.Status.ToLower() != "true")
                 {
-                    if (pmsMessageLog.Status.ToLower() != "true")
+                    pmsMessageLog.Status = status;
+                    if (pmsMessageLog.NumberOfAttempt == 1)
                     {
-                        pmsMessageLog.Status = status;
-                        if (pmsMessageLog.NumberOfAttempt == 1)
-                        {
-                            _pmsMessageLogsRepository.Insert(pmsMessageLog);
-                            Logger.log.Info("Inserted new record in PMSMessageLog Table. UpdateStatusID: " + pmsMessageLog.UpdateStatusID);
-                        }
-                        else
-                        {
-                            _pmsMessageLogsRepository.UpdatePMSMessageLog(pmsMessageLog);
-                            Logger.log.Info("Updated PMSMessageLog Table. UpdateStatusID: " + pmsMessageLog.UpdateStatusID);
-                        }
-
-                        ModifyStatusUpdate(pmsMessageLog);
-
+                        await _pmsMessageLogsRepository.Insert(pmsMessageLog);
+                        Logger.log.Info("Inserted new record in PMSMessageLog Table. BatchID: " + pmsMessageLog.BatchID + " RxNumber: " + pmsMessageLog.RxNumber);
                     }
                     else
                     {
-                        Logger.log.Info("Already Sent to PMS.");
+                        await _pmsMessageLogsRepository.UpdatePMSMessageLog(pmsMessageLog);
+                        Logger.log.Info("Updated PMSMessageLog Table. BatchID: " + pmsMessageLog.BatchID + " RxNumber: " + pmsMessageLog.RxNumber);
                     }
                 }
                 else
                 {
-                    Logger.log.Info("UpdateStatusID not found for the RxNumber: " + rxTransaction.CustomerRXID);
+                    Logger.log.Info("Already Sent to PMS.");
                 }
+
 
                 return true;
             }

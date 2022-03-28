@@ -1,4 +1,5 @@
 ﻿using Mirth.Contracts;
+using Mirth.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,16 +32,13 @@ namespace Mirth.Repository
             }
         }
 
-        public PMSMessageLog GetPMSMessageLogByCustomerRxId(string customerRxID)
+        public PMSMessageLog GetPMSMessageLogByCustomerRxId(AutomationRxEvent automationRxEvent)
         {
             try
             {
-                var pmsMessageLog = _basePMSRepository.GetAll()
-                    .Join(_baseStatusUpdateRepository.GetAll()
-                    .Where(status => status.RxNumber == customerRxID), pms => pms.UpdateStatusID, status => status.UpdateStatusID, (a,b) => new { PMSMessageLog = a, StatusUpdate = b}).FirstOrDefault();
-
+                var pmsMessageLog = _basePMSRepository.FindByCondition(x=> x.RxNumber == automationRxEvent.RxTransaction.CustomerRXID && x.BatchID == automationRxEvent.MessageHeader.ID).FirstOrDefault();                    
                 
-                return pmsMessageLog != null ? pmsMessageLog.PMSMessageLog: null;
+                return pmsMessageLog;
             }
             catch (Exception ex)
             {
@@ -48,12 +46,12 @@ namespace Mirth.Repository
             }
         }        
 
-        public void Insert(PMSMessageLog pmsMessageLog)
+        public async Task Insert(PMSMessageLog pmsMessageLog)
         {
             try
             {
                 _basePMSRepository.Add(pmsMessageLog);
-                _basePMSRepository.Save();
+                await _basePMSRepository.Save();
             }
             catch (Exception ex)
             {
@@ -61,18 +59,18 @@ namespace Mirth.Repository
             }
         }        
 
-        public void UpdatePMSMessageLog(PMSMessageLog pMSMessageLog)
+        public async Task UpdatePMSMessageLog(PMSMessageLog pMSMessageLog)
         {
             try
             {
-                var extPMSMessageLog = _basePMSRepository.FindByCondition(x => x.UpdateStatusID == pMSMessageLog.UpdateStatusID).FirstOrDefault();
+                var extPMSMessageLog = _basePMSRepository.FindByCondition(x => x.BatchID == pMSMessageLog.BatchID && x.RxNumber == pMSMessageLog.RxNumber).FirstOrDefault();
 
                 extPMSMessageLog.NumberOfAttempt++;
                 extPMSMessageLog.Status = pMSMessageLog.Status;
                 extPMSMessageLog.LastTriedTime = DateTime.Now;
 
-                _basePMSRepository.Update(extPMSMessageLog);
-                _basePMSRepository.Save();
+                await _basePMSRepository.Update(extPMSMessageLog);
+                //await _basePMSRepository.Save();
             }
             catch (Exception ex)
             {

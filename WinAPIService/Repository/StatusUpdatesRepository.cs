@@ -1,4 +1,5 @@
 ﻿using Mirth.Contracts;
+using Mirth.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,38 +42,7 @@ namespace Mirth.Repository
             {
                 throw ex;
             }
-        }
-
-        public StatusUpdate GetStatusUpdatesByRxNumber(string RxNumber)
-        {
-            try
-            {
-                var statusUpdate = _baseStatusUpdateRepository.FindByCondition(x => x.RxNumber == RxNumber).FirstOrDefault();
-
-                return statusUpdate;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-
-        }
-
-        public void ModifyStatusUpdates(StatusUpdate statusUpdate)
-        {
-            try
-            {
-                StatusUpdate existingStatusUpdate = _baseStatusUpdateRepository.FindByCondition(x => x.UpdateStatusID == statusUpdate.UpdateStatusID).FirstOrDefault();
-                
-                existingStatusUpdate.CVSAcknowlogement = true;
-                _baseStatusUpdateRepository.Update(existingStatusUpdate);
-                _baseStatusUpdateRepository.Save();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
+        }               
 
         public void Dispose()
         {

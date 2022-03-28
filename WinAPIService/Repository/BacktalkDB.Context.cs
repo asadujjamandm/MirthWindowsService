@@ -20,9 +20,9 @@ namespace WinAPIService.Repository
         {
         }
 
-        public BacktalkDBEntities(string connString) : base(connString)
+        public BacktalkDBEntities(string ConnString)
+            : base(ConnString)
         {
-            //this.Database.Connection.ConnectionString = connString;
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -44,5 +44,6 @@ namespace WinAPIService.Repository
         public DbSet<Pharmacist> Pharmacists { get; set; }
         public DbSet<PMSMessageLog> PMSMessageLogs { get; set; }
         public DbSet<StatusUpdate> StatusUpdates { get; set; }
+        public DbSet<XMLGenerationLog> XMLGenerationLogs { get; set; }
     }
 }

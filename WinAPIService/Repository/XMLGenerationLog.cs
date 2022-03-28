@@ -12,15 +12,12 @@ namespace WinAPIService.Repository
     using System;
     using System.Collections.Generic;
     
-    public partial class MessageLog
+    public partial class XMLGenerationLog
     {
-        public int IFMessageID { get; set; }
-        public System.DateTime TimeStamp { get; set; }
-        public string Message { get; set; }
-        public string MsgRxNumber { get; set; }
-        public string MsgNdc { get; set; }
-        public string ResponseMsg { get; set; }
-        public string Status { get; set; }
+        public int XMLID { get; set; }
         public string BatchID { get; set; }
+        public string RxNumber { get; set; }
+        public bool XMLGenerated { get; set; }
+        public System.DateTime CreateDateTime { get; set; }
     }
 }

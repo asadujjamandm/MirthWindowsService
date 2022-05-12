@@ -2,6 +2,7 @@
 using Mirth.Models;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,7 @@ namespace Mirth.Repository
     {
         private BaseRepository<PMSMessageLog> _basePMSRepository;
         private BaseRepository<StatusUpdate> _baseStatusUpdateRepository;
+        private int _maxCount = Convert.ToInt32(ConfigurationSettings.AppSettings["MAX_CVS_API_CALL"]);
 
         public PMSMessageLogsRepository()
         {
@@ -65,11 +67,11 @@ namespace Mirth.Repository
             {
                 var extPMSMessageLog = _basePMSRepository.FindByCondition(x => x.BatchID == pMSMessageLog.BatchID && x.RxNumber == pMSMessageLog.RxNumber).FirstOrDefault();
 
-                extPMSMessageLog.NumberOfAttempt++;
+                //extPMSMessageLog.NumberOfAttempt++;
                 extPMSMessageLog.Status = pMSMessageLog.Status;
                 extPMSMessageLog.LastTriedTime = DateTime.Now;
-
-                await _basePMSRepository.Update(extPMSMessageLog);
+                //if(extPMSMessageLog.NumberOfAttempt <= _maxCount)
+                    await _basePMSRepository.Update(extPMSMessageLog);
                 //await _basePMSRepository.Save();
             }
             catch (Exception ex)

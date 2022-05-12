@@ -127,18 +127,17 @@
           <Property Name="IFMessageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TimeStamp" Type="datetime" Nullable="false" />
           <Property Name="Message" Type="varchar" MaxLength="2048" Nullable="false" />
-          <Property Name="MsgRxNumber" Type="varchar" MaxLength="20" />
-          <Property Name="MsgNdc" Type="varchar" MaxLength="20" />
-          <Property Name="ResponseMsg" Type="varchar" MaxLength="250" />
+          <Property Name="MsgRxNumber" Type="varchar" MaxLength="30" />
+          <Property Name="MsgNdc" Type="varchar" MaxLength="30" />
           <Property Name="Status" Type="varchar" MaxLength="30" />
-          <Property Name="BatchID" Type="varchar" MaxLength="30" />
+          <Property Name="BatchID" Type="varchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="Pharmacist">
           <Key>
             <PropertyRef Name="InspectRxID" />
           </Key>
           <Property Name="InspectRxID" Type="int" Nullable="false" />
-          <Property Name="PMSID" Type="int" Nullable="false" />
+          <Property Name="PMSID" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="EffectiveDate" Type="datetime2" Precision="7" />
           <Property Name="Action" Type="varchar" MaxLength="10" />
         </EntityType>
@@ -147,7 +146,7 @@
             <PropertyRef Name="PMSMessageID" />
           </Key>
           <Property Name="PMSMessageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="BatchID" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="BatchID" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="RxNumber" Type="nvarchar" MaxLength="30" Nullable="false" />
           <Property Name="NumberOfAttempt" Type="int" Nullable="false" />
           <Property Name="Status" Type="varchar" MaxLength="10" Nullable="false" />
@@ -158,13 +157,13 @@
             <PropertyRef Name="UpdateStatusID" />
           </Key>
           <Property Name="UpdateStatusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="BatchID" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="BatchID" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="PouchNumber" Type="int" />
           <Property Name="RxNumber" Type="varchar" MaxLength="30" />
           <Property Name="NDC" Type="varchar" MaxLength="25" />
           <Property Name="Barcode" Type="varchar" MaxLength="30" />
           <Property Name="RXQuantity" Type="decimal" Precision="8" Scale="3" Nullable="false" />
-          <Property Name="StoreNumber" Type="int" />
+          <Property Name="StoreNumber" Type="varchar" MaxLength="25" />
           <Property Name="FillNumber" Type="nvarchar" MaxLength="5" />
           <Property Name="EditVersion" Type="nvarchar" MaxLength="5" />
           <Property Name="PartialFill" Type="nvarchar" MaxLength="5" />
@@ -177,7 +176,7 @@
             <PropertyRef Name="XMLID" />
           </Key>
           <Property Name="XMLID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="BatchID" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="BatchID" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="RxNumber" Type="nvarchar" MaxLength="30" Nullable="false" />
           <Property Name="XMLGenerated" Type="bit" Nullable="false" />
           <Property Name="CreateDateTime" Type="datetime" Nullable="false" />
@@ -323,8 +322,6 @@
           <EntitySet Name="Audits" EntityType="BacktalkDBModel.Audit" />
           <EntitySet Name="DatabaseConnections" EntityType="BacktalkDBModel.DatabaseConnection" />
           <EntitySet Name="FileLogs" EntityType="BacktalkDBModel.FileLog" />
-          <EntitySet Name="MessageLogs" EntityType="BacktalkDBModel.MessageLog" />
-          <EntitySet Name="Pharmacists" EntityType="BacktalkDBModel.Pharmacist" />
           <AssociationSet Name="FK_AspNetRoleClaims_AspNetRoles_RoleId" Association="BacktalkDBModel.FK_AspNetRoleClaims_AspNetRoles_RoleId">
             <End Role="AspNetRole" EntitySet="AspNetRoles" />
             <End Role="AspNetRoleClaim" EntitySet="AspNetRoleClaims" />
@@ -346,8 +343,10 @@
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
           </AssociationSet>
           <EntitySet Name="PMSMessageLogs" EntityType="BacktalkDBModel.PMSMessageLog" />
-          <EntitySet Name="StatusUpdates" EntityType="BacktalkDBModel.StatusUpdate" />
           <EntitySet Name="XMLGenerationLogs" EntityType="BacktalkDBModel.XMLGenerationLog" />
+          <EntitySet Name="Pharmacists" EntityType="BacktalkDBModel.Pharmacist" />
+          <EntitySet Name="StatusUpdates" EntityType="BacktalkDBModel.StatusUpdate" />
+          <EntitySet Name="MessageLogs" EntityType="BacktalkDBModel.MessageLog" />
           </EntityContainer>
         <EntityType Name="C__EFMigrationsHistory">
           <Key>
@@ -466,28 +465,6 @@
           <Property Name="CreatedDate" Type="DateTime" Precision="7" />
           <Property Name="MachineIP" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="MessageLog">
-          <Key>
-            <PropertyRef Name="IFMessageID" />
-          </Key>
-          <Property Name="IFMessageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TimeStamp" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Message" Type="String" Nullable="false" MaxLength="2048" FixedLength="false" Unicode="false" />
-          <Property Name="MsgRxNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="MsgNdc" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="ResponseMsg" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="Status" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="BatchID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="Pharmacist">
-          <Key>
-            <PropertyRef Name="InspectRxID" />
-          </Key>
-          <Property Name="InspectRxID" Type="Int32" Nullable="false" />
-          <Property Name="PMSID" Type="Int32" Nullable="false" />
-          <Property Name="EffectiveDate" Type="DateTime" Precision="7" />
-          <Property Name="Action" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-        </EntityType>
         <Association Name="FK_AspNetRoleClaims_AspNetRoles_RoleId">
           <End Type="BacktalkDBModel.AspNetRole" Role="AspNetRole" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -553,24 +530,43 @@
             <PropertyRef Name="PMSMessageID" />
           </Key>
           <Property Name="PMSMessageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="BatchID" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="BatchID" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="RxNumber" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="NumberOfAttempt" Type="Int32" Nullable="false" />
           <Property Name="Status" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="LastTriedTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="XMLGenerationLog">
+          <Key>
+            <PropertyRef Name="XMLID" />
+          </Key>
+          <Property Name="XMLID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BatchID" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="RxNumber" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="XMLGenerated" Type="Boolean" Nullable="false" />
+          <Property Name="CreateDateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Pharmacist">
+          <Key>
+            <PropertyRef Name="InspectRxID" />
+          </Key>
+          <Property Name="InspectRxID" Type="Int32" Nullable="false" />
+          <Property Name="PMSID" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="EffectiveDate" Type="DateTime" Precision="7" />
+          <Property Name="Action" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="StatusUpdate">
           <Key>
             <PropertyRef Name="UpdateStatusID" />
           </Key>
           <Property Name="UpdateStatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="BatchID" Type="Decimal" Nullable="false" Precision="10" Scale="0" />
+          <Property Name="BatchID" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="PouchNumber" Type="Int32" />
           <Property Name="RxNumber" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="NDC" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="Barcode" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="RXQuantity" Type="Decimal" Nullable="false" Precision="8" Scale="3" />
-          <Property Name="StoreNumber" Type="Int32" />
+          <Property Name="StoreNumber" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="FillNumber" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
           <Property Name="EditVersion" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
           <Property Name="PartialFill" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
@@ -578,15 +574,17 @@
           <Property Name="CheckedBy" Type="Int32" Nullable="false" />
           <Property Name="CheckedDateTime" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
-        <EntityType Name="XMLGenerationLog">
+        <EntityType Name="MessageLog">
           <Key>
-            <PropertyRef Name="XMLID" />
+            <PropertyRef Name="IFMessageID" />
           </Key>
-          <Property Name="XMLID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="BatchID" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="RxNumber" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="XMLGenerated" Type="Boolean" Nullable="false" />
-          <Property Name="CreateDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IFMessageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TimeStamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Message" Type="String" Nullable="false" MaxLength="2048" FixedLength="false" Unicode="false" />
+          <Property Name="MsgRxNumber" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="MsgNdc" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="BatchID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -708,30 +706,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="MessageLogs">
-            <EntityTypeMapping TypeName="BacktalkDBModel.MessageLog">
-              <MappingFragment StoreEntitySet="MessageLog">
-                <ScalarProperty Name="BatchID" ColumnName="BatchID" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="ResponseMsg" ColumnName="ResponseMsg" />
-                <ScalarProperty Name="MsgNdc" ColumnName="MsgNdc" />
-                <ScalarProperty Name="MsgRxNumber" ColumnName="MsgRxNumber" />
-                <ScalarProperty Name="Message" ColumnName="Message" />
-                <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
-                <ScalarProperty Name="IFMessageID" ColumnName="IFMessageID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Pharmacists">
-            <EntityTypeMapping TypeName="BacktalkDBModel.Pharmacist">
-              <MappingFragment StoreEntitySet="Pharmacist">
-                <ScalarProperty Name="Action" ColumnName="Action" />
-                <ScalarProperty Name="EffectiveDate" ColumnName="EffectiveDate" />
-                <ScalarProperty Name="PMSID" ColumnName="PMSID" />
-                <ScalarProperty Name="InspectRxID" ColumnName="InspectRxID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <AssociationSetMapping Name="AspNetUserRoles" TypeName="BacktalkDBModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
             <EndProperty Name="AspNetUser">
               <ScalarProperty Name="Id" ColumnName="UserId" />
@@ -749,6 +723,27 @@
                 <ScalarProperty Name="RxNumber" ColumnName="RxNumber" />
                 <ScalarProperty Name="BatchID" ColumnName="BatchID" />
                 <ScalarProperty Name="PMSMessageID" ColumnName="PMSMessageID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="XMLGenerationLogs">
+            <EntityTypeMapping TypeName="BacktalkDBModel.XMLGenerationLog">
+              <MappingFragment StoreEntitySet="XMLGenerationLog">
+                <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+                <ScalarProperty Name="XMLGenerated" ColumnName="XMLGenerated" />
+                <ScalarProperty Name="RxNumber" ColumnName="RxNumber" />
+                <ScalarProperty Name="BatchID" ColumnName="BatchID" />
+                <ScalarProperty Name="XMLID" ColumnName="XMLID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pharmacists">
+            <EntityTypeMapping TypeName="BacktalkDBModel.Pharmacist">
+              <MappingFragment StoreEntitySet="Pharmacist">
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="EffectiveDate" ColumnName="EffectiveDate" />
+                <ScalarProperty Name="PMSID" ColumnName="PMSID" />
+                <ScalarProperty Name="InspectRxID" ColumnName="InspectRxID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -772,14 +767,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="XMLGenerationLogs">
-            <EntityTypeMapping TypeName="BacktalkDBModel.XMLGenerationLog">
-              <MappingFragment StoreEntitySet="XMLGenerationLog">
-                <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
-                <ScalarProperty Name="XMLGenerated" ColumnName="XMLGenerated" />
-                <ScalarProperty Name="RxNumber" ColumnName="RxNumber" />
+          <EntitySetMapping Name="MessageLogs">
+            <EntityTypeMapping TypeName="BacktalkDBModel.MessageLog">
+              <MappingFragment StoreEntitySet="MessageLog">
                 <ScalarProperty Name="BatchID" ColumnName="BatchID" />
-                <ScalarProperty Name="XMLID" ColumnName="XMLID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="MsgNdc" ColumnName="MsgNdc" />
+                <ScalarProperty Name="MsgRxNumber" ColumnName="MsgRxNumber" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+                <ScalarProperty Name="IFMessageID" ColumnName="IFMessageID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

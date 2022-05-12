@@ -19,7 +19,6 @@ namespace WinAPIService.Repository
         public string Message { get; set; }
         public string MsgRxNumber { get; set; }
         public string MsgNdc { get; set; }
-        public string ResponseMsg { get; set; }
         public string Status { get; set; }
         public string BatchID { get; set; }
     }

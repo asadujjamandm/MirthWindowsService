@@ -9,22 +9,22 @@ namespace Mirth.Helper
 {
     public static class RxMapperHelper
     {
-        public static CVSModel MapCVSModel(RxTransaction rxTransaction)
+        public static CVSModel MapCVSModel(AutomationRxEvent automationRxEvent)
         {
             try
             {
                 CVSModel cvsModel = new CVSModel();
 
-                cvsModel.rxVialBarcode = rxTransaction.BarCode.ToString();
-                cvsModel.rphEmployeeID = rxTransaction.PMSID;
-                cvsModel.verifyDateTime = rxTransaction.CheckedDateTime;
-                cvsModel.drugNDCFilled = rxTransaction.CustomerNDC;
-                cvsModel.drugQtyDispensed = rxTransaction.RXQuantity;
-                cvsModel.rxNumber = rxTransaction.CustomerRXID;
-                cvsModel.cvsStoreNumber = rxTransaction.StoreNumber;
-                cvsModel.fillNumber = rxTransaction.FillNumber;
-                cvsModel.editVersion = rxTransaction.EditVersion;
-                cvsModel.partialFill = rxTransaction.PartialFill;
+                cvsModel.rxVialBarcode = automationRxEvent.RxTransaction.BarCode.ToString();
+                cvsModel.rphEmployeeID = automationRxEvent.RxTransaction.PMSID;
+                cvsModel.verifyDateTime = automationRxEvent.RxTransaction.CheckedDateTime;
+                cvsModel.drugNDCFilled = automationRxEvent.RxTransaction.CustomerNDC;
+                cvsModel.drugQtyDispensed = automationRxEvent.RxTransaction.RXQuantity;
+                cvsModel.rxNumber = automationRxEvent.RxTransaction.CustomerRXID;
+                cvsModel.cvsStoreNumber = automationRxEvent.RxTransaction.StoreNumber;
+                cvsModel.fillNumber = automationRxEvent.RxTransaction.FillNumber;
+                cvsModel.editVersion = automationRxEvent.RxTransaction.EditVersion;
+                cvsModel.partialFillSequence = automationRxEvent.RxTransaction.PartialFill;                
 
                 return cvsModel;
 

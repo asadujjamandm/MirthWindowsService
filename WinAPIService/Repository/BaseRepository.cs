@@ -40,7 +40,7 @@ namespace Mirth.Repository
         public IQueryable<T> FindByCondition(Expression<Func<T, bool>> expression)
         {
             return _backtalkDBEntities.Set<T>().Where(expression);
-        }
+        }              
 
         public IEnumerable<T> GetAll()
         {

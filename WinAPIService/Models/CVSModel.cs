@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,6 +18,6 @@ namespace Mirth.Models
         public string verifyDateTime { get; set; }
         public String fillNumber { get; set; }
         public String editVersion { get; set; }
-        public String partialFill { get; set; }
+        public String partialFillSequence { get; set; }
     }
 }

@@ -40,10 +40,10 @@ namespace WinAPIService.Repository
         public DbSet<Audit> Audits { get; set; }
         public DbSet<DatabaseConnection> DatabaseConnections { get; set; }
         public DbSet<FileLog> FileLogs { get; set; }
-        public DbSet<MessageLog> MessageLogs { get; set; }
-        public DbSet<Pharmacist> Pharmacists { get; set; }
         public DbSet<PMSMessageLog> PMSMessageLogs { get; set; }
-        public DbSet<StatusUpdate> StatusUpdates { get; set; }
         public DbSet<XMLGenerationLog> XMLGenerationLogs { get; set; }
+        public DbSet<Pharmacist> Pharmacists { get; set; }
+        public DbSet<StatusUpdate> StatusUpdates { get; set; }
+        public DbSet<MessageLog> MessageLogs { get; set; }
     }
 }

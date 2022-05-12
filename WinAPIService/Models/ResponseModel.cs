@@ -8,7 +8,7 @@ namespace Mirth.Models
 {
     public class ResponseModel
     {
-        public string statusCode { get; set; }
-        public string status { get; set; }
+        public string responseCode { get; set; }
+        public string responseMessage { get; set; }
     }
 }

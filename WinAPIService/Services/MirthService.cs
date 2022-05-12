@@ -43,18 +43,27 @@ namespace Mirth
                 foreach (var item in automationRxEvents)
                 {
                     try
-                    {
-                        CVSModel cvsModel = RxMapperHelper.MapCVSModel(item.RxTransaction);
-
-                        string res = await InvokeServiceHelper.PostCVSAPI(cvsModel);
-                        if (res.ToLower() != "false")
+                    {                        
+                        var pmsMessageLog = GetPMSLogInfo(item);
+                        if (pmsMessageLog != null && pmsMessageLog.NumberOfAttempt <= this._maxCount)
                         {
-                            _responseModel = JsonConvert.DeserializeObject<ResponseModel>(res);
 
-                            await HandleDatabaseOperation(item);
+                            CVSModel cvsModel = RxMapperHelper.MapCVSModel(item);
 
-                            if (this.GetStatus() == true)
-                                _xmlFileReader.RemoveFile(item.FilePath);
+                            string res = InvokeServiceHelper.PostCVSAPI(cvsModel, item.MessageHeader.ID);
+                            if (res.ToLower() != "false")
+                            {
+                                _responseModel = JsonConvert.DeserializeObject<ResponseModel>(res);
+
+                                var dbStatus = await HandleDatabaseOperation(pmsMessageLog);
+
+                                if (this.GetStatus() == true && dbStatus == true)
+                                    _xmlFileReader.RemoveFile(item.FilePath);
+                            }
+                        }
+                        else
+                        {
+                            Logger.log.Info("RxNumber " + pmsMessageLog.RxNumber + " BatchID " + pmsMessageLog.BatchID + " exceded the max limit of calling CVS API, max limit is " + this._maxCount);
                         }
                     }
                     catch (Exception ex)
@@ -67,7 +76,6 @@ namespace Mirth
                 Logger.log.Info("ProcessXMLMessage()  XML file processing Completed");
 
                 Logger.log.Info("####################### End ###########################");
-
                 this.Dispose();
 
                 return true;
@@ -80,20 +88,11 @@ namespace Mirth
             }
         }
 
-        private async Task<bool> HandleDatabaseOperation(AutomationRxEvent automationRxEvent)
+        private async Task<bool> HandleDatabaseOperation(PMSMessageLog pmsMessageLog)
         {
             try
             {
-                var pmsMessageLog = GetPMSLogInfo(automationRxEvent);
-                if (pmsMessageLog != null && pmsMessageLog.NumberOfAttempt <= this._maxCount)
-                {
-                    await UpsertDataInPMSMessageLog(pmsMessageLog);
-                }
-                else
-                {
-                    Logger.log.Info("RxNumber " + pmsMessageLog.RxNumber + " BatchID " + pmsMessageLog.BatchID + " exceded the max limit of calling CVS API, max limit is " + this._maxCount);
-                }
-
+                await UpsertDataInPMSMessageLog(pmsMessageLog);
                 return true;
             }
             catch (Exception ex)
@@ -109,9 +108,15 @@ namespace Mirth
             {
                 Logger.log.Info("GetPMSLogInfo() Get existing PMS Log Info from PMSMessageLog Table CustomerRxID: " + automationRxEvent.RxTransaction.CustomerRXID.ToString());
                 var pmsMessageLog = _pmsMessageLogsRepository.GetPMSMessageLogByCustomerRxId(automationRxEvent);
+                
 
                 if (pmsMessageLog != null)
                 {
+                    if (pmsMessageLog.NumberOfAttempt >= this._maxCount)
+                    {
+                        pmsMessageLog.NumberOfAttempt++;
+                        return pmsMessageLog;
+                    }
                     pmsMessageLog.NumberOfAttempt = pmsMessageLog.Status == "true" ? pmsMessageLog.NumberOfAttempt : pmsMessageLog.NumberOfAttempt + 1;
                 }
                 else
@@ -136,7 +141,7 @@ namespace Mirth
         {
             try
             {
-                if (this._responseModel.statusCode == "00")
+                if (this._responseModel.responseCode == "00")
                 {
                     return true;
                 }
@@ -181,8 +186,7 @@ namespace Mirth
                 {
                     Logger.log.Info("Already Sent to PMS.");
                 }
-
-
+                
                 return true;
             }
             catch (Exception ex)

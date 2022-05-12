@@ -15,7 +15,7 @@ namespace WinAPIService.Repository
     public partial class Pharmacist
     {
         public int InspectRxID { get; set; }
-        public int PMSID { get; set; }
+        public string PMSID { get; set; }
         public Nullable<System.DateTime> EffectiveDate { get; set; }
         public string Action { get; set; }
     }

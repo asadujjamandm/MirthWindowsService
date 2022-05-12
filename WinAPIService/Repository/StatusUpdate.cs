@@ -15,13 +15,13 @@ namespace WinAPIService.Repository
     public partial class StatusUpdate
     {
         public int UpdateStatusID { get; set; }
-        public decimal BatchID { get; set; }
+        public string BatchID { get; set; }
         public Nullable<int> PouchNumber { get; set; }
         public string RxNumber { get; set; }
         public string NDC { get; set; }
         public string Barcode { get; set; }
         public decimal RXQuantity { get; set; }
-        public Nullable<int> StoreNumber { get; set; }
+        public string StoreNumber { get; set; }
         public string FillNumber { get; set; }
         public string EditVersion { get; set; }
         public string PartialFill { get; set; }

@@ -21,7 +21,7 @@ namespace Mirth.Repository
 
         public BaseRepository()
         {            
-            Logger.log.Info(this.ConnString);
+            //Logger.log.Info(this.ConnString);
             this._backtalkDBEntities = new BacktalkDBEntities(this.ConnString);
             this.table = _backtalkDBEntities.Set<T>();
         }
@@ -57,11 +57,11 @@ namespace Mirth.Repository
             await _backtalkDBEntities.SaveChangesAsync();
         }
 
-        public async Task Update(T item)
+        public void Update(T item)
         {
             table.Attach(item);
             _backtalkDBEntities.Entry(item).State = System.Data.Entity.EntityState.Modified;
-            await _backtalkDBEntities.SaveChangesAsync();
+            _backtalkDBEntities.SaveChanges();
         }
 
         public void Dispose()

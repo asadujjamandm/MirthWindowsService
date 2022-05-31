@@ -13,6 +13,6 @@ namespace Mirth.Contracts
         IEnumerable<PMSMessageLog> GetPMSMessageLog();
         PMSMessageLog GetPMSMessageLogByCustomerRxId(AutomationRxEvent automationRxEvent);
         Task Insert(PMSMessageLog pmsMessageLog);        
-        Task UpdatePMSMessageLog(PMSMessageLog pmsMessageLog);        
+        void UpdatePMSMessageLog(PMSMessageLog pmsMessageLog);        
     }
 }

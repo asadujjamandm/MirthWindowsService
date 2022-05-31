@@ -1,4 +1,5 @@
 ﻿using Mirth.Contracts;
+using Mirth.Helper;
 using Mirth.Models;
 using System;
 using System.Collections.Generic;
@@ -61,17 +62,19 @@ namespace Mirth.Repository
             }
         }        
 
-        public async Task UpdatePMSMessageLog(PMSMessageLog pMSMessageLog)
+        public void UpdatePMSMessageLog(PMSMessageLog pMSMessageLog)
         {
             try
             {
-                var extPMSMessageLog = _basePMSRepository.FindByCondition(x => x.BatchID == pMSMessageLog.BatchID && x.RxNumber == pMSMessageLog.RxNumber).FirstOrDefault();
+                //var extPMSMessageLog = _basePMSRepository.FindByCondition(x => x.BatchID == pMSMessageLog.BatchID && x.RxNumber == pMSMessageLog.RxNumber).FirstOrDefault();
 
                 //extPMSMessageLog.NumberOfAttempt++;
-                extPMSMessageLog.Status = pMSMessageLog.Status;
-                extPMSMessageLog.LastTriedTime = DateTime.Now;
-                //if(extPMSMessageLog.NumberOfAttempt <= _maxCount)
-                    await _basePMSRepository.Update(extPMSMessageLog);
+                //extPMSMessageLog.Status = pMSMessageLog.Status;
+                //extPMSMessageLog.LastTriedTime = DateTime.Now;
+                //extPMSMessageLog.NumberOfAttempt = pMSMessageLog.NumberOfAttempt;
+                Logger.log.Info("BatchID & RxNumber & NOA: " + pMSMessageLog.BatchID + ", " +  pMSMessageLog.RxNumber + ", " + pMSMessageLog.NumberOfAttempt);
+                if (pMSMessageLog.NumberOfAttempt <= _maxCount)
+                    _basePMSRepository.Update(pMSMessageLog);
                 //await _basePMSRepository.Save();
             }
             catch (Exception ex)

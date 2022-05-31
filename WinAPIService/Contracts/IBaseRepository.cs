@@ -12,7 +12,7 @@ namespace Mirth.Contracts
         IEnumerable<T> GetAll();
         T GetByID(object id);
         void Add(T item);
-        Task Update(T item);
+        void Update(T item);
         void Delete(object id);
         Task Save();
         IQueryable<T> FindByCondition(Expression<Func<T, bool>> expression);

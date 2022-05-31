@@ -65,17 +65,20 @@ namespace Mirth
                         {
                             Logger.log.Info("RxNumber " + pmsMessageLog.RxNumber + " BatchID " + pmsMessageLog.BatchID + " exceded the max limit of calling CVS API, max limit is " + this._maxCount);
                         }
+                        pmsMessageLog = null;
                     }
                     catch (Exception ex)
                     {
                         Logger.log.Error("ProcessXMLMessage " + ex.Message);
                         continue;
                     }
+                    
                 }
 
                 Logger.log.Info("ProcessXMLMessage()  XML file processing Completed");
 
                 Logger.log.Info("####################### End ###########################");
+                automationRxEvents = null;
                 this.Dispose();
 
                 return true;
@@ -178,7 +181,7 @@ namespace Mirth
                     }
                     else
                     {
-                        await _pmsMessageLogsRepository.UpdatePMSMessageLog(pmsMessageLog);
+                        _pmsMessageLogsRepository.UpdatePMSMessageLog(pmsMessageLog);
                         Logger.log.Info("Updated PMSMessageLog Table. BatchID: " + pmsMessageLog.BatchID + " RxNumber: " + pmsMessageLog.RxNumber);
                     }
                 }

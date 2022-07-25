@@ -15,7 +15,7 @@ namespace Mirth.Helper
             {
                 CVSModel cvsModel = new CVSModel();
 
-                cvsModel.rxVialBarcode = automationRxEvent.RxTransaction.BarCode.ToString();
+                cvsModel.rxVialBarcode = automationRxEvent.RxTransaction.BarCode;
                 cvsModel.rphEmployeeID = automationRxEvent.RxTransaction.PMSID;
                 cvsModel.verifyDateTime = automationRxEvent.RxTransaction.CheckedDateTime;
                 cvsModel.drugNDCFilled = automationRxEvent.RxTransaction.CustomerNDC;

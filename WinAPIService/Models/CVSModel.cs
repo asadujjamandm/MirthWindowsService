@@ -10,7 +10,7 @@ namespace Mirth.Models
     public class CVSModel
     {
         public String rxVialBarcode { get; set; }
-        public int rphEmployeeID { get; set; }
+        public string rphEmployeeID { get; set; }
         public String drugNDCFilled { get; set; }
         public decimal drugQtyDispensed { get; set; }
         public string rxNumber { get; set; }

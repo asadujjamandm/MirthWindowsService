@@ -38,8 +38,14 @@ namespace Mirth.Helper
                         StringReader stringReader = new StringReader(xmlString);
                         AutomationRxEvent automationRxEvent = (AutomationRxEvent)serializer.Deserialize(stringReader);
                         automationRxEvent.FilePath = file;
-                        AutomationRxEventList.Add(automationRxEvent);
 
+                        var alreadyExistsInList = AutomationRxEventList.Any(x => x.MessageHeader.ID == automationRxEvent.MessageHeader.ID && x.RxTransaction.CustomerRXID == automationRxEvent.RxTransaction.CustomerRXID);
+
+                        if(!alreadyExistsInList)
+                        {
+                            AutomationRxEventList.Add(automationRxEvent);
+                        }
+                        
                         Logger.log.Info(file + "  Processing Completed.");
                     }
                     catch (Exception ex)
